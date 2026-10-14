@@ -1,0 +1,27 @@
+/* start media queries */
+@media screen and (max-width:700px) {
+    /* start navbar */
+    .navbar {
+        flex-direction: column; 
+        padding: 15px; 
+        gap: 15px; 
+    }
+
+    .nav-right {
+        flex-direction: column;
+        width: 100%; 
+        gap: 15px;
+
+    .nav-right li a {
+        font-size: 1.1rem; 
+    }
+    /* end navbar */
+
+    /* start banner */
+    .banner {
+        font-size: 0.9rem; 
+    }
+    /* end banner */
+    /* end navbar */
+}
+/* end media queries */

@@ -1,14 +1,77 @@
 /* 
 ==========COLORS==========
-
 PRIMARY COLOR: #232323
 SECONDERY COLOR: #525252
 BACKGROUND COLOR: #DEDEDE
 */
 
+/* general styles */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Space Grotesk";
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Space Grotesk", sans-serif;
 }
+/* remove l */
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+/* start navbar */
+
+.nav-back{
+ background-color:black; 
+  
+ border-radius: 5px;
+ padding: 10px;
+
+}
+.navbar {
+    background-color: #232323; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 40px; 
+}
+
+.logo a {
+    color: #DEDEDE; 
+    font-size: 2.5rem; 
+    font-weight: 700; 
+}
+
+
+.nav-right {
+    display: flex; 
+    gap: 30px; 
+    align-items: center;
+}
+
+
+.nav-right li a {
+    font-size: 1.2rem; 
+    color: #DEDEDE; 
+    transition: all .3s ease-in-out; 
+}
+
+
+.nav-right li a:hover {
+    color: #525252; 
+}
+
+/* start banner */
+
+.banner {
+    background-color: #DEDEDE; 
+    text-align: center; 
+    padding: 10px 0px; 
+    color: #232323; 
+    font-weight: 500; 
+    font-size: 1rem;
+
+/* end banner */
+/* end navbar */
