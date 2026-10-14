@@ -1,0 +1,14 @@
+/* 
+==========COLORS==========
+
+PRIMARY COLOR: #232323
+SECONDERY COLOR: #525252
+BACKGROUND COLOR: #DEDEDE
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Space Grotesk";
+}
