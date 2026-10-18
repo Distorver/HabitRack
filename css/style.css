@@ -9,17 +9,35 @@ BACKGROUND COLOR: #fff
 /* ==========GENRAL START========== */
 
 * {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
   font-family: "Space Grotesk", sans-serif;
 }
 
 a {
-  text-decoration: none;
   font-family: "Geist Mono", monospace;
 }
 
-li {
-  list-style: none;
+.navbar-nav .nav-link,
+.btn-orange {
+  font-family: monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Orange button styling */
+.btn-orange {
+  background-color: #ff4d15;
+  color: #000;
+  padding: 0.6rem 1.4rem;
+}
+
+.btn-orange:hover {
+  background-color: #e03f0b;
+}
+
+.navbar-logo {
+  height: 40px;          /* Sets a controlled height suitable for the navbar */
+  width: auto;           /* Keeps the original aspect ratio without distortion */
+  max-width: 100%;       /* Prevents overflow on very small screens */
+  object-fit: contain;   /* Ensures the entire image scales cleanly inside its bounds */
+  display: block;        /* Removes inline bottom whitespace gap */
 }
