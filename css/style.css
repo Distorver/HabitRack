@@ -8,22 +8,30 @@ BACKGROUND COLOR: #fff
 
 /* ==========GENRAL START========== */
 
+/* 1. Universal font & dark page background */
 * {
   font-family: "Space Grotesk", sans-serif;
 }
 
-a {
+body {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* 2. Apply Geist Mono to all links & buttons */
+a,
+.navbar-nav .nav-link,
+.btn-orange {
   font-family: "Geist Mono", monospace;
 }
 
 .navbar-nav .nav-link,
 .btn-orange {
-  font-family: monospace;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-/* Orange button styling */
+/* 3. Orange button styling */
 .btn-orange {
   background-color: #ff4d15;
   color: #000;
@@ -32,12 +40,46 @@ a {
 
 .btn-orange:hover {
   background-color: #e03f0b;
+  color: #000;
 }
 
+/* 4. Logo sizing */
 .navbar-logo {
-  height: 40px;          /* Sets a controlled height suitable for the navbar */
-  width: auto;           /* Keeps the original aspect ratio without distortion */
-  max-width: 100%;       /* Prevents overflow on very small screens */
-  object-fit: contain;   /* Ensures the entire image scales cleanly inside its bounds */
-  display: block;        /* Removes inline bottom whitespace gap */
+  height: 40px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Hero Section height */
+.hero-section {
+  min-height: 100vh;
+  /* padding-top: px; */
+}
+
+/* Paragraph max width so it wraps like the screenshot */
+.hero-p {
+  max-width: 460px;
+  font-size: 0.9rem;
+}
+
+/* Faded circular tracker in the center background */
+.bg-tracker {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  max-height: 85%;
+  opacity: 0.25;          /* Makes it faded */
+  pointer-events: none;   /* Lets you click buttons on top of it */
+}
+
+/* Right side graph image size */
+.graph-img {
+  max-height: 420px;
+}
+
+.sub-container{
+  margin-top: 9%;
 }

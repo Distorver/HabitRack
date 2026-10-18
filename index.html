@@ -34,7 +34,7 @@
 
   <body>
     <!-- ========== NAV START ========== -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent py-3">
       <div class="container-fluid px-4">
         <!-- Brand -->
         <a class="navbar-brand d-flex align-items-center" href="#">
@@ -49,10 +49,10 @@
         <!-- Menu items -->
         <div class="collapse navbar-collapse" id="navContent">
           <ul class="navbar-nav mx-auto text-center">
-            <li class="nav-item"><a class="nav-link px-3" href="#">Home</a></li>
-            <li class="nav-item"><a class="nav-link px-3" href="#">The 4 Laws</a></li>
-            <li class="nav-item"><a class="nav-link px-3" href="#">How It Works</a></li>
-            <li class="nav-item"><a class="nav-link px-3" href="#">Our Philosophy</a></li>
+            <li class="nav-item"><a class="nav-link px-3 text-white" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link px-3 text-white" href="#">The 4 Laws</a></li>
+            <li class="nav-item"><a class="nav-link px-3 text-white" href="#">How It Works</a></li>
+            <li class="nav-item"><a class="nav-link px-3 text-white" href="#">Our Philosophy</a></li>
           </ul>
           <div class="text-center">
             <a href="#" class="btn btn-orange rounded-0">Track Your Habits Now</a>
@@ -63,7 +63,36 @@
     <!-- ========== NAV END ========== -->
 
     <!-- ========== HERO START ========== -->
-    <header></header>
+    <!-- Hero Section -->
+    <section class="hero-section position-relative d-flex align-items-center overflow-hidden bg-black">
+    
+      <!-- Background Faded Image (Habit Wheel) -->
+      <img src="assets/images/raw/Tracker.png" alt="Habit Tracker" class="bg-tracker">
+
+      <!-- Main Content Container -->
+      <div class="container-fluid px-4 px-lg-5 position-relative z-1">
+        <div class="row align-items-center sub-container">
+          
+          <!-- Left Side: Text & Buttons -->
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <h1 class="display-5 fw-bold mb-3">Become 1% Better, Every Day.</h1>
+            <p class="text-secondary mb-4 hero-p">
+              Your future self is built by what you do today. Track the little things, celebrate your consistency, and make progress a part of your everyday life.
+            </p>
+            <div class="d-flex align-items-center gap-4">
+              <a href="#" class="btn btn-orange rounded-0">SEE THE WORK</a>
+              <a href="#" class="text-white text-decoration-underline mono-font">Learn More</a>
+            </div>
+          </div>
+
+          <!-- Right Side: 1% Graph Image -->
+          <div class="col-lg-6 text-center text-lg-end">
+            <img src="assets/images/raw/Graph.png" alt="1% Better Graph" class="img-fluid graph-img">
+          </div>
+
+        </div>
+      </div>
+    </section>
     <!-- ========== HERO END ========== -->
 
     <main>
