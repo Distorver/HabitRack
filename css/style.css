@@ -18,6 +18,13 @@ body {
   color: #ffffff;
 }
 
+.navbar{
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
 /* 2. Apply Geist Mono to all links & buttons */
 a,
 .navbar-nav .nav-link,
