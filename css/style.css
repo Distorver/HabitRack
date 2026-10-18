@@ -90,3 +90,82 @@ a,
 .sub-container{
   margin-top: 9%;
 }
+
+
+
+
+
+
+
+/* ========== PHILOSOPHY & FOOTER START ========== */
+
+
+
+
+
+.philosophy-section {
+  background-color: #ffffff;
+  color: #141314; 
+  padding: 8% 0;
+}
+.text-secondary-custom {
+  color: #545354 !important; 
+}
+/* Philosophy Section Styling */
+.orange-square {
+  width: 28px;
+  height: 28px;
+  background-color: #FD551D; 
+  flex-shrink: 0;
+}
+
+.philosophy-title {
+  font-size: 2.2rem;
+  color: #141314;
+}
+
+.philosophy-text {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  max-width: 950px;
+}
+
+/* Footer Section Styling */
+.footer-section {
+  background-color: #141314; 
+  padding-top: 7rem;
+}
+
+.footer-logo {
+  height: 50px; 
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-top {
+  min-height: 250px;
+}
+
+.footer-link {
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #FD551D;
+}
+
+.border-custom {
+  border-color: #545354 !important; 
+}
+
+.footer-copyright {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #ffffff;
+}
+
+/* ========== PHILOSOPHY & FOOTER END ========== */
