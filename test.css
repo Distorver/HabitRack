@@ -6,7 +6,7 @@
   font-family:  sans-serif;
 }
 
-/
+
 body {
   background-color: #96989a; 
   height: 100vh;
@@ -37,18 +37,17 @@ body {
   color: #555555;
   margin-bottom: 40px;
 }
-
-/* حاوية الكروت */
-.features-grid {
+.features-grid{
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap; /* يضمن التجاوب في الشاشات الصغيرة */
+  flex-wrap: wrap; 
 }
 
-/* تصميم الكارت */
+
+
 .card {
-  background-color: #393a3e; /* لون رمادي داكن للبطاقات */
+  background-color: #393a3e; 
   color: #e5e7eb;
   width: 180px;
   height: 180px;
@@ -61,7 +60,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-/* عنوان الكارت */
+
 .card h2 {
   font-size: 1.5rem;
   font-weight: 500;
@@ -69,7 +68,7 @@ body {
   line-height: 1.2;
 }
 
-/* وصف الكارت */
+
 .card p {
   font-size: 0.95rem;
   color: #9ca3af;
