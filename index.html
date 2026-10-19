@@ -29,6 +29,8 @@
     <link
       rel="stylesheet"
       href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+      --
+    />
     />
     <!-- Bootstrap Section Done -->
 
@@ -42,8 +44,8 @@
 
   <body>
     <!-- ========== NAV START ========== -->
-    <nav class="navbar navbar-expand-lg bg-transparent">
-      <div class="container-fluid px-4">
+    <nav class="navbar navbar-expand bg-transparent">
+      <div class="container-fluid">
         <!-- Brand -->
         <a class="navbar-brand d-flex align-items-center" href="#">
           <img
@@ -52,6 +54,15 @@
             class="navbar-logo"
           />
         </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
         <!-- Menu items -->
         <div class="collapse navbar-collapse" id="navContent">
@@ -103,15 +114,21 @@
         <div class="row align-items-center sub-container">
           <!-- Left Side: Text & Buttons -->
           <div class="col-lg-6 mb-5 mb-lg-0">
-            <h1 class="display-5 fw-bold mb-3">Become 1% Better, Every Day.</h1>
+            <h1 class="hero-text display-5 fw-bold mb-3">
+              Become 1% Better, Every Day.
+            </h1>
             <p class="text-secondary mb-4 hero-p">
               Your future self is built by what you do today. Track the little
               things, celebrate your consistency, and make progress a part of
               your everyday life.
             </p>
             <div class="d-flex align-items-center gap-4">
-              <a href="#" class="btn btn-orange rounded-0">SEE THE WORK</a>
-              <a href="#" class="text-white text-decoration-underline mono-font"
+              <a href="#how-section" class="btn btn-orange rounded-0"
+                >SEE THE WORK</a
+              >
+              <a
+                href="#laws-section"
+                class="text-white text-decoration-underline mono-font"
                 >Learn More</a
               >
             </div>
