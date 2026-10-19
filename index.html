@@ -42,9 +42,7 @@
 
   <body>
     <!-- ========== NAV START ========== -->
-    <nav
-      class="navbar navbar-expand-lg position-fixed navbar-dark bg-transparent py-3"
-    >
+    <nav class="navbar navbar-expand-lg bg-transparent">
       <div class="container-fluid px-4">
         <!-- Brand -->
         <a class="navbar-brand d-flex align-items-center" href="#">
@@ -55,30 +53,26 @@
           />
         </a>
 
-        <!-- Hamburger toggle -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navContent"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
         <!-- Menu items -->
         <div class="collapse navbar-collapse" id="navContent">
           <ul class="navbar-nav mx-auto text-center">
             <li class="nav-item">
-              <a class="nav-link px-3 text-white" href="#">Home</a>
+              <a class="nav-link px-3 text-white" href="#hero-section">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3 text-white" href="#">The 4 Laws</a>
+              <a class="nav-link px-3 text-white" href="#laws-section"
+                >The 4 Laws</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3 text-white" href="#">How It Works</a>
+              <a class="nav-link px-3 text-white" href="#how-section"
+                >How It Works</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3 text-white" href="#">Our Philosophy</a>
+              <a class="nav-link px-3 text-white" href="#philosophy-section"
+                >Our Philosophy</a
+              >
             </li>
           </ul>
           <div class="text-center">
@@ -94,7 +88,8 @@
     <!-- ========== HERO START ========== -->
     <!-- Hero Section -->
     <section
-      class="hero-section position-relative d-flex align-items-center overflow-hidden bg-black"
+      class="hero-section position-relative d-flex align-items-center overflow-hidden"
+      id="hero-section"
     >
       <!-- Background Faded Image (Habit Wheel) -->
       <img
@@ -137,7 +132,7 @@
 
     <main>
       <!-- ========== 4 LAWS START ========== -->
-      <section class="laws-section">
+      <section class="laws-section" id="laws-section">
         <div class="laws-inspire">
           <p>
             Inspired by <strong>Atomic Habits</strong> by <em>James Clear</em>,
@@ -211,11 +206,11 @@
       <!-- ========== 4 LAWS END ========== -->
 
       <!-- ========== HOW IT WORKS START ========== -->
-
+      <section class="how-section" id="how-section"></section>
       <!-- ========== HOW IT WORKS END ========== -->
 
       <!-- ========== PHILOSOPHY START ========== -->
-      <section class="philosophy-section">
+      <section class="philosophy-section" id="philosophy-section">
         <div class="container-fluid px-4 px-lg-5">
           <div class="sub-container">
             <!-- Header Area -->
