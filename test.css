@@ -1,0 +1,77 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:  sans-serif;
+}
+
+/
+body {
+  background-color: #96989a; 
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 60px;
+}
+
+
+.about-container {
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+}
+
+.title {
+  font-size: 2.2rem;
+  color: #333333;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #555555;
+  margin-bottom: 40px;
+}
+
+/* حاوية الكروت */
+.features-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* يضمن التجاوب في الشاشات الصغيرة */
+}
+
+/* تصميم الكارت */
+.card {
+  background-color: #393a3e; /* لون رمادي داكن للبطاقات */
+  color: #e5e7eb;
+  width: 180px;
+  height: 180px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* عنوان الكارت */
+.card h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+/* وصف الكارت */
+.card p {
+  font-size: 0.95rem;
+  color: #9ca3af;
+  line-height: 1.3;
+}
