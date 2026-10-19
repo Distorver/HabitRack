@@ -1,1 +1,195 @@
-/* PLACE HOLDER */
+@media (max-width: 900px) {
+  .nav-inner {
+    flex-wrap: wrap;
+    gap: 0 20px;
+    padding-block: 12px;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+  }
+
+  .menu-toggle-button {
+    display: flex;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .menu-toggle-button span {
+    width: 24px;
+    height: 2px;
+    background: #fff;
+  }
+
+  .menu-toggle:focus-visible + .menu-toggle-button {
+    outline: 2px solid var(--color-orange);
+    outline-offset: 3px;
+  }
+
+  .nav-content {
+    display: none;
+    width: 100%;
+    flex: 0 0 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 18px 0 8px;
+  }
+
+  .menu-toggle:checked ~ .nav-content {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    margin: 0;
+  }
+
+  .nav-action {
+    text-align: center;
+  }
+
+  .hero-layout {
+    gap: 24px;
+  }
+
+  .bg-tracker {
+    left: 50%;
+    width: 80%;
+    opacity: 0.05;
+  }
+
+  .hero-text {
+    font-size: clamp(2.3rem, 6vw, 3.5rem);
+  }
+
+  .laws-section {
+    padding-block: 80px;
+  }
+
+  .law-img {
+    right: -300px;
+    opacity: 0.25;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    min-height: auto;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .hero-copy {
+    padding-block: 64px 24px;
+  }
+
+  .hero-visual {
+    padding-bottom: 48px;
+    text-align: center;
+  }
+
+  .graph-img {
+    max-height: 380px;
+    margin-inline: auto;
+  }
+
+  .bg-tracker {
+    top: 40%;
+    left: 50%;
+    width: 80%;
+    opacity: 0.05;
+  }
+
+  .laws-section {
+    gap: 24px;
+    padding-block: 64px;
+  }
+
+  .laws-inspire {
+    font-size: 17px;
+  }
+
+  .law {
+    gap: 12px;
+    padding: 16px 0;
+  }
+
+  .law-rec {
+    flex-basis: 18px;
+    width: 18px;
+    height: 18px;
+    margin-top: 6px;
+  }
+
+  .law-num {
+    font-size: 1.25rem;
+  }
+
+  .law-header {
+    font-size: clamp(1.8rem, 8vw, 2.8rem);
+  }
+
+  .law-desc {
+    font-size: 1rem;
+  }
+
+  .law-img {
+    right: 0;
+    height: 760px;
+    opacity: 0.3;
+    filter: blur(5px);
+  }
+
+  .philosophy-heading {
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .philosophy-features {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-section {
+    padding-top: 72px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+    padding-bottom: 0;
+  }
+
+  .footer-logo-wrap {
+    margin-bottom: 32px;
+  }
+
+  .footer-navigation {
+    width: 100%;
+    flex-basis: auto;
+  }
+
+  .footer-bottom {
+    margin-top: 40px;
+  }
+}
