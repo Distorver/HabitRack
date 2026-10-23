@@ -44,7 +44,7 @@
       }
 
       .btn:hover {
-        background-color: #be431a !important;
+        background-color: #fd551d !important;
       }
 
       h2 {
@@ -97,6 +97,11 @@
         bottom: 2rem;
       }
 
+      .form-control:focus {
+        border-color: #fd551d;
+        box-shadow: 0 0 0.2rem 0.2rem rgba(253, 85, 29, 0.25);
+      }
+
       @media (max-width: 900px) {
         .contact-form {
           flex-direction: column !important;
@@ -122,7 +127,7 @@
       <div class="contact-message w-100">
         <h2 class="">
           Tell us what to <br />
-          add to on the app!!
+          add to the app!!
         </h2>
       </div>
       <form action="" class="w-100">
@@ -148,10 +153,10 @@
           </div>
 
           <div class="col-12 col-md-6">
-            <label for="first" class="form-label">Subject</label>
+            <label for="subject" class="form-label">Subject</label>
             <input
               type="text"
-              id="first"
+              id="subject"
               class="form-control border border-0 border-bottom rounded-0"
               placeholder="Your subject"
             />

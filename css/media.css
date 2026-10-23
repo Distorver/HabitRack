@@ -1,4 +1,6 @@
 @media (max-width: 900px) {
+  /* =========== NAV SECTION =========== */
+
   .nav-inner {
     flex-wrap: wrap;
     gap: 0 20px;
@@ -64,6 +66,8 @@
     text-align: center;
   }
 
+  /* =========== HERO SECTION =========== */
+
   .hero-layout {
     gap: 24px;
   }
@@ -78,6 +82,8 @@
     font-size: clamp(2.3rem, 6vw, 3.5rem);
   }
 
+  /* =========== LAWS SECTION =========== */
+
   .laws-section {
     padding-block: 80px;
   }
@@ -88,7 +94,11 @@
   }
 }
 
+/* ======================================================= */
+
 @media (max-width: 640px) {
+  /* =========== HERO SECTION =========== */
+
   .hero-section {
     min-height: auto;
   }
@@ -118,6 +128,8 @@
     width: 80%;
     opacity: 0.05;
   }
+
+  /* =========== LAWS SECTION =========== */
 
   .laws-section {
     gap: 24px;
@@ -159,6 +171,8 @@
     filter: blur(5px);
   }
 
+  /* =========== PHILOSOPHY SECTION =========== */
+
   .philosophy-heading {
     align-items: flex-start;
     gap: 16px;
@@ -168,6 +182,8 @@
     grid-template-columns: 1fr;
     gap: 28px;
   }
+
+  /* =========== FOOTER SECTION =========== */
 
   .footer-section {
     padding-top: 72px;

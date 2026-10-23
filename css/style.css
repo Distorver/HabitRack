@@ -1,10 +1,9 @@
+/* =========== GENRAL =========== */
+
 :root {
-  color-scheme: light;
   font-family: "Space Grotesk", sans-serif;
   color: #141314;
   background: #141314;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
   --color-dark: #141314;
   --color-orange: #fd551d;
   --color-gray: #545354;
@@ -12,7 +11,6 @@
 }
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -39,6 +37,33 @@ a {
   font-family: "Geist Mono", monospace;
   font-weight: 500;
 }
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 0;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.button-orange {
+  background: var(--color-orange);
+  color: #000;
+}
+
+.button-orange:hover {
+  background: #e03f0b;
+  color: #000;
+}
+
+/* =========== NAV SECTION =========== */
 
 .page-container {
   width: 100%;
@@ -113,30 +138,7 @@ a {
   display: none;
 }
 
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 22px;
-  border: 0;
-  border-radius: 0;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
-}
-
-.button-orange {
-  background: var(--color-orange);
-  color: #000;
-}
-
-.button-orange:hover {
-  background: #e03f0b;
-  color: #000;
-}
+/* =========== HERO SECTION =========== */
 
 .hero-section {
   position: relative;
@@ -212,6 +214,8 @@ a {
   opacity: 0.2;
   pointer-events: none;
 }
+
+/* =========== LAWS SECTIOIN =========== */
 
 .laws-section {
   position: relative;
@@ -296,6 +300,8 @@ a {
   box-shadow: 8px 8px 40px 10px #00000040;
 }
 
+/* =========== PHILOSOPHY SECTION =========== */
+
 .philosophy-section {
   padding-block: clamp(72px, 8vw, 128px);
   background: #fff;
@@ -355,6 +361,8 @@ a {
   line-height: 1.6;
   font-size: 1.3rem;
 }
+
+/* =========== FOOTER SECTION =========== */
 
 .footer-section {
   padding-top: 112px;
