@@ -362,6 +362,80 @@ a {
   font-size: 1.3rem;
 }
 
+/* =========== CONTACT SECTION =========== */
+
+.contact-form {
+  background-color: var(--color-dark);
+  color: #fff;
+  font-family: "Geist Mono", monospace;
+}
+
+.btn {
+  background-color: var(--color-orange);
+  color: var(--color-dark);
+}
+
+.btn:hover {
+  background-color: #e03f0b;
+  color: var(--color-dark);
+}
+
+.contact-form h2 {
+  font-family: "Space Grotesk";
+  font-size: calc(2rem + 2vw);
+}
+
+.contact-form label {
+  font-size: 1.2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background-color: #141414;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #757575;
+}
+
+.contact-form {
+  position: relative;
+}
+
+.square {
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--color-orange);
+  position: absolute;
+}
+
+.square-one {
+  top: 2rem;
+  left: 2rem;
+}
+
+.square-two {
+  bottom: 2rem;
+  left: 2rem;
+}
+
+.square-three {
+  right: 2rem;
+  top: 2rem;
+}
+
+.square-four {
+  right: 2rem;
+  bottom: 2rem;
+}
+
+.form-control:focus {
+  border-color: var(--color-orange);
+  box-shadow: 0 0 0.4rem 0.2rem rgba(253, 85, 29, 0.25);
+  background-color: var(--color-dark);
+}
+
 /* =========== FOOTER SECTION =========== */
 
 .footer-section {

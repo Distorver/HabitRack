@@ -92,6 +92,18 @@
     right: -300px;
     opacity: 0.25;
   }
+
+  /* =========== CONTACT SECTION =========== */
+
+  .contact-form {
+    flex-direction: column !important;
+    height: auto !important;
+  }
+
+  .square {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
 }
 
 /* ======================================================= */
