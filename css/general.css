@@ -62,3 +62,15 @@ a {
   background: #e03f0b;
   color: #000;
 }
+
+.font-mono {
+  font-family: "Geist Mono", monospace !important;
+}
+
+.text-orange {
+  color: var(--color-orange) !important;
+}
+
+.bg-orange {
+  background-color: var(--color-orange) !important;
+}

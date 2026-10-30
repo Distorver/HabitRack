@@ -1,11 +1,219 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - HabitRack</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Geist+Mono:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <!-- HabitRack Global Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/media.css" />
+  </head>
+
+  <body>
+    <!-- ========== NAV START ========== -->
+    <nav class="nav-section">
+      <div class="nav-inner page-container">
+        <!-- Brand -->
+        <a class="nav-brand" href="index.html">
+          <img
+            src="assets/images/raw/HabitRack.png"
+            alt="HabitRack Logo"
+            class="navbar-logo"
+          />
+        </a>
+
+        <input
+          class="menu-toggle"
+          type="checkbox"
+          id="menu-toggle"
+          aria-label="Toggle navigation"
+          aria-controls="navContent"
+        />
+        <label class="menu-toggle-button" for="menu-toggle" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+
+        <!-- Menu items -->
+        <div class="nav-content" id="navContent">
+          <ul class="nav-links">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#laws-section">The 4 Laws</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#how-section">How It Works</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#philosophy-section">Our Philosophy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#contact-section">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="modules/auth/login.html">Login</a>
+            </li>
+          </ul>
+          <div class="nav-action">
+            <a href="modules/auth/signup.html" class="button button-orange">Track Your Habits Now</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- ========== NAV END ========== -->
+
+    <!-- ========== ABOUT HERO START ========== -->
+    <section class="py-5 text-white">
+      <div class="page-container py-5">
+        <div class="row align-items-center g-5">
+          <div class="col-12 col-lg-7">
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <span class="orange-square"></span>
+              <span class="text-uppercase fw-semibold font-mono text-orange">
+                About HabitRack
+              </span>
+            </div>
+            <h1 class="display-4 fw-bold mb-4">
+              Building Habits One Small Step at a Time.
+            </h1>
+            <p class="lead text-secondary mb-4">
+              HabitRack was built on the core belief that small daily choices compound into massive transformations. Inspired by James Clear's <em>Atomic Habits</em>, our mission is to empower individuals to track their progress, maintain consistency, and design their best selves.
+            </p>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="modules/auth/signup.html" class="button button-orange">
+                Start Tracking Free
+              </a>
+              <a href="index.html#laws-section" class="button btn btn-outline-light rounded-0">
+                Explore The 4 Laws
+              </a>
+            </div>
+          </div>
+          <div class="col-12 col-lg-5 text-center">
+            <img
+              src="assets/images/raw/Graph.png"
+              alt="1% Better Graph"
+              class="img-fluid"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ========== ABOUT HERO END ========== -->
+
+    <!-- ========== VALUES SECTION ========== -->
+    <section class="py-5 bg-white text-dark">
+      <div class="page-container py-4">
+        <div class="row g-4">
+          <div class="col-12 col-md-4">
+            <h3 class="fw-bold mb-3">1% Every Day</h3>
+            <p class="text-secondary">
+              Improving by 1% every day counts for a lot in the long run. Over a year, small improvements compound into being 37 times better.
+            </p>
+          </div>
+          <div class="col-12 col-md-4">
+            <h3 class="fw-bold mb-3">Focus on Systems</h3>
+            <p class="text-secondary">
+              You do not rise to the level of your goals. You fall to the level of your systems. HabitRack is the system that keeps you grounded.
+            </p>
+          </div>
+          <div class="col-12 col-md-4">
+            <h3 class="fw-bold mb-3">Identity Change</h3>
+            <p class="text-secondary">
+              True behavior change is identity change. Every habit you track is a vote for the type of person you are striving to become.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER START ========== -->
+    <footer class="footer-section">
+      <div class="page-container">
+        <div class="footer-top">
+          <!-- Left Side: Logo & Slogan -->
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo-wrap text-decoration-none text-white d-inline-flex">
+              <img
+                src="assets/images/raw/HabitRack.png"
+                alt="HabitRack Logo"
+                class="footer-logo"
+              />
+              <p class="footer-logo-text mb-0">HabitRack</p>
+            </a>
+            <h2>Build Habits That Actually Stick.</h2>
+          </div>
+
+          <!-- Right Side: Links & Button -->
+          <div class="footer-navigation">
+            <ul class="footer-links">
+              <li>
+                <a href="index.html" class="footer-link">Home</a>
+              </li>
+              <li>
+                <a href="about.html" class="footer-link">About us</a>
+              </li>
+              <li>
+                <a href="index.html#contact-section" class="footer-link">Contact</a>
+              </li>
+              <li>
+                <a href="modules/auth/login.html" class="footer-link">Login</a>
+              </li>
+              <li>
+                <a href="modules/auth/signup.html" class="footer-link">Sign Up</a>
+              </li>
+              <li>
+                <a
+                  href="mailto:contact@habitrack.com"
+                  class="footer-link footer-email"
+                  >contact@habitrack.com</a
+                >
+              </li>
+            </ul>
+            <a
+              href="https://github.com/Distorver/HabitRack"
+              class="button button-orange footer-button"
+              target="_blank"
+              >GITHUB REPO</a
+            >
+          </div>
+        </div>
+
+        <!-- Footer Bottom: Copyright -->
+        <div class="footer-bottom">
+          <p class="footer-copyright">2026 HabitRack. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <!-- ========== FOOTER END ========== -->
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
