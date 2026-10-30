@@ -2,9 +2,34 @@
    HabitRack - Signup Module Stylesheet
    ======================================================== */
 
+.auth-brand-text {
+  font-family: "Geist Mono", monospace;
+}
+
 .auth-card {
   background-color: #1a191a;
   border: 1px solid #2d2c2d;
+}
+
+.auth-badge-label {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.85rem;
+  color: #fd551d;
+}
+
+.auth-subtitle {
+  font-size: 0.95rem;
+}
+
+.auth-form-label {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.85rem;
+}
+
+.auth-divider,
+.auth-back-link,
+.auth-footer {
+  font-family: "Geist Mono", monospace;
 }
 
 .form-control {
