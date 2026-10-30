@@ -1,0 +1,64 @@
+/* =========== GENRAL =========== */
+
+:root {
+  font-family: "Space Grotesk", sans-serif;
+  color: #141314;
+  background: #141314;
+  --color-dark: #141314;
+  --color-orange: #fd551d;
+  --color-gray: #545354;
+  --page-gutter: clamp(24px, 5vw, 80px);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  background: var(--color-dark);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  font-family: "Geist Mono", monospace;
+  font-weight: 500;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 0;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.button-orange {
+  background: var(--color-orange);
+  color: #000;
+}
+
+.button-orange:hover {
+  background: #e03f0b;
+  color: #000;
+}

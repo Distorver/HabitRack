@@ -1,0 +1,63 @@
+/* ========================================================
+   HabitRack - Signup Module Stylesheet
+   ======================================================== */
+
+.auth-card {
+  background-color: #1a191a;
+  border: 1px solid #2d2c2d;
+}
+
+.form-control {
+  background-color: #141314;
+  border: 1px solid #333233;
+  color: #fff;
+}
+
+.form-control:focus {
+  background-color: #141314;
+  color: #fff;
+  border-color: #fd551d;
+  box-shadow: 0 0 0 0.2rem rgba(253, 85, 29, 0.25);
+}
+
+.form-control::placeholder {
+  color: #757575;
+}
+
+.form-check-input {
+  background-color: #141314;
+  border-color: #444;
+}
+
+.form-check-input:checked {
+  background-color: #fd551d;
+  border-color: #fd551d;
+}
+
+.text-orange {
+  color: #fd551d !important;
+}
+
+.bg-orange {
+  background-color: #fd551d !important;
+}
+
+.square-icon {
+  width: 18px;
+  height: 18px;
+  background-color: #fd551d;
+  display: inline-block;
+}
+
+.social-btn {
+  background-color: #141314;
+  border: 1px solid #333233;
+  color: #fff;
+  font-family: "Geist Mono", monospace;
+}
+
+.social-btn:hover {
+  background-color: #242324;
+  border-color: #555;
+  color: #fff;
+}

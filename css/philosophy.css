@@ -1,0 +1,61 @@
+/* =========== PHILOSOPHY SECTION =========== */
+
+.philosophy-section {
+  padding-block: clamp(72px, 8vw, 128px);
+  background: #fff;
+  color: var(--color-dark);
+}
+
+.philosophy-heading {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.orange-square {
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  background: var(--color-orange);
+}
+
+.philosophy-title {
+  font-family: "Geist Mono", monospace;
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  font-weight: 500;
+}
+
+.philosophy-intro {
+  max-width: 950px;
+  margin-bottom: 48px;
+}
+
+.philosophy-text {
+  margin: 0;
+  color: var(--color-gray);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.philosophy-features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 48px;
+}
+
+.philosophy-feature h4 {
+  margin: 0 0 12px;
+  color: var(--color-dark);
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.philosophy-feature p {
+  margin: 0;
+  color: var(--color-gray);
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 1.3rem;
+}
