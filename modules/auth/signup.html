@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - HabitRack</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Geist+Mono:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <!-- HabitRack Global Stylesheet -->
+    <link rel="stylesheet" href="../../css/style.css" />
+
+    <!-- Signup Module Stylesheet -->
+    <link rel="stylesheet" href="signup.css" />
+  </head>
+
+  <body class="bg-black text-white min-vh-100 d-flex flex-column">
+    <!-- Navbar -->
+    <header class="border-bottom border-dark py-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        <a href="../../index.html" class="d-flex align-items-center gap-2 text-decoration-none text-white">
+          <img src="../../assets/images/raw/HabitRack.png" alt="HabitRack Logo" height="40" />
+          <span class="fs-4 fw-bold auth-brand-text">HabitRack</span>
+        </a>
+        <div class="d-flex align-items-center gap-3">
+          <a href="../../index.html" class="text-secondary text-decoration-none small d-none d-md-inline auth-brand-text">
+            Home
+          </a>
+          <a href="../../about.html" class="text-secondary text-decoration-none small d-none d-md-inline auth-brand-text">
+            About
+          </a>
+          <a href="login.html" class="button button-orange rounded-0 py-2 px-3 fs-6">
+            Log In
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow-1 d-flex align-items-center py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8 col-lg-5">
+            <!-- Signup Card -->
+            <div class="card auth-card rounded-0 p-4 p-sm-5 shadow">
+              <div class="card-body p-0">
+                <!-- Title & Square Accent -->
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span class="square-icon"></span>
+                  <span class="text-uppercase fw-semibold auth-badge-label">
+                    Get Started
+                  </span>
+                </div>
+                <h2 class="fw-bold mb-2">Create Account</h2>
+                <p class="text-secondary mb-4 auth-subtitle">
+                  Start building habits that stick. Become 1% better every day.
+                </p>
+
+                <!-- Signup Form -->
+                <form action="#" method="POST">
+                  <!-- Full Name -->
+                  <div class="mb-3">
+                    <label for="fullName" class="form-label auth-form-label">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      id="fullName"
+                      name="fullName"
+                      class="form-control rounded-0 py-2"
+                      placeholder="e.g. John Doe"
+                      required
+                    />
+                  </div>
+
+                  <!-- Email -->
+                  <div class="mb-3">
+                    <label for="email" class="form-label auth-form-label">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="form-control rounded-0 py-2"
+                      placeholder="name@example.com"
+                      required
+                    />
+                  </div>
+
+                  <!-- Password -->
+                  <div class="mb-3">
+                    <label for="password" class="form-label auth-form-label">
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      class="form-control rounded-0 py-2"
+                      placeholder="Create a password (min. 8 characters)"
+                      required
+                    />
+                  </div>
+
+                  <!-- Confirm Password -->
+                  <div class="mb-3">
+                    <label for="confirmPassword" class="form-label auth-form-label">
+                      Confirm Password
+                    </label>
+                    <input
+                      type="password"
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      class="form-control rounded-0 py-2"
+                      placeholder="Repeat your password"
+                      required
+                    />
+                  </div>
+
+                  <!-- Terms and Conditions Checkbox -->
+                  <div class="mb-4 form-check">
+                    <input type="checkbox" class="form-check-input rounded-0" id="termsCheck" required />
+                    <label class="form-check-label text-secondary small" for="termsCheck">
+                      I agree to the
+                      <a href="#" class="text-white text-decoration-underline">Terms of Service</a>
+                      and
+                      <a href="#" class="text-white text-decoration-underline">Privacy Policy</a>
+                    </label>
+                  </div>
+
+                  <!-- Submit Button -->
+                  <button type="submit" class="button button-orange w-100 rounded-0 py-2 fw-bold mb-3">
+                    CREATE ACCOUNT
+                  </button>
+
+                  <!-- Divider -->
+                  <div class="d-flex align-items-center text-secondary my-3 small auth-divider">
+                    <hr class="flex-grow-1 border-secondary" />
+                    <span class="px-2">OR</span>
+                    <hr class="flex-grow-1 border-secondary" />
+                  </div>
+
+                  <!-- Social Signups -->
+                  <div class="row g-2 mb-4">
+                    <div class="col-6">
+                      <button type="button" class="btn social-btn w-100 rounded-0 py-2 small">
+                        Google
+                      </button>
+                    </div>
+                    <div class="col-6">
+                      <button type="button" class="btn social-btn w-100 rounded-0 py-2 small">
+                        GitHub
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Connect to Login -->
+                  <div class="text-center pt-2 border-top border-dark">
+                    <p class="text-secondary small mb-0">
+                      Already have an account?
+                      <a href="login.html" class="text-white text-decoration-underline fw-semibold">
+                        Log in here
+                      </a>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- Back to Home Link -->
+            <div class="text-center mt-4">
+              <a href="../../index.html" class="text-secondary text-decoration-none small auth-back-link">
+                ← Back to Home
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-top border-dark py-3 text-center text-secondary small auth-footer">
+      <div class="container d-flex flex-wrap justify-content-center align-items-center gap-3">
+        <span>&copy; 2026 HabitRack. All rights reserved.</span>
+        <span>•</span>
+        <a href="../../index.html" class="text-secondary text-decoration-none">Home</a>
+        <span>•</span>
+        <a href="../../about.html" class="text-secondary text-decoration-none">About</a>
+        <span>•</span>
+        <a href="../../index.html#contact-section" class="text-secondary text-decoration-none">Contact</a>
+        <span>•</span>
+        <a href="login.html" class="text-secondary text-decoration-none">Log In</a>
+      </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

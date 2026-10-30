@@ -1,0 +1,84 @@
+/* =========== LAWS SECTIOIN =========== */
+
+.laws-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  overflow: hidden;
+  padding: 100px var(--page-gutter);
+  background: #fff;
+  color: var(--color-dark);
+}
+
+.laws-inspire,
+.laws {
+  position: relative;
+  z-index: 2;
+}
+
+.laws-inspire {
+  width: min(825px, 100%);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.laws-inspire p {
+  margin: 0;
+}
+
+.laws {
+  display: flex;
+  flex-direction: column;
+}
+
+.law {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 20px;
+}
+
+.law-rec {
+  flex: 0 0 33px;
+  width: 33px;
+  height: 33px;
+  margin-top: 8px;
+  background: var(--color-orange);
+}
+
+.law-num {
+  flex: 0 0 auto;
+  font-family: "Geist Mono", monospace;
+  font-size: 40px;
+}
+
+.law-text {
+  position: relative;
+  z-index: 2;
+}
+
+.law-header {
+  font-size: clamp(2.25rem, 5vw, 4.2rem);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.law-desc {
+  width: min(660px, 100%);
+  margin-top: 12px;
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+.law-img {
+  position: absolute;
+  top: 50%;
+  right: -200px;
+  z-index: 1;
+  height: 950px;
+  max-width: none;
+  transform: translateY(-50%);
+  box-shadow: 8px 8px 40px 10px #00000040;
+}

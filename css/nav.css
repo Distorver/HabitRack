@@ -1,0 +1,74 @@
+/* =========== NAV SECTION =========== */
+
+.page-container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+.nav-section {
+  position: relative;
+  z-index: 5;
+  color: #fff;
+}
+
+.nav-inner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.nav-brand {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.navbar-logo,
+.footer-logo {
+  width: auto;
+  height: 50px;
+  object-fit: contain;
+}
+
+.nav-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.nav-links,
+.footer-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: clamp(12px, 2.2vw, 36px);
+  margin-inline: auto;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.learn-more-link:hover {
+  color: var(--color-orange);
+}
+
+.menu-toggle,
+.menu-toggle-button {
+  display: none;
+}
