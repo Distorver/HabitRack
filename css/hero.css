@@ -41,6 +41,7 @@
 
 .hero-text strong {
   color: var(--color-orange);
+  font-weight: 500;
 }
 
 .hero-p {
