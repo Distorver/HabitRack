@@ -14,7 +14,7 @@
 
 .tracker .hdr,
 .tracker .day-label .shape {
-  fill: #fff;
+  fill: var(--color-dark);
 }
 
 .tracker text {
@@ -23,7 +23,7 @@
     -apple-system,
     "Segoe UI",
     sans-serif;
-  fill: #111;
+  fill: #fffefe;
   text-anchor: middle;
   dominant-baseline: central;
   pointer-events: none;

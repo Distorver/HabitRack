@@ -7,17 +7,43 @@
 }
 
 .nav-section {
-  position: relative;
-  z-index: 5;
+  position: fixed; /* was: relative */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   color: #fff;
+  padding-top: 0;
+  pointer-events: none; /* the full-width wrapper shouldn't block clicks */
+  transition: padding-top 0.6s var(--ease-island);
 }
 
 .nav-inner {
+  pointer-events: auto;
   min-height: 76px;
+  width: 100%;
+  margin-inline: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 32px;
+
+  /* start state: invisible background/border so they can fade in */
+  background: rgba(20, 20, 20, 0);
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-radius: 0;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+
+  transition:
+    width 0.6s var(--ease-island),
+    min-height 0.6s var(--ease-island),
+    padding-inline 0.6s var(--ease-island),
+    gap 0.6s var(--ease-island),
+    border-radius 0.6s var(--ease-island),
+    background-color 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    backdrop-filter 0.4s ease;
 }
 
 .nav-brand {
@@ -26,11 +52,48 @@
   align-items: center;
 }
 
+.navbar-logo {
+  transition: height 0.6s var(--ease-island);
+}
+
 .navbar-logo,
 .footer-logo {
   width: auto;
   height: 50px;
   object-fit: contain;
+}
+
+.nav-section.is-scrolled {
+  padding-top: 14px;
+}
+
+.nav-section.is-scrolled .nav-inner {
+  width: min(92%, 960px);
+  min-height: 56px;
+  padding-inline: 20px;
+  gap: 20px;
+  background: rgba(20, 20, 20, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.nav-section.is-scrolled .navbar-logo {
+  height: 34px;
+}
+
+.nav-section.is-scrolled .nav-links {
+  gap: clamp(10px, 1.6vw, 22px);
+}
+
+.nav-section.is-scrolled .nav-link {
+  font-size: 0.9rem;
+}
+
+.nav-section.is-scrolled .button-orange {
+  padding: 8px 16px;
+  font-size: 0.85rem;
 }
 
 .nav-content {

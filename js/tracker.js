@@ -94,7 +94,7 @@
 
   addCell({
     d: box(tx, hdrY, NUM_W, LABEL_W),
-    fill: "#fff",
+    fill: "#141314",
     cls: "hdr",
     cx: tx + NUM_W / 2,
     cy: hdrY + LABEL_W / 2,
@@ -109,7 +109,7 @@
   });
   addCell({
     d: box(tx + NUM_W, hdrY, TABLE_W - NUM_W, LABEL_W),
-    fill: "#fff",
+    fill: "#141314",
     cls: "hdr",
     cx: tx + NUM_W + (TABLE_W - NUM_W) / 2,
     cy: hdrY + LABEL_W / 2,
@@ -171,7 +171,7 @@
 
     addCell({
       d: sector(R_OUT + LABEL_W, R_OUT, a0, a1),
-      fill: "#fff",
+      fill: "#141314",
       cls: "day-label",
       cx: x,
       cy: y,

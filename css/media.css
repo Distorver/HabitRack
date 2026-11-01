@@ -1,10 +1,54 @@
 @media (max-width: 900px) {
   /* =========== NAV SECTION =========== */
 
+  .nav-section {
+    position: relative;
+  }
+
+  .nav-section,
+  .nav-inner,
+  .navbar-logo {
+    transition: none;
+  }
+
+  .nav-section.is-scrolled {
+    padding-top: 0;
+  }
+
   .nav-inner {
     flex-wrap: wrap;
     gap: 0 20px;
     padding-block: 12px;
+  }
+
+  .nav-section.is-scrolled .nav-inner {
+    width: 100%;
+    min-height: 76px;
+    padding-inline: var(--page-gutter);
+    gap: 0 20px;
+    background: transparent;
+    border-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .nav-section.is-scrolled .navbar-logo {
+    height: 50px;
+  }
+
+  .nav-section.is-scrolled .nav-links {
+    gap: 18px;
+  }
+
+  .nav-section.is-scrolled .nav-link {
+    font-size: inherit;
+  }
+
+  .nav-section.is-scrolled .button-orange {
+    padding: 12px 22px;
+    font-size: inherit;
   }
 
   .menu-toggle {
@@ -67,7 +111,6 @@
   }
 
   /* =========== HERO SECTION =========== */
-
   .hero-layout {
     gap: 24px;
   }
