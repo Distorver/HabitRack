@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HabitRack</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../../assets/images/compressed/HabitRack.webp"
+    />
     <!-- ==========FONTS START========== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -85,7 +90,9 @@
             </li>
           </ul>
           <div class="nav-action">
-            <a href="modules/auth/signup.html" class="button button-orange">Track Your Habits Now</a>
+            <a href="modules/auth/signup.html" class="button button-orange"
+              >Track Your Habits Now</a
+            >
           </div>
         </div>
       </div>
@@ -95,19 +102,15 @@
     <!-- ========== HERO START ========== -->
     <!-- Hero Section -->
     <section class="hero-section" id="hero-section">
-      <!-- Background Faded Image (Habit Wheel) -->
-      <img
-        src="assets/images/raw/Tracker.png"
-        alt="Habit Tracker"
-        class="bg-tracker"
-      />
-
       <!-- Main Content Container -->
       <div class="page-container hero-container">
         <div class="hero-layout">
+          <div class="glow"></div>
           <!-- Left Side: Text & Buttons -->
           <div class="hero-copy">
-            <h1 class="hero-text">Become 1% Better, Every Day.</h1>
+            <h1 class="hero-text">
+              Become <strong>1% Better</strong>, Every Day.
+            </h1>
             <p class="hero-p">
               Your future self is built by what you do today. Track the little
               things, celebrate your consistency, and make progress a part of
@@ -121,14 +124,14 @@
             </div>
           </div>
 
-          <!-- Right Side: 1% Graph Image -->
-          <div class="hero-visual">
-            <img
-              src="assets/images/raw/Graph.png"
-              alt="1% Better Graph"
-              class="graph-img"
-            />
-          </div>
+          <!-- Right Side: Ring Tracker-->
+          <svg
+            class="tracker"
+            id="tracker"
+            viewBox="0 0 820 790"
+            role="img"
+            aria-label="Radial 28-day habit tracker"
+          ></svg>
         </div>
       </div>
     </section>
@@ -342,7 +345,7 @@
         </div>
       </form>
     </div>
-     <!-- ========== CONTACT END ========== -->
+    <!-- ========== CONTACT END ========== -->
 
     <!-- ========== FOOTER START ========== -->
     <footer class="footer-section">
@@ -350,7 +353,10 @@
         <div class="footer-top">
           <!-- Left Side: Logo & Slogan -->
           <div class="footer-brand">
-            <a href="index.html" class="footer-logo-wrap text-decoration-none text-white d-inline-flex">
+            <a
+              href="index.html"
+              class="footer-logo-wrap text-decoration-none text-white d-inline-flex"
+            >
               <img
                 src="assets/images/raw/HabitRack.png"
                 alt="HabitRack Logo"
@@ -365,37 +371,19 @@
           <div class="footer-navigation">
             <ul class="footer-links">
               <li>
-                <a
-                  href="index.html"
-                  class="footer-link"
-                  >Home</a
-                >
+                <a href="index.html" class="footer-link">Home</a>
               </li>
               <li>
-                <a
-                  href="about.html"
-                  class="footer-link"
-                  >About us</a
-                >
+                <a href="about.html" class="footer-link">About us</a>
               </li>
               <li>
-                <a
-                  href="#contact-section"
-                  class="footer-link"
-                  >Contact</a
-                >
+                <a href="#contact-section" class="footer-link">Contact</a>
               </li>
               <li>
-                <a
-                  href="modules/auth/login.html"
-                  class="footer-link"
-                  >Login</a
-                >
+                <a href="modules/auth/login.html" class="footer-link">Login</a>
               </li>
               <li>
-                <a
-                  href="modules/auth/signup.html"
-                  class="footer-link"
+                <a href="modules/auth/signup.html" class="footer-link"
                   >Sign Up</a
                 >
               </li>
@@ -429,5 +417,7 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
+
+    <script src="js/tracker.js"></script>
   </body>
 </html>

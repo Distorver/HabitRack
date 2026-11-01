@@ -1,0 +1,98 @@
+.tracker {
+  width: min(96vw, 820px);
+  height: auto;
+  display: block;
+  overflow: visible;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tracker .shape {
+  stroke: #1d1d1f;
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.tracker .hdr,
+.tracker .day-label .shape {
+  fill: #fff;
+}
+
+.tracker text {
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+  fill: #111;
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+  user-select: none;
+}
+
+.tracker .day-label text {
+  font-size: 17px;
+}
+.tracker .hdr-text {
+  font-size: 16px;
+}
+
+.tracker .hand {
+  font-family: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+  font-size: 25px;
+  font-weight: 600;
+  fill: #1c1f6b;
+  text-anchor: start;
+}
+.tracker .num {
+  font-family: "Caveat", "Segoe Print", cursive;
+  font-size: 26px;
+  font-weight: 500;
+  fill: #1c1f6b;
+}
+
+/* marks (✓ / ✗) */
+.tracker .mark {
+  fill: none;
+  stroke: #1c1f6b;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ripple effect: every block animates its own scale / push / opacity */
+.tracker .cell {
+  transform-box: view-box;
+  transition:
+    transform 0.28s cubic-bezier(0.2, 0.8, 0.3, 1),
+    opacity 0.28s ease;
+}
+
+/* the hover layer: a copy of the hovered block, scaled up */
+.tracker .ghost {
+  transform-box: view-box;
+  pointer-events: none;
+  filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.28));
+}
+.tracker .ghost .shape {
+  stroke-width: 1.6;
+}
+
+/* invisible layer that catches the mouse */
+.tracker .hit {
+  fill: transparent;
+  stroke: none;
+  cursor: pointer;
+}
+.tracker .hit.static {
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tracker .ghost {
+    filter: none;
+  }
+  .tracker .cell {
+    transition: none;
+  }
+}

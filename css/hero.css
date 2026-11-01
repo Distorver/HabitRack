@@ -21,15 +21,26 @@
   gap: 48px;
 }
 
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 200px 20rem rgba(253, 85, 29, 0.35);
+  bottom: -20%;
+}
+
 .hero-copy {
   padding-block: 48px;
 }
 
 .hero-text {
   margin: 0 0 16px;
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
   font-weight: 500;
   line-height: 1.08;
+}
+
+.hero-text strong {
+  color: var(--color-orange);
 }
 
 .hero-p {
