@@ -90,7 +90,9 @@
             </li> -->
           </ul>
           <div class="nav-action">
-            <a href="modules/auth/signup.html" class="button button-orange"
+            <a
+              href="modules/auth/signup.html"
+              class="btn btn-label button button-orange"
               >Track Your Habits Now</a
             >
           </div>
@@ -140,75 +142,95 @@
     <main>
       <!-- ========== 4 LAWS START ========== -->
       <section class="laws-section" id="laws-section">
-        <div class="laws-inspire">
-          <p>
-            Inspired by <strong>Atomic Habits</strong> by <em>James Clear</em>,
-            HabitRack brings the four laws of behavior change to life, helping
-            you build better habits and make lasting improvements, one small
-            step at a time.
-          </p>
+        <div class="laws-stage">
+          <div class="laws-copy">
+            <div class="laws-inspire">
+              <p>
+                Inspired by <strong>Atomic Habits</strong> by
+                <em>James Clear</em>, HabitRack brings the four laws of behavior
+                change to life, helping you build better habits and make lasting
+                improvements, one small step at a time.
+              </p>
+            </div>
+
+            <div class="laws">
+              <!-- Replace each data-law-image with an image path and update its alt text. -->
+              <!-- ========== FIRST LAW ========== -->
+              <div
+                class="law"
+                data-law-image="assets/images/raw/eye.png"
+                data-law-image-alt="Habit progress graph"
+              >
+                <div class="law-num">01</div>
+
+                <div class="law-text">
+                  <div class="law-header">Make it obvious.</div>
+                  <div class="law-desc">
+                    Your daily habits are organized in one clear dashboard, so
+                    you always know what needs your attention.
+                  </div>
+                </div>
+              </div>
+              <!-- ========== SECOND LAW ========== -->
+              <div
+                class="law"
+                data-law-image="assets/images/raw/attractive.png"
+                data-law-image-alt="HabitRack dashboard"
+              >
+                <div class="law-num">02</div>
+
+                <div class="law-text">
+                  <div class="law-header">Make it attractive.</div>
+                  <div class="law-desc">
+                    Turn your progress into something you look forward to.
+                    Celebrate milestones and make building consistency
+                    rewarding.
+                  </div>
+                </div>
+              </div>
+              <!-- ========== THIRD LAW ========== -->
+              <div
+                class="law"
+                data-law-image="assets/images/raw/satisfying.png"
+                data-law-image-alt="Habit tracking interface"
+              >
+                <div class="law-num">03</div>
+
+                <div class="law-text">
+                  <div class="law-header">Make it easy.</div>
+                  <div class="law-desc">
+                    Track habits with a simple interface that makes checking in
+                    quick and keeps unnecessary complexitremove the position
+                    absolutey out of your way.
+                  </div>
+                </div>
+              </div>
+              <!-- ========== FOURTH LAW ========== -->
+              <div
+                class="law"
+                data-law-image="assets/images/raw/easy.png"
+                data-law-image-alt="Atomic Habits book"
+              >
+                <div class="law-num">04</div>
+
+                <div class="law-text">
+                  <div class="law-header">Make it satisfying.</div>
+                  <div class="law-desc">
+                    Track habits with a simple interface that makes checking in
+                    quick and keeps unnecessary complexity out of your way.
+                  </div>
+                </div>
+              </div>
+              <div class="law-indicator" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <img
+            class="law-img"
+            src="assets/images/raw/satisfying.png"
+            alt="Habit progress graph"
+          />
         </div>
-
-        <div class="laws">
-          <!-- ========== FIRST LAW ========== -->
-          <div class="law">
-            <div class="law-rec"></div>
-            <div class="law-num">01</div>
-
-            <div class="law-text">
-              <div class="law-header">Make it obvious.</div>
-              <div class="law-desc">
-                Your daily habits are organized in one clear dashboard, so you
-                always know what needs your attention.
-              </div>
-            </div>
-          </div>
-          <!-- ========== SECOND LAW ========== -->
-          <div class="law">
-            <div class="law-rec"></div>
-            <div class="law-num">02</div>
-
-            <div class="law-text">
-              <div class="law-header">Make it attractive.</div>
-              <div class="law-desc">
-                Turn your progress into something you look forward to. Celebrate
-                milestones and make building consistency rewarding.
-              </div>
-            </div>
-          </div>
-          <!-- ========== THIRD LAW ========== -->
-          <div class="law">
-            <div class="law-rec"></div>
-            <div class="law-num">03</div>
-
-            <div class="law-text">
-              <div class="law-header">Make it easy.</div>
-              <div class="law-desc">
-                Track habits with a simple interface that makes checking in
-                quick and keeps unnecessary complexity out of your way.
-              </div>
-            </div>
-          </div>
-          <!-- ========== FOURTH LAW ========== -->
-          <div class="law">
-            <div class="law-rec"></div>
-            <div class="law-num">04</div>
-
-            <div class="law-text">
-              <div class="law-header">Make it satisfying.</div>
-              <div class="law-desc">
-                Track habits with a simple interface that makes checking in
-                quick and keeps unnecessary complexity out of your way.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <img
-          class="law-img"
-          src="assets/images/raw/Atomic_habits.jpg"
-          alt="Atomic Habits Book"
-        />
       </section>
       <!-- ========== 4 LAWS END ========== -->
 
@@ -374,12 +396,6 @@
                 <a href="index.html" class="footer-link">Home</a>
               </li>
               <li>
-                <a href="about.html" class="footer-link">About us</a>
-              </li>
-              <li>
-                <a href="#contact-section" class="footer-link">Contact</a>
-              </li>
-              <li>
                 <a href="modules/auth/login.html" class="footer-link">Login</a>
               </li>
               <li>
@@ -420,5 +436,7 @@
 
     <script src="js/tracker.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/nav-decode.js"></script>
+    <script src="js/laws-focus.js"></script>
   </body>
 </html>

@@ -131,9 +131,9 @@
     padding-block: 80px;
   }
 
-  .law-img {
-    right: -300px;
-    opacity: 0.25;
+  .laws-section.is-scroll-staged .laws-stage {
+    gap: clamp(16px, 3vw, 32px);
+    padding-block: 24px;
   }
 
   /* =========== CONTACT SECTION =========== */
@@ -196,20 +196,32 @@
     padding-block: 64px;
   }
 
+  .laws-section.is-scroll-staged .laws-stage {
+    flex-direction: column;
+    gap: 8px;
+    padding-block: 12px;
+  }
+
+  .laws-copy {
+    flex: 0 1 auto;
+    width: 100%;
+  }
+
   .laws-inspire {
-    font-size: 17px;
+    margin-bottom: 4px;
+    font-size: 15px;
   }
 
   .law {
-    gap: 12px;
-    padding: 16px 0;
+    gap: 8px;
+    --law-marker-left: 16px;
+    --law-marker-top: 8px;
+    padding: 5px 6px 5px 42px;
   }
 
-  .law-rec {
-    flex-basis: 18px;
+  .law-indicator {
     width: 18px;
     height: 18px;
-    margin-top: 6px;
   }
 
   .law-num {
@@ -217,18 +229,20 @@
   }
 
   .law-header {
-    font-size: clamp(1.8rem, 8vw, 2.8rem);
+    font-size: clamp(1.05rem, 4.5vw, 1.4rem);
   }
 
   .law-desc {
-    font-size: 1rem;
+    margin-top: 4px;
+    font-size: clamp(0.75rem, 3.2vw, 0.875rem);
+    line-height: 1.25;
   }
 
   .law-img {
-    right: 0;
-    height: 760px;
-    opacity: 0.3;
-    filter: blur(5px);
+    flex: 0 1 auto;
+    width: auto;
+    max-width: min(72vw, 280px);
+    max-height: 18vh;
   }
 
   /* =========== PHILOSOPHY SECTION =========== */
@@ -267,5 +281,38 @@
 
   .footer-bottom {
     margin-top: 40px;
+  }
+}
+
+@media (max-height: 700px) {
+  .laws-section.is-scroll-staged .laws-stage {
+    gap: 6px;
+    padding-block: 8px;
+  }
+
+  .laws-inspire {
+    margin-bottom: 6px;
+    font-size: clamp(12px, 1.7vh, 14px);
+    line-height: 1.25;
+  }
+
+  .law {
+    --law-marker-top: 6px;
+    gap: 6px;
+    padding: 3px 4px 3px 38px;
+  }
+
+  .law-header {
+    font-size: clamp(0.9rem, 3vw, 1.4rem);
+  }
+
+  .law-desc {
+    margin-top: 3px;
+    font-size: clamp(0.68rem, 1.7vh, 0.85rem);
+    line-height: 1.15;
+  }
+
+  .law-img {
+    max-height: 10vh;
   }
 }

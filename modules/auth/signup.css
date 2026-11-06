@@ -14,7 +14,8 @@
 .auth-badge-label {
   font-family: "Geist Mono", monospace;
   font-size: 0.85rem;
-  color: #fd551d;
+  color: #fff;
+  font-weight: 600;
 }
 
 .auth-subtitle {
@@ -85,4 +86,9 @@
   background-color: #242324;
   border-color: #555;
   color: #fff;
+}
+
+.button-orange {
+  font-family: "Geist Mono", monospace;
+  font-weight: 600;
 }
