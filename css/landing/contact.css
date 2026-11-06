@@ -65,6 +65,6 @@
 
 .form-control:focus {
   border-color: var(--color-orange);
-  box-shadow: 0 0 0.4rem 0.2rem rgba(253, 85, 29, 0.25);
+  box-shadow: 0 0 0.4rem 0.2rem rgba(253, 85, 29, 0.589);
   background-color: var(--color-dark);
 }
