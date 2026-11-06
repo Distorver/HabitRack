@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - HabitRack</title>
+    <title>Sign Up - HabitRack</title>
     <link
       rel="icon"
       type="image/x-icon"
       href="../../assets/images/compressed/HabitRack.webp"
     />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,8 +29,8 @@
     <!-- HabitRack Global Stylesheet -->
     <link rel="stylesheet" href="../../css/style.css" />
 
-    <!-- Login Module Stylesheet -->
-    <link rel="stylesheet" href="login.css" />
+    <!-- Signup Module Stylesheet -->
+    <link rel="stylesheet" href="../../css/auth/login.css" />
   </head>
 
   <body
@@ -52,10 +53,10 @@
         </a>
         <div class="d-flex align-items-center gap-3">
           <a
-            href="signup.html"
+            href="login.html"
             class="button button-orange rounded-0 py-2 px-3 fs-6"
           >
-            Sign Up
+            Log In
           </a>
         </div>
       </div>
@@ -66,23 +67,38 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-12 col-md-8 col-lg-5">
-            <!-- Login Card -->
+            <!-- Signup Card -->
             <div class="card auth-card rounded-0 p-4 p-sm-5 shadow">
               <div class="card-body p-0">
                 <!-- Title & Square Accent -->
                 <div class="d-flex align-items-center gap-2 mb-2">
                   <span class="square-icon"></span>
-                  <span class="text-uppercase fw-semibold auth-badge-label">
-                    Welcome Back
+                  <span class="text-uppercase auth-badge-label">
+                    Get Started
                   </span>
                 </div>
-                <h2 class="fw-bold mb-2">Log In</h2>
+                <h2 class="fw-bold mb-2">Create Account</h2>
                 <p class="text-secondary mb-4 auth-subtitle">
-                  Enter your details to track your daily habits.
+                  Start building habits that stick. Become 1% better every day.
                 </p>
 
-                <!-- Login Form -->
+                <!-- Signup Form -->
                 <form action="#" method="POST">
+                  <!-- Full Name -->
+                  <div class="mb-3">
+                    <label for="fullName" class="form-label auth-form-label">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      id="fullName"
+                      name="fullName"
+                      class="form-control rounded-0 py-2"
+                      placeholder="e.g. John Doe"
+                      required
+                    />
+                  </div>
+
                   <!-- Email -->
                   <div class="mb-3">
                     <label for="email" class="form-label auth-form-label">
@@ -100,41 +116,57 @@
 
                   <!-- Password -->
                   <div class="mb-3">
-                    <div
-                      class="d-flex justify-content-between align-items-center"
-                    >
-                      <label for="password" class="form-label auth-form-label">
-                        Password
-                      </label>
-                      <a
-                        href="#"
-                        class="text-decoration-none text-secondary small auth-forgot-link"
-                      >
-                        Forgot?
-                      </a>
-                    </div>
+                    <label for="password" class="form-label auth-form-label">
+                      Password
+                    </label>
                     <input
                       type="password"
                       id="password"
                       name="password"
                       class="form-control rounded-0 py-2"
-                      placeholder="Enter your password"
+                      placeholder="Create a password (min. 8 characters)"
                       required
                     />
                   </div>
 
-                  <!-- Remember Me -->
+                  <!-- Confirm Password -->
+                  <div class="mb-3">
+                    <label
+                      for="confirmPassword"
+                      class="form-label auth-form-label"
+                    >
+                      Confirm Password
+                    </label>
+                    <input
+                      type="password"
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      class="form-control rounded-0 py-2"
+                      placeholder="Repeat your password"
+                      required
+                    />
+                  </div>
+
+                  <!-- Terms and Conditions Checkbox -->
                   <div class="mb-4 form-check">
                     <input
                       type="checkbox"
                       class="form-check-input rounded-0"
-                      id="rememberMe"
+                      id="termsCheck"
+                      required
                     />
                     <label
                       class="form-check-label text-secondary small"
-                      for="rememberMe"
+                      for="termsCheck"
                     >
-                      Keep me logged in
+                      I agree to the
+                      <a href="#" class="text-white text-decoration-underline"
+                        >Terms of Service
+                      </a>
+                      and
+                      <a href="#" class="text-white text-decoration-underline"
+                        >Privacy Policy</a
+                      >
                     </label>
                   </div>
 
@@ -143,7 +175,7 @@
                     type="submit"
                     class="button button-orange w-100 rounded-0 py-2 fw-bold mb-3"
                   >
-                    LOG IN
+                    CREATE ACCOUNT
                   </button>
 
                   <!-- Divider -->
@@ -155,7 +187,7 @@
                     <hr class="flex-grow-1 border-secondary" />
                   </div>
 
-                  <!-- Social Logins -->
+                  <!-- Social Signups -->
                   <div class="row g-2 mb-4">
                     <div class="col-6">
                       <button
@@ -175,15 +207,15 @@
                     </div>
                   </div>
 
-                  <!-- Connect to Signup -->
+                  <!-- Connect to Login -->
                   <div class="text-center pt-2 border-top border-dark">
                     <p class="text-secondary small mb-0">
-                      Don't have an account?
+                      Already have an account?
                       <a
-                        href="signup.html"
+                        href="login.html"
                         class="text-white text-decoration-underline fw-semibold"
                       >
-                        Sign up here
+                        Log in here
                       </a>
                     </p>
                   </div>
@@ -224,8 +256,8 @@
           >Contact</a
         >
         <span>•</span>
-        <a href="signup.html" class="text-secondary text-decoration-none"
-          >Sign Up</a
+        <a href="login.html" class="text-secondary text-decoration-none"
+          >Log In</a
         >
       </div>
     </footer>

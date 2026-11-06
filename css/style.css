@@ -3,10 +3,10 @@
    ======================================================== */
 
 @import url("general.css");
-@import url("nav.css");
-@import url("hero.css");
-@import url("laws.css");
-@import url("philosophy.css");
-@import url("contact.css");
-@import url("footer.css");
-@import url("tracker.css");
+@import url("landing/nav.css");
+@import url("landing/hero.css");
+@import url("landing/laws.css");
+@import url("landing/philosophy.css");
+@import url("landing/contact.css");
+@import url("landing/footer.css");
+@import url("landing/tracker.css");
