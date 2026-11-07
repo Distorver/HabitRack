@@ -82,7 +82,7 @@
                 </p>
 
                 <!-- Login Form -->
-                <form action="#" method="POST">
+                <form action="#" method="POST" data-auth-form novalidate>
                   <!-- Email -->
                   <div class="mb-3">
                     <label for="email" class="form-label auth-form-label">
@@ -94,8 +94,16 @@
                       name="email"
                       class="form-control rounded-0 py-2"
                       placeholder="name@example.com"
+                      data-validation="email"
+                      aria-describedby="emailError"
+                      aria-invalid="false"
                       required
                     />
+                    <div
+                      id="emailError"
+                      class="invalid-feedback"
+                      aria-live="polite"
+                    ></div>
                   </div>
 
                   <!-- Password -->
@@ -119,8 +127,16 @@
                       name="password"
                       class="form-control rounded-0 py-2"
                       placeholder="Enter your password"
+                      data-validation="password"
+                      aria-describedby="passwordError"
+                      aria-invalid="false"
                       required
                     />
+                    <div
+                      id="passwordError"
+                      class="invalid-feedback"
+                      aria-live="polite"
+                    ></div>
                   </div>
 
                   <!-- Remember Me -->
@@ -236,5 +252,6 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
+    <script src="../../js/main.js"></script>
   </body>
 </html>

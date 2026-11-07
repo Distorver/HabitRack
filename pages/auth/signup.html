@@ -83,7 +83,7 @@
                 </p>
 
                 <!-- Signup Form -->
-                <form action="#" method="POST">
+                <form action="#" method="POST" data-auth-form novalidate>
                   <!-- Full Name -->
                   <div class="mb-3">
                     <label for="fullName" class="form-label auth-form-label">
@@ -95,8 +95,16 @@
                       name="fullName"
                       class="form-control rounded-0 py-2"
                       placeholder="e.g. John Doe"
+                      data-validation="name"
+                      aria-describedby="fullNameError"
+                      aria-invalid="false"
                       required
                     />
+                    <div
+                      id="fullNameError"
+                      class="invalid-feedback"
+                      aria-live="polite"
+                    ></div>
                   </div>
 
                   <!-- Email -->
@@ -110,8 +118,16 @@
                       name="email"
                       class="form-control rounded-0 py-2"
                       placeholder="name@example.com"
+                      data-validation="email"
+                      aria-describedby="emailError"
+                      aria-invalid="false"
                       required
                     />
+                    <div
+                      id="emailError"
+                      class="invalid-feedback"
+                      aria-live="polite"
+                    ></div>
                   </div>
 
                   <!-- Password -->
@@ -125,8 +141,16 @@
                       name="password"
                       class="form-control rounded-0 py-2"
                       placeholder="Create a password (min. 8 characters)"
+                      data-validation="password"
+                      aria-describedby="passwordError"
+                      aria-invalid="false"
                       required
                     />
+                    <div
+                      id="passwordError"
+                      class="invalid-feedback"
+                      aria-live="polite"
+                    ></div>
                   </div>
 
                   <!-- Confirm Password -->
@@ -143,8 +167,16 @@
                       name="confirmPassword"
                       class="form-control rounded-0 py-2"
                       placeholder="Repeat your password"
+                      data-validation="confirm-password"
+                      aria-describedby="confirmPasswordError"
+                      aria-invalid="false"
                       required
                     />
+                    <div
+                      id="confirmPasswordError"
+                      class="invalid-feedback"
+                      aria-live="polite"
+                    ></div>
                   </div>
 
                   <!-- Terms and Conditions Checkbox -->
@@ -153,6 +185,8 @@
                       type="checkbox"
                       class="form-check-input rounded-0"
                       id="termsCheck"
+                      aria-describedby="termsError"
+                      aria-invalid="false"
                       required
                     />
                     <label
@@ -168,6 +202,11 @@
                         >Privacy Policy</a
                       >
                     </label>
+                    <div
+                      id="termsError"
+                      class="invalid-feedback"
+                      aria-live="polite"
+                    ></div>
                   </div>
 
                   <!-- Submit Button -->
@@ -268,5 +307,6 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
+    <script src="../../js/main.js"></script>
   </body>
 </html>
