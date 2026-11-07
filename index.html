@@ -305,16 +305,17 @@
           add to the app!!
         </h2>
       </div>
-      <form action="" class="w-100">
+      <form action="" class="w-100" id="form">
         <div class="form row gy-5">
           <div class="col-12 col-md-6">
             <label for="first" class="form-label">First name</label>
             <input
               type="text"
               id="first"
-              class="form-control border border-0 border-bottom rounded-0"
+              class="form-control rounded-0"
               placeholder="Your first name"
             />
+            <span class="error-span d-none">This section is required *</span>
           </div>
 
           <div class="col-12 col-md-6">
@@ -322,9 +323,10 @@
             <input
               type="text"
               id="last"
-              class="form-control border border-0 border-bottom rounded-0"
+              class="form-control rounded-0"
               placeholder="Your last name"
             />
+            <span class="error-span d-none">This section is required *</span>
           </div>
 
           <div class="col-12 col-md-6">
@@ -332,19 +334,21 @@
             <input
               type="text"
               id="subject"
-              class="form-control border border-0 border-bottom rounded-0"
+              class="form-control rounded-0"
               placeholder="Your subject"
             />
+            <span class="error-span d-none">This section is required *</span>
           </div>
 
           <div class="col-12 col-md-6">
-            <label for="user" class="form-label">Email address</label>
+            <label for="email" class="form-label">Email address</label>
             <input
               type="email"
-              id="user"
-              class="form-control border border-0 border-bottom rounded-0"
+              id="email"
+              class="form-control rounded-0"
               placeholder="Your email address"
             />
+            <span class="error-span d-none">This section is required *</span>
           </div>
 
           <div class="col-12">
@@ -352,15 +356,17 @@
             <textarea
               name=""
               id="message"
-              class="form-control border border-0 border-bottom rounded-0"
+              class="form-control rounded-0"
               placeholder="Give us as much information as possible about the project"
               rows="4"
             ></textarea>
+            <span class="error-span d-none">This section is required *</span>
           </div>
 
           <button
             type="submit"
             class="col-12 col-md-1 btn border-0 rounded-0 fw-semibold"
+            id="form-button"
           >
             SEND
           </button>
@@ -436,5 +442,6 @@
     <script src="js/landing/nav-decode.js"></script>
     <script src="js/landing/nav.js"></script>
     <script src="js/landing/laws-focus.js"></script>
+    <script src="js/landing/contact.js"></script>
   </body>
 </html>

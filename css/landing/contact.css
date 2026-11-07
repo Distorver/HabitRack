@@ -63,8 +63,37 @@
   bottom: 2rem;
 }
 
+.form-control {
+  border: 1px none #fff;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+
 .form-control:focus {
-  border-color: var(--color-orange);
-  box-shadow: 0 0 0.4rem 0.2rem rgba(253, 85, 29, 0.589);
+  border-bottom: 1px solid var(--color-orange);
   background-color: var(--color-dark);
+  box-shadow: none;
+  color: #fff;
+}
+
+.form-control-error {
+  border-bottom: 1px solid red;
+}
+
+.error-span {
+  display: inline-block;
+  color: red;
+  margin-top: 5px;
+  font-size: 0.8rem;
+}
+
+.form-sent {
+  background-color: var(--color-dark) !important;
+  border-bottom: 1px solid var(--color-gray);
+  color: var(--color-gray) !important;
+}
+
+.sent {
+  background-color: #fff !important;
+  color: var(--color-dark) !important;
 }
