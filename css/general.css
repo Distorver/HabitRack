@@ -31,12 +31,23 @@ body {
 img {
   display: block;
   max-width: 100%;
+  width: 100%;
 }
 
 a {
+  display: inline-block;
   color: inherit;
   font-family: "Geist Mono", monospace;
   font-weight: 500;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: inline-block;
 }
 
 .button {

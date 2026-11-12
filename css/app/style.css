@@ -1,0 +1,12 @@
+.main {
+  position: relative;
+  z-index: 3;
+}
+
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 500px 20rem rgba(253, 85, 29, 0.35);
+  right: 40%;
+  z-index: 1;
+}
