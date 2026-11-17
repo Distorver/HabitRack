@@ -1,0 +1,36 @@
+{
+  "habits": [
+    {
+      "id": 1,
+      "name": "Sugar Intake",
+      "icon": "leaf",
+      "goal": "Daily tracking",
+      "goalType": "boolean",
+      "completedDates": []
+    },
+    {
+      "id": 2,
+      "name": "Hydration",
+      "icon": "water",
+      "goal": "2L",
+      "goalType": "numeric",
+      "completedDates": []
+    },
+    {
+      "id": 3,
+      "name": "Sleep",
+      "icon": "moon",
+      "goal": "7h",
+      "goalType": "numeric",
+      "completedDates": []
+    },
+    {
+      "id": 4,
+      "name": "Reading",
+      "icon": "book",
+      "goal": "30m",
+      "goalType": "numeric",
+      "completedDates": []
+    }
+  ]
+}

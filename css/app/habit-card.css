@@ -1,0 +1,220 @@
+/* Habit Card */
+.habit-card {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.habit-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Header */
+.habit-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.habit-info {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.habit-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(253, 85, 29, 0.15);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.habit-icon ion-icon {
+  font-size: 1.3rem;
+  color: var(--color-orange);
+}
+
+/* Icon Colors */
+.habit-icon.icon-leaf ion-icon { color: #4ade80; }
+.habit-icon.icon-water ion-icon { color: #38bdf8; }
+.habit-icon.icon-moon ion-icon { color: #a78bfa; }
+.habit-icon.icon-book ion-icon { color: #fbbf24; }
+.habit-icon.icon-run ion-icon { color: #f87171; }
+.habit-icon.icon-pill ion-icon { color: #34d399; }
+.habit-icon.icon-heart ion-icon { color: #f472b6; }
+.habit-icon.icon-brain ion-icon { color: #818cf8; }
+
+/* Icon backgrounds */
+.habit-icon.icon-leaf { background: rgba(74, 222, 128, 0.15); }
+.habit-icon.icon-water { background: rgba(56, 189, 248, 0.15); }
+.habit-icon.icon-moon { background: rgba(167, 139, 250, 0.15); }
+.habit-icon.icon-book { background: rgba(251, 191, 36, 0.15); }
+.habit-icon.icon-run { background: rgba(248, 113, 113, 0.15); }
+.habit-icon.icon-pill { background: rgba(52, 211, 153, 0.15); }
+.habit-icon.icon-heart { background: rgba(244, 114, 182, 0.15); }
+.habit-icon.icon-brain { background: rgba(129, 140, 248, 0.15); }
+
+.habit-details h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 4px 0;
+}
+
+.habit-details p {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.8rem;
+  color: var(--color-gray);
+  margin: 0;
+}
+
+/* Check-in Button */
+.btn-checkin {
+  width: 36px;
+  height: 36px;
+  background: #2a2a2a;
+  border: 2px solid #3a3a3a;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-checkin:hover {
+  border-color: var(--color-orange);
+}
+
+.btn-checkin.completed {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+.btn-checkin ion-icon {
+  font-size: 1.1rem;
+  color: var(--color-gray);
+  transition: color 0.2s ease;
+}
+
+.btn-checkin.completed ion-icon {
+  color: #000;
+}
+
+/* Last N Days Log */
+.habit-log {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #2a2a2a;
+}
+
+.habit-log-title {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--color-gray);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.habit-days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.day-box {
+  width: 28px;
+  height: 28px;
+  background: #2a2a2a;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Geist Mono", monospace;
+  font-size: 0.65rem;
+  color: var(--color-gray);
+  flex-shrink: 0;
+}
+
+.day-box.completed {
+  background: rgba(253, 85, 29, 0.25);
+  color: var(--color-orange);
+}
+
+.day-box.today {
+  border: 2px solid #ff6b9d;
+}
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .habit-card {
+    padding: 16px;
+  }
+  
+  .habit-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .habit-icon ion-icon {
+    font-size: 1.1rem;
+  }
+  
+  .habit-details h3 {
+    font-size: 1rem;
+  }
+  
+  .btn-checkin {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .day-box {
+    width: 24px;
+    height: 24px;
+    font-size: 0.6rem;
+  }
+  
+  .habit-days {
+    gap: 4px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .habit-card-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .btn-checkin {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .habit-card {
+    padding-right: 60px;
+    position: relative;
+  }
+  
+  .day-box {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .habit-log-title {
+    font-size: 0.65rem;
+  }
+}

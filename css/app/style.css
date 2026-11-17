@@ -1,6 +1,21 @@
+/* App Layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
 .main {
+  flex: 1;
   position: relative;
   z-index: 3;
+  margin-left: 0%;
+  padding: 30px 40px;
+  min-height: 100vh;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .glow {
@@ -8,5 +23,27 @@
   border-radius: 50%;
   box-shadow: 0 0 500px 20rem rgba(253, 85, 29, 0.35);
   right: 40%;
+  top: -200px;
   z-index: 1;
+}
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .main {
+    margin-left: 0;
+    padding: 24px 30px;
+    padding-top: 70px;
+  }
+  
+  .nav-toggle {
+    display: flex;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .main {
+    padding: 20px 16px;
+    padding-top: 70px;
+  }
 }
