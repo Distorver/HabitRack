@@ -1,0 +1,352 @@
+/* ===== المتغيرات ===== */
+:root {
+  --bg: #141414;
+  --card: #1e1e1e;
+  --border: #2a2a2a;
+  --text: #f2f2f2;
+  --muted: #8a8a8a;
+  --accent: #ff5a1f;
+  --sidebar-width: 220px;
+}
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #a33209;
+  display: grid;
+  place-items: center;
+  background-color: #d41a1a;
+}
+
+.user-avatar img {
+  width: 18px;
+  height: 18px;
+  background-color: #d41a1a;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ===== الـ Layout ===== */
+.app {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  min-height: 100vh;
+}
+
+/* ===== السايدبار ===== */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 20px;
+  border-right: 1px solid var(--border);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+}.logo-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* حماية: أي صورة ما تعديش حجم الحاوية بتاعتها */
+img { max-width: 100%; }
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: auto;
+  margin-top: 48px;
+}
+
+.nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+}
+
+.nav-link:hover { color: var(--text); }
+
+.nav-link.active {
+  color: var(--accent);
+  background: rgba(255, 90, 31, 0.08);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #c9b8f0;
+}
+
+/* ===== المحتوى والسكشنز ===== */
+.content { padding: 32px; }
+
+html { scroll-behavior: smooth; }
+
+/* كل السكشنز ظاهرة تحت بعض، وكل واحد بياخد طول الشاشة */
+.page {
+  min-height: 100vh;
+  padding-bottom: 48px;
+}
+
+.page h1 { font-size: 1.6rem; }
+.subtitle { color: var(--muted); font-size: 0.9rem; margin-top: 6px; }
+
+/* ===== الكارت والزرار (بيتكرروا في كل مكان) ===== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 16px;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary:hover { filter: brightness(1.1); }
+
+.btn-primary:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ===== سكشن All Habits ===== */
+.page-header {
+  display: flex;
+  flex-wrap: wrap;           /* على الموبايل الزرار بينزل تحت العنوان لوحده */
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));  /* ريسبونسيف من غير media query */
+  gap: 12px;
+}
+
+.stat { display: flex; flex-direction: column; gap: 8px; }
+.stat-label { color: var(--muted); font-size: 0.8rem; }
+.stat-value { font-size: 1.5rem; font-weight: 600; }
+/* ===== نافذة Add Habit ===== */
+.dialog {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0;                         /* الـ padding على الفورم، عشان الضغط على الـ backdrop يتعرف */
+  width: min(420px, calc(100% - 32px));
+  margin: auto;
+}
+
+.dialog::backdrop { background: rgba(0, 0, 0, 0.65); }
+
+.dialog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+}
+
+.field { display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; color: var(--muted); }
+
+.field input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font: inherit;
+  padding: 10px 12px;
+}
+
+.field input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* اختيار اللون */
+.colors { border: none; display: flex; align-items: center; gap: 10px; }
+.colors legend { color: var(--muted); font-size: 0.85rem; margin-bottom: 8px; }
+.colors label { position: relative; cursor: pointer; }
+.colors input { position: absolute; opacity: 0; }
+
+.colors span {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: var(--c);
+}
+
+.colors input:checked + span { outline: 2px solid var(--text); outline-offset: 2px; }
+.colors input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.dialog-actions { display: flex; justify-content: flex-end; gap: 10px; }
+
+.btn-secondary {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font: inherit;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+/* ===== موبايل ===== */
+@media (max-width: 768px) {
+  .app { grid-template-columns: 1fr; }
+
+  .page { scroll-margin-top: 110px; }
+
+  .sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    height: auto;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav {
+    flex-direction: row;
+    margin: 0;
+    overflow-x: auto;
+  }
+
+  .nav-link { white-space: nowrap; }
+  .user { display: none; }
+  .content { padding: 20px 16px; }
+}
+  .user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #c9b8f0;
+  display: grid;
+  place-items: center;
+}
+
+.user-avatar img {
+  width: 18px;
+  height: 18px;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.toggle { display: flex; border: 1px solid var(--border); }
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.toggle-btn.active { background: var(--card); color: var(--text); }
+
+.toggle-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}/* ===== كروت العادات ===== */
+.habits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.habit-card {
+  --habit-color: #a8d8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.habit-top { display: flex; align-items: center; gap: 12px; }
+
+.habit-icon {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.habit-info { flex: 1; min-width: 0; }
+.habit-name { font-weight: 600; font-size: 0.95rem; overflow-wrap: anywhere; }
+.habit-goal { color: var(--muted); font-size: 0.75rem; overflow-wrap: anywhere; }
+
+.habit-check {
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: 1px solid var(--muted);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.habit-check.done { border-color: var(--habit-color); }
+
+.habit-check:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.habit-label { color: var(--muted); font-size: 0.7rem; margin-bottom: 8px; }
+
+.week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+
+.day { aspect-ratio: 1; background: var(--habit-color); opacity: 0.25; }
+.day.done { opacity: 1; }
+
+.habit-card.sugar     { --habit-color: #a8d8f0; }
+.habit-card.hydration { --habit-color: #f4a9b8; }
+.habit-card.sleep     { --habit-color: #cdb4e6; }
+.habit-card.reading   { --habit-color: #f8c9a3; }

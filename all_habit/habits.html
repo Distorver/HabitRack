@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HabitRack - Habits</title>
+  <link rel="stylesheet" href="habits.css">
+</head>
+<body>
+  <div class="app">
+
+    <!-- السايدبار -->
+    <aside class="sidebar">
+      <a href="index.html" class="logo">
+  <img src="habitsimg/HabitRack.webp" alt="HabitRack logo" class="logo-img">
+  HabitRack
+</a>
+      <nav class="nav">
+        <a class="nav-link active" href="#habits">All Habits</a>
+        <a class="nav-link" href="#progress">Your Progress</a>
+        <a class="nav-link" href="#achievements">Achievements</a>
+        <!-- <a class="nav-link" href="#shop">Shop</a> -->
+      </nav>
+
+      <div class="user">
+        <span class="user-avatar"> <img src="habitsimg/person_26dp_CCCCCC_FILL0_wght400_GRAD0_opsz24.svg" alt=""></span>
+        <span class="user-name">username</span>
+      </div>
+    </aside>
+
+    <!-- المحتوى: كل سكشن بيظهر لوحده -->
+    <main class="content">
+      <section id="habits" class="page">
+
+        <!-- الهيدر -->
+        <header class="page-header">
+          <div>
+            <h1>Your Habits</h1>
+            <p class="subtitle">Track your daily progress and build consistency.</p>
+          </div>
+          <div class="header-actions">
+  <div class="toggle" role="group" aria-label="Date range">
+    <button class="toggle-btn active" data-range="7">7 days</button>
+    <button class="toggle-btn" data-range="30">30 days</button>
+  </div>
+  <button class="btn-primary" id="add-habit-btn">ADD HABIT +</button>
+</div>
+        </header>
+
+        <!-- كروت الإحصائيات -->
+        <div class="stats">
+          <div class="card stat">
+             <span class="stat-label">Total Habits</span>
+           <span class="stat-value" id="total-habits">4</span>
+           
+          </div></div>
+       
+          <div class="card stat">
+            <span class="stat-label">Streak</span>
+            <span class="stat-value">12 Days</span>
+          </div>
+          <div class="card stat">
+            <span class="stat-label">Completion</span>
+            <span class="stat-value">85%</span>
+          </div>
+        <div class="habits-grid" id="habits-grid"></div>
+
+      </section>
+
+      <section id="progress" class="page">
+        <h1>Your Progress</h1>
+        <p class="subtitle">Small steps. Real growth.</p>
+      </section>
+
+      <section id="achievements" class="page">
+        <h1>Achievements</h1>
+        <p class="subtitle">Every badge is proof you showed up.</p>
+      </section>
+
+      <!-- <section id="shop" class="page">
+        <h1>Shop</h1>
+        <p class="subtitle">Coming soon.</p>
+      </section> -->
+    </main>
+
+  </div>
+<dialog id="habit-dialog" class="dialog">
+  <form method="dialog" class="dialog-form" id="habit-form">
+    <h2>New Habit</h2>
+
+    <label class="field">
+      <span>Name</span>
+      <input type="text" name="name" required placeholder="e.g. Reading">
+    </label>
+
+    <label class="field">
+      <span>Goal</span>
+      <input type="text" name="goal" placeholder="e.g. 30m Goal">
+    </label>
+
+    <fieldset class="colors">
+      <legend>Color</legend>
+      <label><input type="radio" name="color" value="sugar" checked><span style="--c:#a8d8f0"></span></label>
+      <label><input type="radio" name="color" value="hydration"><span style="--c:#f4a9b8"></span></label>
+      <label><input type="radio" name="color" value="sleep"><span style="--c:#cdb4e6"></span></label>
+      <label><input type="radio" name="color" value="reading"><span style="--c:#f8c9a3"></span></label>
+    </fieldset>
+
+    <div class="dialog-actions">
+      <button type="button" class="btn-secondary" id="cancel-habit">Cancel</button>
+      <button type="submit" class="btn-primary">Save</button>
+    </div>
+  </form>
+</dialog>
+  <script src="habits.js"></script>
+</body>
+</html>
