@@ -1,0 +1,155 @@
+/* Header Section */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.header-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.header-subtitle {
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.9rem;
+  color: var(--text-secondery);
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Time Filter Toggle */
+.time-filter {
+  display: flex;
+  background: #1e1e1e;
+  /* border-radius: 8px; */
+  padding: 4px;
+}
+
+.time-filter button {
+  background: transparent;
+  border: none;
+  color: var(--text-secondery);
+  font-family: "Geist Mono", monospace;
+  font-size: 0.85rem;
+  padding: 6px 16px;
+  /* border-radius: 6px; */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.time-filter button:hover {
+  color: #fff;
+  background-color: #272727;
+}
+
+.time-filter button.active {
+  background: #3a3a3a;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Add Habit Button */
+.btn-add-habit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--text-primary);
+  color: var(--color-primary);
+  border: none;
+  padding: 16px 24px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  /* border-radius: 8px; */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-add-habit:hover {
+  background: #ddd;
+}
+
+.btn-add-habit ion-icon {
+  font-size: 1.1rem;
+}
+
+/* Nav Toggle Button (mobile) */
+.nav-toggle {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 101;
+  background: var(--color-orange);
+  border: none;
+  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nav-toggle ion-icon {
+  font-size: 1.5rem;
+  color: #000;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .main-header {
+    padding-top: 50px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header-actions {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .time-filter {
+    flex: 1;
+  }
+
+  .time-filter button {
+    flex: 1;
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+
+  .btn-add-habit {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+  }
+}

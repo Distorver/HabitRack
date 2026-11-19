@@ -2,9 +2,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: fixed;
+  left: 0;
+  top: 0;
   height: 100vh;
   width: 18%;
   padding: 30px;
+  z-index: 100;
 }
 
 .nav-logo img {
@@ -100,4 +104,46 @@
   border: solid 0 #fff;
   background-color: inherit;
   color: #fff;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.theme:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Nav Overlay */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+@media (max-width: 1024px) {
+  .nav-overlay.active {
+    display: block;
+  }
+  
+  .nav {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    height: 100vh;
+    width: 260px;
+    z-index: 100;
+    transition: left 0.3s ease;
+    background: #141314;
+    padding: 20px;
+  }
+  
+  .nav.active {
+    left: 0;
+  }
 }

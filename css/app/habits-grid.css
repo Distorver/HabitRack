@@ -1,0 +1,33 @@
+/* Habits Grid */
+.habits-section {
+  margin-bottom: 40px;
+}
+
+.habits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .habits-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+/* Small Tablet */
+@media (max-width: 768px) {
+  .habits-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .habits-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
