@@ -14,7 +14,7 @@
 }
 
 .page-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -22,8 +22,9 @@
   position: absolute;
   border-radius: 50%;
   box-shadow: 0 0 500px 20rem rgba(253, 85, 29, 0.35);
-  right: 40%;
-  top: -200px;
+  right: 50%;
+  bottom: -250px;
+  /* top: -200px; */
   z-index: 1;
 }
 
@@ -34,7 +35,7 @@
     padding: 24px 30px;
     padding-top: 70px;
   }
-  
+
   .nav-toggle {
     display: flex;
   }

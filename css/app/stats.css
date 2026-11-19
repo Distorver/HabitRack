@@ -7,33 +7,40 @@
 }
 
 .stat-card {
-  background: #1e1e1e;
-  border-radius: 12px;
+  background: #1d1b1c;
+  /* border-radius: 12px; */
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  border: 1px solid #2e2e2e;
+  transition: border 0.2s;
+}
+
+.stat-card:hover {
+  border: 1px solid var(--color-gray);
 }
 
 .stat-label {
-  font-family: "Geist Mono", monospace;
+  font-family: "Space Grotesk", monospace;
   font-size: 0.8rem;
-  color: var(--color-gray);
-  text-transform: uppercase;
+  color: var(--text-secondery);
+  /* text-transform: uppercase; */
+  font-weight: 500;
   letter-spacing: 1px;
 }
 
 .stat-value {
   font-family: "Space Grotesk", sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #fff;
 }
 
 .stat-value span {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 500;
-  color: var(--color-gray);
+  color: var(--text-primary);
 }
 
 /* Tablet (768px - 1024px) */
@@ -42,11 +49,11 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
   }
-  
+
   .stat-card {
     padding: 16px;
   }
-  
+
   .stat-value {
     font-size: 1.5rem;
   }
@@ -65,17 +72,17 @@
     grid-template-columns: 1fr;
     gap: 12px;
   }
-  
+
   .stat-card {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
-  
+
   .stat-label {
     font-size: 0.7rem;
   }
-  
+
   .stat-value {
     font-size: 1.3rem;
   }

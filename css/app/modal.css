@@ -23,8 +23,8 @@
 
 /* Modal Container */
 .modal-container {
-  background: #1e1e1e;
-  border-radius: 16px;
+  background: #1d1b1c;
+  /* border-radius: 16px; */
   width: 90%;
   max-width: 480px;
   padding: 32px;
@@ -48,14 +48,14 @@
   font-family: "Space Grotesk", sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-primary);
   margin: 0;
 }
 
 .btn-close-modal {
   background: transparent;
   border: none;
-  color: var(--color-gray);
+  color: var(--text-secondery);
   cursor: pointer;
   padding: 4px;
   display: flex;
@@ -65,7 +65,7 @@
 }
 
 .btn-close-modal:hover {
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .btn-close-modal ion-icon {
@@ -88,20 +88,20 @@
 .form-group label {
   font-family: "Geist Mono", monospace;
   font-size: 0.85rem;
-  color: var(--color-gray);
-  text-transform: uppercase;
+  color: var(--text-secondery);
+  /* text-transform: uppercase; */
   letter-spacing: 1px;
 }
 
 .form-group input,
 .form-group select {
-  background: #2a2a2a;
+  background: #2e2e2e;
   border: 1px solid #3a3a3a;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   padding: 12px 16px;
   font-family: "Space Grotesk", sans-serif;
   font-size: 1rem;
-  color: #fff;
+  color: var(--color-gray);
   outline: none;
   transition: border-color 0.2s ease;
 }
@@ -112,7 +112,7 @@
 }
 
 .form-group input::placeholder {
-  color: var(--color-gray);
+  color: var(--text-secondery);
 }
 
 /* Icon Picker */
@@ -126,14 +126,15 @@
   width: 44px;
   height: 44px;
   background: #2a2a2a;
-  border: 2px solid #3a3a3a;
-  border-radius: 10px;
+  border: 1px solid #3a3a3a;
+  /* border-radius: 10px; */
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.3rem;
   cursor: pointer;
   transition: all 0.2s ease;
+  color: var(--text-secondery);
 }
 
 .icon-option:hover {
@@ -142,7 +143,7 @@
 
 .icon-option.selected {
   border-color: var(--color-orange);
-  background: rgba(253, 85, 29, 0.15);
+  background: rgba(253, 85, 29, 0.055);
 }
 
 /* Goal Type Toggle */
@@ -155,12 +156,13 @@
   flex: 1;
   background: #2a2a2a;
   border: 1px solid #3a3a3a;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   padding: 12px;
   font-family: "Space Grotesk", sans-serif;
   font-size: 0.9rem;
   color: var(--color-gray);
   cursor: pointer;
+  font-weight: 500;
   transition: all 0.2s ease;
 }
 
@@ -171,14 +173,14 @@
 .goal-type-btn.active {
   border-color: var(--color-orange);
   color: #fff;
-  background: rgba(253, 85, 29, 0.1);
+  /* background: rgba(253, 85, 29, 0.1); */
 }
 
 /* Submit Button */
 .btn-submit-habit {
   background: var(--color-orange);
   border: none;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   padding: 14px 24px;
   font-family: "Space Grotesk", sans-serif;
   font-size: 1rem;
@@ -199,16 +201,16 @@
     max-width: 420px;
     padding: 24px;
   }
-  
+
   .modal-header h2 {
     font-size: 1.3rem;
   }
-  
+
   .icon-option {
     width: 40px;
     height: 40px;
   }
-  
+
   .goal-type-btn {
     padding: 10px;
     font-size: 0.85rem;
@@ -223,45 +225,61 @@
     max-height: 90vh;
     overflow-y: auto;
   }
-  
+
   .modal-header {
     margin-bottom: 16px;
   }
-  
+
   .modal-header h2 {
     font-size: 1.2rem;
   }
-  
+
   .habit-form {
     gap: 16px;
   }
-  
+
   .form-group input,
   .form-group select {
     padding: 12px;
     font-size: 0.95rem;
   }
-  
+
   .icon-picker {
     gap: 8px;
   }
-  
+
   .icon-option {
     width: 44px;
     height: 44px;
   }
-  
+
   .goal-type-toggle {
     flex-direction: column;
     gap: 8px;
   }
-  
+
   .goal-type-btn {
     padding: 12px;
   }
-  
+
   .btn-submit-habit {
     padding: 14px;
     width: 100%;
   }
+}
+
+.form-control {
+  border-radius: 0;
+  border: none;
+}
+
+.form-control:disabled {
+  background-color: #2e2e2e;
+}
+
+.form-control:focus {
+  background-color: #2e2e2e;
+  /* border: 1px solid var(--text-primary); */
+  box-shadow: none;
+  color: var(--text-primary);
 }
