@@ -104,7 +104,7 @@
             <div class="header-actions">
               <div class="time-filter">
                 <button class="active" data-days="7">7 days</button>
-                <button data-days="30">30 days</button>
+                <button data-days="all">All days</button>
               </div>
               <button class="btn-add-habit" id="btnAddHabit">
                 ADD HABIT
@@ -149,6 +149,17 @@
               />
             </div>
 
+            <!-- Description -->
+            <div class="form-group">
+              <label for="habitDescription">Description <span>(optional)</span></label>
+              <input
+                type="text"
+                id="habitDescription"
+                class="form-control"
+                placeholder="What do you want to remember?"
+              />
+            </div>
+
             <!-- Icon Picker -->
             <div class="form-group">
               <label>Choose Icon</label>
@@ -156,6 +167,15 @@
                 <!-- Rendered by JS -->
               </div>
               <input type="hidden" id="selectedIcon" value="leaf" />
+            </div>
+
+            <!-- Color Picker -->
+            <div class="form-group">
+              <label>Choose Color</label>
+              <div class="color-picker" id="colorPicker">
+                <!-- Rendered by JS -->
+              </div>
+              <input type="hidden" id="selectedColor" value="#f4b8c3" />
             </div>
 
             <!-- Goal Type -->

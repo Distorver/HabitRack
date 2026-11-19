@@ -9,16 +9,36 @@ const Modal = (function() {
   const goalInput = document.getElementById('habitGoal');
   const goalTypeContainer = document.getElementById('goalTypeContainer');
   const selectedIconInput = document.getElementById('selectedIcon');
+  const selectedColorInput = document.getElementById('selectedColor');
 
   let selectedIcon = 'leaf';
+  let selectedColor = '#f4b8c3';
 
   // Icon options
-  const icons = ['leaf', 'water', 'moon', 'book', 'run', 'pill', 'heart', 'brain'];
+  const icons = [
+    'leaf', 'water', 'moon', 'book', 'run', 'pill', 'heart', 'brain',
+    'walk', 'bicycle', 'body', 'barbell', 'nutrition', 'sunny',
+    'cafe', 'bed', 'school', 'code', 'musical-notes', 'cash'
+  ];
+
+  const colors = [
+    '#f4b8c3',
+    '#f7c8a4',
+    '#f9e1a6',
+    '#f4efc6',
+    '#dfe8c6',
+    '#bfe0cf',
+    '#b6def0',
+    '#c5d0ea',
+    '#d6bee1'
+  ];
 
   function init() {
     if (!modal) return;
     
     renderIconPicker();
+    renderColorPicker();
+    applySelectedColor();
     setupEventListeners();
   }
 
@@ -34,7 +54,19 @@ const Modal = (function() {
       run: 'fitness-outline',
       pill: 'medical-outline',
       heart: 'heart-outline',
-      brain: 'hardware-chip-outline'
+      brain: 'hardware-chip-outline',
+      walk: 'walk-outline',
+      bicycle: 'bicycle-outline',
+      body: 'body-outline',
+      barbell: 'barbell-outline',
+      nutrition: 'nutrition-outline',
+      sunny: 'sunny-outline',
+      cafe: 'cafe-outline',
+      bed: 'bed-outline',
+      school: 'school-outline',
+      code: 'code-slash-outline',
+      'musical-notes': 'musical-notes-outline',
+      cash: 'cash-outline'
     };
 
     container.innerHTML = icons.map(icon => `
@@ -48,6 +80,27 @@ const Modal = (function() {
     // Re-initialize ionicons
     if (window.ionicons) {
       window.ionicons.create();
+    }
+  }
+
+  function renderColorPicker() {
+    const container = document.getElementById('colorPicker');
+    if (!container) return;
+
+    container.innerHTML = colors.map(color => `
+      <button type="button"
+              class="color-option ${color === selectedColor ? 'selected' : ''}"
+              data-color="${color}"
+              style="--option-color: ${color}"
+              aria-label="Choose ${color}">
+        <span></span>
+      </button>
+    `).join('');
+  }
+
+  function applySelectedColor() {
+    if (modal) {
+      modal.style.setProperty('--habit-modal-color', selectedColor);
     }
   }
 
@@ -93,6 +146,21 @@ const Modal = (function() {
       });
     }
 
+    const colorContainer = document.getElementById('colorPicker');
+    if (colorContainer) {
+      colorContainer.addEventListener('click', (e) => {
+        const option = e.target.closest('.color-option');
+        if (option) {
+          selectedColor = option.dataset.color;
+          renderColorPicker();
+          if (selectedColorInput) {
+            selectedColorInput.value = selectedColor;
+          }
+          applySelectedColor();
+        }
+      });
+    }
+
     // Goal type toggle
     const goalTypeBtns = document.querySelectorAll('.goal-type-btn');
     goalTypeBtns.forEach(btn => {
@@ -128,7 +196,12 @@ const Modal = (function() {
     // Reset form
     if (form) form.reset();
     selectedIcon = 'leaf';
+    selectedColor = '#f4b8c3';
     renderIconPicker();
+    renderColorPicker();
+    if (selectedIconInput) selectedIconInput.value = selectedIcon;
+    if (selectedColorInput) selectedColorInput.value = selectedColor;
+    applySelectedColor();
     
     // Set default goal type
     const booleanBtn = document.querySelector('[data-goal-type="boolean"]');
@@ -152,6 +225,7 @@ const Modal = (function() {
     const activeBtn = document.querySelector('.goal-type-btn.active');
     const goalType = activeBtn?.dataset.goalType || 'boolean';
     const goal = goalType === 'boolean' ? 'Daily tracking' : goalInput?.value.trim();
+    const description = document.getElementById('habitDescription')?.value.trim();
 
     if (!name) {
       alert('Please enter a habit name');
@@ -165,7 +239,7 @@ const Modal = (function() {
 
     // Add habit via Data module
     if (typeof Data !== 'undefined') {
-      Data.addHabit({ name, icon, goal, goalType });
+      Data.addHabit({ name, icon, goal, goalType, color: selectedColor, description });
       
       // Refresh the habits display
       if (typeof Habits !== 'undefined') {

@@ -9,7 +9,7 @@
 }
 
 .habit-card:hover {
-  border: 1px solid var(--color-gray);
+  border: 1px solid var(--habit-color);
 }
 
 /* Card Header */
@@ -18,6 +18,33 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 16px;
+}
+
+.habit-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-remove-habit {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  color: var(--text-secondery);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.btn-remove-habit:hover {
+  color: var(--habit-color);
+}
+
+.btn-remove-habit ion-icon {
+  font-size: 1.1rem;
 }
 
 .habit-info {
@@ -29,7 +56,7 @@
 .habit-icon {
   width: 50px;
   height: 50px;
-  background: rgba(253, 85, 29, 0.15);
+  background: rgba(var(--habit-rgb, 244, 184, 195), 0.15);
   /* border-radius: 10px; */
   display: flex;
   align-items: center;
@@ -38,7 +65,7 @@
 
 .habit-icon ion-icon {
   font-size: 1.4rem;
-  color: var(--color-orange);
+  color: var(--habit-color);
 }
 
 /* Icon Colors */
@@ -93,6 +120,14 @@
   background: rgba(129, 140, 248, 0.15);
 }
 
+.habit-card .habit-icon {
+  background: rgba(var(--habit-rgb, 244, 184, 195), 0.15) !important;
+}
+
+.habit-card .habit-icon ion-icon {
+  color: var(--habit-color) !important;
+}
+
 .habit-details h3 {
   font-family: "Space Grotesk", sans-serif;
   font-size: 1.1rem;
@@ -124,12 +159,12 @@
 }
 
 .btn-checkin:hover {
-  border-color: var(--color-orange);
+  border-color: var(--habit-color);
 }
 
 .btn-checkin.completed {
-  background: var(--color-orange);
-  border-color: var(--color-orange);
+  background: var(--habit-color);
+  border-color: var(--habit-color);
 }
 
 .btn-checkin ion-icon {
@@ -147,6 +182,7 @@
   margin-top: 16px;
   padding-top: 16px;
   border-top: 1px solid #2a2a2a;
+  min-width: 0;
 }
 
 .habit-log-title {
@@ -165,27 +201,67 @@
   gap: 4px;
 }
 
+.day-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.day-label {
+  min-height: 12px;
+  font-family: "Geist Mono", monospace;
+  font-size: 0.58rem;
+  line-height: 1;
+  color: var(--text-secondery);
+  text-transform: uppercase;
+}
+
 .day-box {
   width: 45px;
   height: 45px;
-  background: #2a2a2a;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Geist Mono", monospace;
-  font-size: 0.65rem;
-  color: #2a2a2a;
+  padding: 0;
+  background: rgba(var(--habit-rgb, 244, 184, 195), 0.12);
+  border: 0;
+  cursor: pointer;
   flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.day-box:hover {
+  background: rgba(var(--habit-rgb, 244, 184, 195), 0.35);
 }
 
 .day-box.completed {
-  background: rgba(253, 85, 29, 0.25);
-  color: rgba(253, 85, 29, 0);
+  background: var(--habit-color);
+  border: 0;
 }
 
 .day-box.today {
-  /* border: 2px solid rgba(253, 85, 29, 0.5); */
+  outline: 0;
+}
+
+.habit-days.days-30 {
+  display: grid;
+  grid-template-columns: repeat(52, 14px);
+  grid-template-rows: repeat(7, 14px);
+  grid-auto-flow: column;
+  gap: 4px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.habit-days.days-30::-webkit-scrollbar {
+  display: none;
+}
+
+.days-30 .day-box {
+  width: 14px;
+  height: 14px;
 }
 
 /* Tablet (768px - 1024px) */
@@ -230,10 +306,14 @@
     gap: 12px;
   }
 
-  .btn-checkin {
+  .habit-card-actions {
     position: absolute;
     top: 16px;
     right: 16px;
+  }
+
+  .btn-checkin,
+  .btn-remove-habit {
     width: 36px;
     height: 36px;
   }

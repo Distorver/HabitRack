@@ -11,6 +11,8 @@ const Data = (function() {
       icon: "leaf",
       goal: "Daily tracking",
       goalType: "boolean",
+      color: "#dfe8c6",
+      description: "Stay consistent with your sugar goals",
       completedDates: []
     },
     {
@@ -19,6 +21,8 @@ const Data = (function() {
       icon: "water",
       goal: "2L",
       goalType: "numeric",
+      color: "#b6def0",
+      description: "Drink enough water throughout the day",
       completedDates: []
     },
     {
@@ -27,6 +31,8 @@ const Data = (function() {
       icon: "moon",
       goal: "7h",
       goalType: "numeric",
+      color: "#d6bee1",
+      description: "Prioritize a complete night's sleep",
       completedDates: []
     },
     {
@@ -35,6 +41,8 @@ const Data = (function() {
       icon: "book",
       goal: "30m",
       goalType: "numeric",
+      color: "#f9e1a6",
+      description: "Read a little every day",
       completedDates: []
     }
   ];
@@ -102,6 +110,8 @@ const Data = (function() {
       icon: habitData.icon,
       goal: habitData.goal,
       goalType: habitData.goalType,
+      color: habitData.color || '#f4b8c3',
+      description: habitData.description || '',
       completedDates: []
     };
     habits.push(newHabit);
@@ -126,6 +136,29 @@ const Data = (function() {
 
     saveHabits(habits);
     return habits;
+  }
+
+  function toggleHabitCompletionDate(habitId, date) {
+    const habits = loadHabits();
+    const habit = habits.find(h => h.id === habitId);
+    if (!habit || !date) return habits;
+
+    const dateIndex = habit.completedDates.indexOf(date);
+    if (dateIndex > -1) {
+      habit.completedDates.splice(dateIndex, 1);
+    } else {
+      habit.completedDates.push(date);
+    }
+
+    saveHabits(habits);
+    return habits;
+  }
+
+  function removeHabit(habitId) {
+    const habits = loadHabits();
+    const nextHabits = habits.filter(h => h.id !== habitId);
+    saveHabits(nextHabits);
+    return nextHabits;
   }
 
   // Get statistics
@@ -209,6 +242,8 @@ const Data = (function() {
     getHabits,
     addHabit,
     toggleHabitCompletion,
+    toggleHabitCompletionDate,
+    removeHabit,
     getStats,
     getLastDays,
     getLast7Days,
