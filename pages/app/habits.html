@@ -7,7 +7,7 @@
     <link
       rel="icon"
       type="image/x-icon"
-      href="../../assets/images/compressed/HabitRack.webp"
+      href="../../assets/images/optimized/HabitRack.webp"
     />
 
     <!-- Google Fonts -->
@@ -34,7 +34,8 @@
     <link rel="stylesheet" href="../../css/app/habits-grid.css" />
     <link rel="stylesheet" href="../../css/app/habit-card.css" />
     <link rel="stylesheet" href="../../css/app/modal.css" />
-    <link rel="stylesheet" href="../../css/general.css" />
+    <link rel="stylesheet" href="../../css/app/profile.css" />
+    <link rel="stylesheet" href="../../css/base/general.css" />
   </head>
   <body>
     <!-- Nav Overlay (mobile) -->
@@ -49,7 +50,7 @@
       <!-- ========== SIDEBAR NAV ========== -->
       <nav class="nav" id="mainNav">
         <a href="../../index.html" class="nav-logo d-flex">
-          <img src="../../assets/images/compressed/HabitRack.webp" alt="" />
+          <img src="../../assets/images/optimized/HabitRack.webp" alt="" />
           <h2>HabitRack</h2>
         </a>
         <ul class="nav-menu">
@@ -63,7 +64,7 @@
           </li>
           <li class="unselected nav-item">
             <div class="unselected-square"></div>
-            <a href="achievments.html">Achievments</a>
+            <a href="achievements.html">Achievements</a>
           </li>
           <li class="unselected nav-item">
             <div class="unselected-square"></div>
@@ -71,18 +72,76 @@
           </li>
         </ul>
         <div class="nav-footer">
-          <div class="profile d-flex">
-            <img
-              class="profile-photo"
-              src="../../assets/images/raw/profile.jpg"
-              alt=""
-            />
-            <div class="profile-name">
-              username
-              <ion-icon class="arrow" name="chevron-down-outline"></ion-icon>
+          <div class="profile-wrapper" id="profileWrapper">
+            <button
+              class="profile"
+              id="profileToggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="profileMenu"
+            >
+              <img
+                class="profile-photo"
+                id="profilePhoto"
+                src="../../assets/images/optimized/profile.jpg"
+                alt="Profile photo"
+              />
+              <span class="profile-name">
+                <span class="profile-display-name" id="profileDisplayName">
+                  username
+                </span>
+                <ion-icon class="arrow" name="chevron-down-outline"></ion-icon>
+              </span>
+            </button>
+            <div class="profile-menu" id="profileMenu" aria-hidden="true">
+              <ul class="profile-list">
+                <li>
+                  <button
+                    class="profile-item"
+                    type="button"
+                    data-profile-action="profile"
+                  >
+                    Profile
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="profile-item"
+                    type="button"
+                    data-profile-action="settings"
+                  >
+                    Settings
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="profile-item profile-item-themes"
+                    type="button"
+                    data-profile-action="themes"
+                  >
+                    Your themes
+                    <span class="profile-coming-soon">On hold</span>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="profile-item profile-item-signout"
+                    type="button"
+                    data-profile-action="signout"
+                  >
+                    Sign out
+                  </button>
+                </li>
+              </ul>
             </div>
           </div>
-          <button class="theme">
+          <button
+            class="theme"
+            id="themeToggle"
+            type="button"
+            aria-label="Switch to light mode"
+            data-theme-toggle
+          >
             <ion-icon name="sunny-outline"></ion-icon>
           </button>
         </div>
@@ -151,7 +210,9 @@
 
             <!-- Description -->
             <div class="form-group">
-              <label for="habitDescription">Description <span>(optional)</span></label>
+              <label for="habitDescription"
+                >Description <span>(optional)</span></label
+              >
               <input
                 type="text"
                 id="habitDescription"
@@ -236,6 +297,7 @@
       <script src="../../js/app/data.js"></script>
       <script src="../../js/app/modal.js"></script>
       <script src="../../js/app/habits.js"></script>
+      <script src="../../js/app/profile.js"></script>
 
       <!-- Initialize -->
       <script>

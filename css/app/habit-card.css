@@ -1,10 +1,10 @@
 /* Habit Card */
 .habit-card {
-  background: #1d1b1c;
+  background: var(--color-surface);
   /* border-radius: 12px; */
   padding: 20px;
   position: relative;
-  border: 1px solid #2e2e2e;
+  border: 1px solid var(--color-border-subtle);
   transition: border 0.2s ease;
 }
 
@@ -148,8 +148,8 @@
 .btn-checkin {
   width: 44px;
   height: 44px;
-  background: #1d1b1c;
-  border: 2px solid #3a3a3a;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
   /* border-radius: 8px; */
   display: flex;
   align-items: center;
@@ -181,7 +181,7 @@
 .habit-log {
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px solid #2a2a2a;
+  border-top: 1px solid var(--color-border-subtle);
   min-width: 0;
 }
 

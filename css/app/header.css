@@ -38,7 +38,7 @@
 /* Time Filter Toggle */
 .time-filter {
   display: flex;
-  background: #1e1e1e;
+  background: var(--color-surface);
   /* border-radius: 8px; */
   padding: 4px;
 }
@@ -57,12 +57,12 @@
 }
 
 .time-filter button:hover {
-  color: #fff;
-  background-color: #272727;
+  color: var(--text-primary);
+  background-color: var(--color-surface-raised);
 }
 
 .time-filter button.active {
-  background: #3a3a3a;
+  background: var(--color-border);
   color: var(--text-primary);
   font-weight: 600;
 }
@@ -73,7 +73,7 @@
   align-items: center;
   gap: 8px;
   background: var(--text-primary);
-  color: var(--color-primary);
+  color: var(--color-dark);
   border: none;
   padding: 16px 24px;
   font-family: "Space Grotesk", sans-serif;
@@ -85,7 +85,7 @@
 }
 
 .btn-add-habit:hover {
-  background: #ddd;
+  background: var(--color-border);
 }
 
 .btn-add-habit ion-icon {
