@@ -23,7 +23,7 @@
 
 /* Modal Container */
 .modal-container {
-  background: #1d1b1c;
+  background: var(--color-surface);
   /* border-radius: 16px; */
   width: 90%;
   max-width: 520px;
@@ -98,13 +98,13 @@
 
 .form-group input,
 .form-group select {
-  background: #2e2e2e;
-  border: 1px solid #3a3a3a;
+  background: var(--color-input);
+  border: 1px solid var(--color-border);
   /* border-radius: 8px; */
   padding: 12px 16px;
   font-family: "Space Grotesk", sans-serif;
   font-size: 1rem;
-  color: var(--color-gray);
+  color: var(--text-primary);
   outline: none;
   transition: border-color 0.2s ease;
 }
@@ -134,8 +134,8 @@
 .icon-option {
   width: 44px;
   height: 44px;
-  background: #2a2a2a;
-  border: 1px solid #3a3a3a;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
   /* border-radius: 10px; */
   display: flex;
   align-items: center;
@@ -167,7 +167,7 @@
   height: 36px;
   padding: 5px;
   background: transparent;
-  border: 1px solid #3a3a3a;
+  border: 1px solid var(--color-border);
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -186,7 +186,7 @@
 }
 
 .color-option.selected {
-  box-shadow: 0 0 0 2px #1d1b1c inset;
+  box-shadow: 0 0 0 2px var(--color-surface) inset;
 }
 
 /* Goal Type Toggle */
@@ -195,8 +195,8 @@
   gap: 0;
   width: fit-content;
   padding: 4px;
-  background: #2a2a2a;
-  border: 1px solid #3a3a3a;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
 }
 
 .goal-type-btn {
@@ -206,18 +206,18 @@
   padding: 8px 14px;
   font-family: "Space Grotesk", sans-serif;
   font-size: 0.9rem;
-  color: var(--color-gray);
+  color: var(--text-primary);
   cursor: pointer;
   font-weight: 500;
   transition: all 0.2s ease;
 }
 
 .goal-type-btn:hover {
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .goal-type-btn.active {
-  color: #fff;
+  color: var(--text-primary);
   background: var(--habit-modal-color);
   color: #000;
 }
@@ -321,11 +321,11 @@
 }
 
 .form-control:disabled {
-  background-color: #2e2e2e;
+  background-color: var(--color-input);
 }
 
 .form-control:focus {
-  background-color: #2e2e2e;
+  background-color: var(--color-input);
   /* border: 1px solid var(--text-primary); */
   box-shadow: none;
   color: var(--text-primary);

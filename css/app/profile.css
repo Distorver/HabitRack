@@ -1,0 +1,193 @@
+.profile-dialog {
+  max-width: 560px;
+}
+
+.profile-avatar-editor {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.profile-avatar-preview {
+  width: 76px;
+  height: 76px;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  /* border-radius: 50%; */
+}
+
+.profile-avatar-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.profile-avatar-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.profile-upload-button,
+.profile-secondary-button {
+  font-family: "Space Grotesk";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 9px 14px;
+  border: 1px solid var(--color-border);
+  color: var(--text-primary);
+  background: var(--color-surface-raised);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.profile-upload-button:hover,
+.profile-secondary-button:hover {
+  border-color: var(--color-orange);
+}
+
+.profile-help-text {
+  margin: 0;
+  color: var(--text-secondery);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.profile-feedback {
+  min-height: 1.2em;
+  margin: 0;
+  color: var(--text-secondery);
+  font-size: 0.85rem;
+}
+
+.profile-feedback[data-state="error"] {
+  color: #d83a2e;
+}
+
+.profile-feedback[data-state="success"] {
+  color: #21834a;
+}
+
+.profile-password-section,
+.profile-danger-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.profile-password-section h3,
+.profile-danger-zone h3,
+.profile-setting-row h3,
+.profile-future-card h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.profile-danger-zone {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-delete-button {
+  flex: 0 0 auto;
+  padding: 10px 14px;
+  border: 1px solid #d83a2e;
+  color: #d83a2e;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.profile-delete-button:hover {
+  color: #fff;
+  background: #d83a2e;
+}
+
+.profile-setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.profile-setting-row > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profile-future-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-raised);
+}
+
+.profile-future-card > ion-icon {
+  color: var(--color-orange);
+  font-size: 1.5rem;
+}
+
+.profile-overlay {
+  z-index: 1100;
+}
+
+.profile-toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1200;
+  max-width: min(420px, calc(100vw - 32px));
+  margin: 0;
+  padding: 14px 18px;
+  border: 1px solid var(--color-border);
+  color: var(--text-primary);
+  background: var(--color-surface);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s;
+}
+
+.profile-toast.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .profile-avatar-editor {
+    align-items: flex-start;
+  }
+
+  .profile-danger-zone,
+  .profile-setting-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
