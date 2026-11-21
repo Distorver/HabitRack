@@ -1,0 +1,43 @@
+.how-section {
+  padding: 120px 50px;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  overflow: scroll;
+}
+
+.how-left {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  gap: 100px;
+}
+
+.how-title {
+  font-size: 4rem;
+}
+
+.how-text p {
+  color: var(--text-secondery);
+  margin-top: 35px;
+}
+
+.how-nav {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.how-nav-item {
+  width: 150px;
+}
+
+.how-right img {
+  width: 1200px;
+}
+
+.how-right p {
+  margin: 20px 0;
+  font-size: 1.5rem;
+}
