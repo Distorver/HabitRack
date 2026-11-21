@@ -178,7 +178,7 @@ Contributions are welcome.
 
 **Ali Ayman** [@distorver](https://github.com/distorver)
 
-- Mail: [ali.ayman.eid@proton.me](ali.ayman.eid@proton.me)
+- Mail: [ali.ayman.eid@proton.me](mailto:ali.ayman.eid@proton.me)
 - LinkedIn: [linkedin.com/in/3li-ayman](https://linkedin.com/in/3li-ayman)
 
 ## Acknowledgments
