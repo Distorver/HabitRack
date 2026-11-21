@@ -43,13 +43,13 @@
     <nav class="nav-section">
       <div class="nav-inner page-container">
         <!-- Brand -->
-        <a class="nav-brand" href="index.html">
+        <div class="nav-brand">
           <img
             src="assets/images/optimized/HabitRack.webp"
             alt="HabitRack Logo"
             class="navbar-logo"
           />
-        </a>
+        </div>
 
         <input
           class="menu-toggle"
@@ -156,71 +156,74 @@
             <div class="laws">
               <!-- Replace each data-law-image with an image path and update its alt text. -->
               <!-- ========== FIRST LAW ========== -->
-              <div
+              <button
+                type="button"
                 class="law"
                 data-law-image="assets/images/optimized/eye.png"
                 data-law-image-alt="Habit progress graph"
               >
-                <div class="law-num">01</div>
+                <span class="law-num">01</span>
 
-                <div class="law-text">
-                  <div class="law-header">Make it obvious.</div>
-                  <div class="law-desc">
+                <span class="law-text">
+                  <span class="law-header">Make it obvious.</span>
+                  <span class="law-desc">
                     Your daily habits are organized in one clear dashboard, so
                     you always know what needs your attention.
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </button>
               <!-- ========== SECOND LAW ========== -->
-              <div
+              <button
+                type="button"
                 class="law"
                 data-law-image="assets/images/optimized/attractive.png"
                 data-law-image-alt="HabitRack dashboard"
               >
-                <div class="law-num">02</div>
+                <span class="law-num">02</span>
 
-                <div class="law-text">
-                  <div class="law-header">Make it attractive.</div>
-                  <div class="law-desc">
+                <span class="law-text">
+                  <span class="law-header">Make it attractive.</span>
+                  <span class="law-desc">
                     Turn your progress into something you look forward to.
                     Celebrate milestones and make building consistency
                     rewarding.
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </button>
               <!-- ========== THIRD LAW ========== -->
-              <div
+              <button
+                type="button"
                 class="law"
                 data-law-image="assets/images/optimized/satisfying.png"
                 data-law-image-alt="Habit tracking interface"
               >
-                <div class="law-num">03</div>
+                <span class="law-num">03</span>
 
-                <div class="law-text">
-                  <div class="law-header">Make it easy.</div>
-                  <div class="law-desc">
+                <span class="law-text">
+                  <span class="law-header">Make it easy.</span>
+                  <span class="law-desc">
                     Track habits with a simple interface that makes checking in
-                    quick and keeps unnecessary complexitremove the position
-                    absolutey out of your way.
-                  </div>
-                </div>
-              </div>
+                    quick and keeps unnecessary complexity out of your way.
+                  </span>
+                </span>
+              </button>
               <!-- ========== FOURTH LAW ========== -->
-              <div
+              <button
+                type="button"
                 class="law"
                 data-law-image="assets/images/optimized/easy.png"
                 data-law-image-alt="Atomic Habits book"
               >
-                <div class="law-num">04</div>
+                <span class="law-num">04</span>
 
-                <div class="law-text">
-                  <div class="law-header">Make it satisfying.</div>
-                  <div class="law-desc">
+                <span class="law-text">
+                  <span class="law-header">Make it satisfying.</span>
+                  <span class="law-desc">
                     Track habits with a simple interface that makes checking in
                     quick and keeps unnecessary complexity out of your way.
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </button>
               <div class="law-indicator" aria-hidden="true"></div>
             </div>
           </div>
@@ -235,7 +238,79 @@
       <!-- ========== 4 LAWS END ========== -->
 
       <!-- ========== HOW IT WORKS START ========== -->
-      <section class="how-section" id="how-section"></section>
+      <section class="how-section" id="how-section">
+        <div class="how-left">
+          <div class="how-text">
+            <h2 class="how-title">How it Works.</h2>
+            <p>Some screenshots of the app.</p>
+          </div>
+          <div class="how-indicator"></div>
+          <ul class="how-nav">
+            <li class="how-nav-item">
+              <a href="#how-slide-1" aria-label="View the Dashboard screenshot">
+                <img src="assets/images/source/Scene01.png" alt="Dashboard" />
+              </a>
+            </li>
+            <li class="how-nav-item">
+              <a href="#how-slide-2" aria-label="View the Progress screenshot">
+                <img src="assets/images/source/Scene02.png" alt="Progress" />
+              </a>
+            </li>
+            <li class="how-nav-item">
+              <a
+                href="#how-slide-3"
+                aria-label="View the Achievements screenshot"
+              >
+                <img
+                  src="assets/images/source/Scene03.png"
+                  alt="Achievements"
+                />
+              </a>
+            </li>
+            <li class="how-nav-item">
+              <a
+                href="#how-slide-4"
+                aria-label="View the All Days Dashboard screenshot"
+              >
+                <img
+                  src="assets/images/source/Scene04.png"
+                  alt="All Days Dashboard"
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="how-right">
+          <article class="how-slide" id="how-slide-1">
+            <img
+              src="assets/images/source/Scene01.png"
+              alt="HabitRack dashboard"
+            />
+            <p>Dashboard</p>
+          </article>
+          <article class="how-slide" id="how-slide-2">
+            <img
+              src="assets/images/source/Scene02.png"
+              alt="Habit progress"
+            />
+            <p>Progress</p>
+          </article>
+          <article class="how-slide" id="how-slide-3">
+            <img
+              src="assets/images/source/Scene03.png"
+              alt="HabitRack achievements"
+            />
+            <p>Achievements</p>
+          </article>
+          <article class="how-slide" id="how-slide-4">
+            <img
+              src="assets/images/source/Scene04.png"
+              alt="All days dashboard"
+            />
+            <p>All Days Dashboard</p>
+          </article>
+        </div>
+      </section>
       <!-- ========== HOW IT WORKS END ========== -->
 
       <!-- ========== PHILOSOPHY START ========== -->
@@ -381,8 +456,7 @@
         <div class="footer-top">
           <!-- Left Side: Logo & Slogan -->
           <div class="footer-brand">
-            <a
-              href="index.html"
+            <div
               class="footer-logo-wrap text-decoration-none text-white d-inline-flex"
             >
               <img
@@ -391,7 +465,7 @@
                 class="footer-logo"
               />
               <p class="footer-logo-text mb-0">HabitRack</p>
-            </a>
+            </div>
             <h2>Build Habits That Actually Stick.</h2>
           </div>
 
@@ -399,7 +473,7 @@
           <div class="footer-navigation">
             <ul class="footer-links">
               <li>
-                <a href="index.html" class="footer-link">Home</a>
+                <a href="#hero-section" class="footer-link">Home</a>
               </li>
               <li>
                 <a href="pages/auth/login.html" class="footer-link">Login</a>
@@ -441,6 +515,8 @@
     <script src="js/landing/tracker.js"></script>
     <script src="js/landing/nav-decode.js"></script>
     <script src="js/landing/nav.js"></script>
+    <script src="js/landing/scroll-speed.js"></script>
+    <script src="js/landing/how-focus.js"></script>
     <script src="js/landing/laws-focus.js"></script>
     <script src="js/shared/main.js"></script>
   </body>
