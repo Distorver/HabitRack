@@ -2,7 +2,7 @@ const Profile = (() => {
   const PROFILE_STORAGE_KEY = "habitrack_profile";
   const THEME_STORAGE_KEY = "habitrack_theme";
   const HABITS_STORAGE_KEY = "habitrack_habits";
-  const DEFAULT_AVATAR = "../../assets/images/optimized/profile.jpg";
+  const DEFAULT_AVATAR = "../../assets/images/optimized/profile.webp";
   const DEFAULT_PROFILE = {
     name: "username",
     email: "",
