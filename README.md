@@ -176,8 +176,6 @@ Contributions are welcome.
 
 ## Contact
 
-**Ali**
-
 - GitHub: [@Distorver](https://github.com/Distorver)
 - LinkedIn: [linkedin.com/in/3li-ayman](https://linkedin.com/in/3li-ayman)
 
