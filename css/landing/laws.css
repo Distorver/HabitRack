@@ -69,11 +69,23 @@
   --law-marker-left: 14px;
   --law-marker-top: 12px;
   display: flex;
+  width: 100%;
   align-items: flex-start;
   gap: 16px;
   padding: 8px 12px 8px 56px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
   opacity: 0.5;
   transition: opacity 0.35s ease;
+}
+
+.law:focus-visible {
+  outline: 2px solid var(--color-orange);
+  outline-offset: 3px;
 }
 
 .law.is-focused {
@@ -86,33 +98,14 @@
 
 .law-indicator {
   position: absolute;
-  top: var(--law-marker-top);
-  left: var(--law-marker-left);
+  top: 0;
+  left: 0;
   z-index: 3;
   width: 20px;
   height: 20px;
   background: var(--color-orange);
   pointer-events: none;
-  transition:
-    top 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    left 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.law-indicator.is-bouncing {
-  animation: law-marker-bounce 0.55s ease;
-}
-
-@keyframes law-marker-bounce {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  35% {
-    transform: scale(1.3);
-  }
-  65% {
-    transform: scale(0.9);
-  }
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .law-num {
@@ -125,6 +118,11 @@
 .law-text {
   position: relative;
   z-index: 2;
+}
+
+.law-header,
+.law-desc {
+  display: block;
 }
 
 .law-header {
@@ -147,20 +145,14 @@
   width: min(38%, 480px);
   max-height: 62vh;
   object-fit: contain;
-  transition: opacity 0.25s ease;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
 }
 
 .law-img.is-changing {
-  animation: law-image-change 0.4s ease;
-}
-
-@keyframes law-image-change {
-  from {
-    opacity: 0.35;
-  }
-  to {
-    opacity: 1;
-  }
+  opacity: 0.4;
+  transform: scale(0.985);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -169,10 +161,5 @@
   .law-indicator,
   .law-img {
     transition: none;
-  }
-
-  .law-indicator.is-bouncing,
-  .law-img.is-changing {
-    animation: none;
   }
 }
