@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All Habits - HabitRack</title>
+    <title>Achievements - HabitRack</title>
     <link
       rel="icon"
       type="image/x-icon"
@@ -26,11 +26,17 @@
       crossorigin="anonymous"
     />
 
+    <!-- Existing Project Styles -->
     <link rel="stylesheet" href="../../css/app/nav.css" />
     <link rel="stylesheet" href="../../css/app/style.css" />
+    <link rel="stylesheet" href="../../css/app/header.css" />
+    <link rel="stylesheet" href="../../css/app/stats.css" />
     <link rel="stylesheet" href="../../css/app/modal.css" />
     <link rel="stylesheet" href="../../css/app/profile.css" />
     <link rel="stylesheet" href="../../css/base/general.css" />
+
+    <!-- Achievements Page Styles -->
+    <link rel="stylesheet" href="../../css/app/achievements.css" />
   </head>
   <body>
     <nav class="nav">
@@ -45,7 +51,7 @@
         </li>
         <li class="unselected nav-item">
           <div class="unselected-square"></div>
-          <a href="progress.html">Your progress</a>
+          <a href="progress.html">Your Progress</a>
         </li>
         <li class="selected nav-item">
           <div class="square"></div>
@@ -131,15 +137,211 @@
         </button>
       </div>
     </nav>
+
     <main class="main">
       <div class="glow"></div>
+
+      <div class="achievements-wrapper">
+        <!-- Page Header -->
+        <header class="ach-header d-flex flex-wrap align-items-start justify-content-between gap-3">
+          <div>
+            <h1 class="ach-title">Achievements</h1>
+            <p class="ach-subtitle">Every badge is proof you showed up.</p>
+          </div>
+          <span id="achCurrentDate" class="ach-date mono-text">FRI, NOV 06</span>
+        </header>
+
+        <!-- Top Summary Row: Next Achievement + Your Collection -->
+        <section class="row g-3 mb-4" aria-label="Featured Achievement and Collection Summary">
+          <!-- Next Achievement Card -->
+          <div class="col-12 col-xl-8">
+            <div class="ach-panel ach-featured-panel h-100 d-flex flex-column justify-content-between">
+              <div class="d-flex flex-column flex-md-row align-items-md-center gap-4">
+                <!-- Circular Progress Ring -->
+                <div
+                  class="ach-next-ring mx-auto mx-md-0 flex-shrink-0"
+                  id="nextAchRing"
+                  style="--ring-pct: 0%"
+                >
+                  <div class="ach-next-ring-inner">
+                    <ion-icon id="nextAchIcon" name="trending-up-outline"></ion-icon>
+                  </div>
+                </div>
+
+                <!-- Next Achievement Details -->
+                <div class="flex-grow-1 w-100">
+                  <span class="ach-eyebrow mono-text d-block mb-1">NEXT ACHIEVEMENT</span>
+                  <h2 id="nextAchTitle" class="ach-featured-title mb-1">The first step</h2>
+                  <p id="nextAchDesc" class="ach-muted-text mb-3">
+                    Reach your first habit goal.
+                  </p>
+
+                  <div class="d-flex align-items-center justify-content-between mb-2">
+                    <span id="nextAchFraction" class="ach-fraction mono-text">0 / 1 goal</span>
+                    <span id="nextAchRemaining" class="ach-lavender-label">1 goal to go</span>
+                  </div>
+
+                  <div
+                    class="progress ach-progress-track"
+                    role="progressbar"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div
+                      id="nextAchBar"
+                      class="progress-bar ach-lavender-fill"
+                      style="width: 0%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Rewards & CTA Button -->
+              <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 pt-4 mt-2">
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                  <span class="ach-reward-pill mono-text">
+                    <ion-icon name="flash-outline" class="ach-orange-text"></ion-icon>
+                    <span id="nextAchXp">+25 XP</span>
+                  </span>
+                  <span class="ach-reward-pill mono-text">
+                    <ion-icon name="gift-outline" class="ach-orange-text"></ion-icon>
+                    <span id="nextAchTokens">+15 tokens</span>
+                  </span>
+                </div>
+
+                <a
+                  href="habits.html"
+                  class="btn ach-cta-btn d-inline-flex align-items-center gap-2"
+                >
+                  <span>COMPLETE TODAY'S HABITS</span>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Your Collection Card -->
+          <div class="col-12 col-xl-4">
+            <div class="ach-panel h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <span class="ach-card-heading">Your collection</span>
+                  <ion-icon name="ribbon-outline" class="ach-panel-icon"></ion-icon>
+                </div>
+
+                <div class="mb-2">
+                  <span id="collectionUnlockedCount" class="ach-big-stat">0</span>
+                  <span class="ach-slash">/</span>
+                  <span id="collectionTotalCount" class="ach-total-stat">24</span>
+                  <span class="ach-muted-text ms-1">unlocked</span>
+                </div>
+
+                <div
+                  class="progress ach-collection-track mb-4"
+                  role="progressbar"
+                  aria-valuenow="0"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  <div
+                    id="collectionProgressBar"
+                    class="progress-bar ach-orange-fill"
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Rarity Breakdown List -->
+              <ul class="list-unstyled ach-rarity-list mb-0 d-flex flex-column gap-2">
+                <li class="d-flex align-items-center justify-content-between">
+                  <span class="d-inline-flex align-items-center gap-2 ach-rarity-name">
+                    <i class="rarity-dot dot-starter"></i> Starter
+                  </span>
+                  <span id="rarityStarterCount" class="ach-muted-text mono-text">0 / 8</span>
+                </li>
+                <li class="d-flex align-items-center justify-content-between">
+                  <span class="d-inline-flex align-items-center gap-2 ach-rarity-name">
+                    <i class="rarity-dot dot-rare"></i> Rare
+                  </span>
+                  <span id="rarityRareCount" class="ach-muted-text mono-text">0 / 10</span>
+                </li>
+                <li class="d-flex align-items-center justify-content-between">
+                  <span class="d-inline-flex align-items-center gap-2 ach-rarity-name">
+                    <i class="rarity-dot dot-epic"></i> Epic
+                  </span>
+                  <span id="rarityEpicCount" class="ach-muted-text mono-text">0 / 4</span>
+                </li>
+                <li class="d-flex align-items-center justify-content-between">
+                  <span class="d-inline-flex align-items-center gap-2 ach-rarity-name">
+                    <i class="rarity-dot dot-legendary"></i> Legendary
+                  </span>
+                  <span id="rarityLegendaryCount" class="ach-muted-text mono-text">0 / 2</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section Header & Filter Tabs -->
+        <section aria-label="All Achievements Grid">
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+            <h2 class="ach-section-title mb-0">All achievements</h2>
+
+            <div class="btn-group ach-filter-group" role="group" aria-label="Filter achievements">
+              <button
+                type="button"
+                class="btn ach-filter-btn is-active"
+                data-filter="all"
+                id="filterAllBtn"
+              >
+                All 24
+              </button>
+              <button
+                type="button"
+                class="btn ach-filter-btn"
+                data-filter="unlocked"
+                id="filterUnlockedBtn"
+              >
+                Unlocked 0
+              </button>
+              <button
+                type="button"
+                class="btn ach-filter-btn"
+                data-filter="in_progress"
+                id="filterProgressBtn"
+              >
+                In progress 0
+              </button>
+              <button
+                type="button"
+                class="btn ach-filter-btn"
+                data-filter="locked"
+                id="filterLockedBtn"
+              >
+                Locked 24
+              </button>
+            </div>
+          </div>
+
+          <!-- Achievements Cards Grid -->
+          <div id="achievementsGrid" class="row g-3"></div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="ach-footer text-center">
+          Every badge started as one small step.
+        </footer>
+      </div>
     </main>
 
+    <!-- Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
+    <!-- Ionicons -->
     <script
       type="module"
       src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"
@@ -148,6 +350,10 @@
       nomodule
       src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"
     ></script>
+
+    <!-- App Scripts -->
+    <script src="../../js/app/data.js"></script>
     <script src="../../js/app/profile.js"></script>
+    <script src="../../js/app/achievements.js"></script>
   </body>
 </html>

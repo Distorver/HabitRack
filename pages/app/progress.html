@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All Habits - HabitRack</title>
+    <title>Your Progress - HabitRack</title>
     <link
       rel="icon"
       type="image/x-icon"
@@ -26,11 +26,17 @@
       crossorigin="anonymous"
     />
 
+    <!-- Existing Project Styles -->
     <link rel="stylesheet" href="../../css/app/nav.css" />
     <link rel="stylesheet" href="../../css/app/style.css" />
+    <link rel="stylesheet" href="../../css/app/header.css" />
+    <link rel="stylesheet" href="../../css/app/stats.css" />
     <link rel="stylesheet" href="../../css/app/modal.css" />
     <link rel="stylesheet" href="../../css/app/profile.css" />
     <link rel="stylesheet" href="../../css/base/general.css" />
+
+    <!-- Progress Page Styles -->
+    <link rel="stylesheet" href="../../css/app/progress.css" />
   </head>
   <body>
     <nav class="nav">
@@ -131,8 +137,454 @@
         </button>
       </div>
     </nav>
+
     <main class="main">
       <div class="glow"></div>
+
+      <div class="progress-wrapper">
+        <!-- Page Header -->
+        <header class="progress-header d-flex flex-wrap align-items-start justify-content-between gap-3">
+          <div>
+            <h1 class="progress-title">Your Progress</h1>
+            <p class="progress-subtitle">Small steps. Real growth. Look how far you've come.</p>
+          </div>
+          <span id="progressCurrentDate" class="progress-date mono-text">FRI, NOV 06</span>
+        </header>
+
+        <!-- Row 1: Level & XP + Your Tokens -->
+        <section class="row g-3 mb-3" aria-label="Level and Tokens">
+          <!-- Level & XP Card -->
+          <div class="col-12 col-xl-8">
+            <div class="hr-panel h-100 d-flex flex-column justify-content-between">
+              <div class="d-flex flex-column flex-md-row align-items-md-center gap-4">
+                <!-- Level Ring -->
+                <div class="level-ring mx-auto mx-md-0 flex-shrink-0">
+                  <span class="level-ring-tag mono-text">LEVEL</span>
+                  <span id="levelNumber" class="level-ring-num">08</span>
+                </div>
+
+                <!-- XP Progress -->
+                <div class="flex-grow-1 w-100">
+                  <h2 class="panel-heading mb-2">Consistency is becoming you.</h2>
+
+                  <div class="d-flex align-items-center justify-content-between mb-2">
+                    <span id="xpFraction" class="xp-fraction mono-text">450 / 600 XP</span>
+                    <span id="nextLevelLabel" class="muted-label mono-text">Level 09</span>
+                  </div>
+
+                  <div
+                    class="progress hr-progress-track mb-2"
+                    role="progressbar"
+                    aria-valuenow="75"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div id="xpProgressBar" class="progress-bar hr-progress-fill" style="width: 75%"></div>
+                  </div>
+
+                  <p id="xpSubMeta" class="muted-label mb-0">
+                    150 XP to your next level · 4,650 lifetime XP
+                  </p>
+                </div>
+              </div>
+
+              <!-- Rewards Rule Strip -->
+              <div class="panel-divider pt-3 mt-4 d-flex flex-wrap align-items-center justify-content-between gap-2">
+                <div class="d-flex align-items-center gap-2 muted-label">
+                  <ion-icon name="checkmark-circle-outline" class="panel-icon"></ion-icon>
+                  <span>Reach a goal <strong class="text-white">+25 XP</strong></span>
+                </div>
+
+                <span class="muted-label d-none d-md-inline">→</span>
+
+                <span class="muted-label">Every 600 XP, level up</span>
+
+                <span class="muted-label d-none d-md-inline">→</span>
+
+                <span class="accent-label fw-semibold">+100 tokens</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tokens Card -->
+          <div class="col-12 col-xl-4">
+            <div class="hr-panel h-100 d-flex flex-column justify-content-between">
+              <div class="d-flex align-items-center justify-content-between">
+                <span class="panel-title">Your tokens</span>
+                <ion-icon name="logo-usd" class="panel-icon"></ion-icon>
+              </div>
+
+              <div class="my-2">
+                <span id="tokensCount" class="big-stat">350</span>
+                <span class="muted-label ms-1">tokens</span>
+              </div>
+
+              <div class="token-bonus-banner d-flex align-items-center gap-2 my-2">
+                <ion-icon name="gift-outline" class="accent-label"></ion-icon>
+                <span id="tokenBonusText" class="accent-label">+100 tokens at Level 09</span>
+              </div>
+
+              <a href="shop.html" class="shop-cta-link d-inline-flex align-items-center gap-1">
+                <span>Make them yours in the Shop</span>
+                <ion-icon name="arrow-up-outline" class="diag-arrow"></ion-icon>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Row 2: Weekly XP Chart + Keep It Going -->
+        <section class="row g-3 mb-3" aria-label="Weekly XP and Daily Momentum">
+          <!-- Weekly Chart Card -->
+          <div class="col-12 col-xl-8">
+            <div class="hr-panel h-100 d-flex flex-column justify-content-between">
+              <div class="d-flex flex-wrap align-items-start justify-content-between gap-2 mb-3">
+                <div>
+                  <h2 class="panel-title mb-1">Your week, one goal at a time</h2>
+                  <div class="d-flex flex-wrap align-items-baseline gap-2">
+                    <span id="weekXpTotal" class="big-stat">550</span>
+                    <span class="xp-unit">XP</span>
+                    <span id="weekDeltaText" class="muted-label">+100 vs. last week · 22 of 28 goals reached</span>
+                  </div>
+                </div>
+
+                <div class="btn-group range-switcher" role="group" aria-label="Chart range">
+                  <button type="button" class="btn range-btn is-active" data-range="7">7 days</button>
+                  <button type="button" class="btn range-btn" data-range="30">30 days</button>
+                </div>
+              </div>
+
+              <!-- Stacked Bar Chart -->
+              <div class="chart-wrapper my-2">
+                <div class="chart-y-axis mono-text">
+                  <span>100</span>
+                  <span>50</span>
+                  <span>0 XP</span>
+                </div>
+
+                <div id="weeklyBarsContainer" class="chart-bars-grid">
+                  <!-- Sat -->
+                  <div class="bar-column">
+                    <div class="bar-stack">
+                      <span class="bar-seg seg-mint" style="height: 24px"></span>
+                      <span class="bar-seg seg-lavender" style="height: 22px"></span>
+                      <span class="bar-seg seg-sky" style="height: 22px"></span>
+                    </div>
+                    <span class="bar-day mono-text">Sat</span>
+                  </div>
+
+                  <!-- Sun -->
+                  <div class="bar-column">
+                    <div class="bar-stack">
+                      <span class="bar-seg seg-mint" style="height: 24px"></span>
+                      <span class="bar-seg seg-lavender" style="height: 24px"></span>
+                      <span class="bar-seg seg-rose" style="height: 24px"></span>
+                      <span class="bar-seg seg-sky" style="height: 24px"></span>
+                    </div>
+                    <span class="bar-day mono-text">Sun</span>
+                  </div>
+
+                  <!-- Mon -->
+                  <div class="bar-column">
+                    <div class="bar-stack">
+                      <span class="bar-seg seg-mint" style="height: 24px"></span>
+                      <span class="bar-seg seg-rose" style="height: 24px"></span>
+                    </div>
+                    <span class="bar-day mono-text">Mon</span>
+                  </div>
+
+                  <!-- Tue -->
+                  <div class="bar-column">
+                    <div class="bar-stack">
+                      <span class="bar-seg seg-mint" style="height: 24px"></span>
+                      <span class="bar-seg seg-lavender" style="height: 24px"></span>
+                      <span class="bar-seg seg-rose" style="height: 24px"></span>
+                      <span class="bar-seg seg-sky" style="height: 24px"></span>
+                    </div>
+                    <span class="bar-day mono-text">Tue</span>
+                  </div>
+
+                  <!-- Wed -->
+                  <div class="bar-column">
+                    <div class="bar-stack">
+                      <span class="bar-seg seg-lavender" style="height: 24px"></span>
+                      <span class="bar-seg seg-rose" style="height: 22px"></span>
+                      <span class="bar-seg seg-sky" style="height: 22px"></span>
+                    </div>
+                    <span class="bar-day mono-text">Wed</span>
+                  </div>
+
+                  <!-- Thu -->
+                  <div class="bar-column">
+                    <div class="bar-stack">
+                      <span class="bar-seg seg-mint" style="height: 22px"></span>
+                      <span class="bar-seg seg-lavender" style="height: 22px"></span>
+                      <span class="bar-seg seg-rose" style="height: 22px"></span>
+                      <span class="bar-seg seg-sky" style="height: 22px"></span>
+                    </div>
+                    <span class="bar-day mono-text">Thu</span>
+                  </div>
+
+                  <!-- Today -->
+                  <div class="bar-column">
+                    <div class="bar-stack">
+                      <span class="bar-seg seg-rose" style="height: 24px"></span>
+                      <span class="bar-seg seg-sky" style="height: 22px"></span>
+                    </div>
+                    <span class="bar-day is-today mono-text">Today</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Chart Legend & Date Range -->
+              <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 pt-2">
+                <div class="chart-legend d-flex flex-wrap align-items-center gap-4">
+                  <span class="legend-item"><i class="legend-dot seg-sky"></i> Sugar Intake</span>
+                  <span class="legend-item"><i class="legend-dot seg-rose"></i> Sleep</span>
+                  <span class="legend-item"><i class="legend-dot seg-lavender"></i> Hydration</span>
+                  <span class="legend-item"><i class="legend-dot seg-mint"></i> Reading</span>
+                </div>
+                <span id="chartDateRange" class="muted-label mono-text">Oct 31 – Nov 6</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Keep It Going Card -->
+          <div class="col-12 col-xl-4">
+            <div class="hr-panel h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <span class="eyebrow-tag mono-text">KEEP IT GOING</span>
+                  <ion-icon name="sparkles-outline" class="panel-icon"></ion-icon>
+                </div>
+
+                <h2 id="momentumHeading" class="momentum-title mb-3">Two wins already today.</h2>
+
+                <p id="momentumDesc" class="muted-label mb-3">
+                  Just 500 ml more water and 20 minutes of reading to reach your next two goals.
+                </p>
+
+                <p id="momentumReward" class="reward-highlight mb-4">2 more goals = +50 XP</p>
+              </div>
+
+              <a href="habits.html" class="btn primary-orange-btn w-100 d-flex align-items-center justify-content-center gap-2">
+                <span>CONTINUE YOUR HABITS</span>
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Row 3: Every Habit Adds Up + Little Milestones -->
+        <section class="row g-3" aria-label="Habits Breakdown and Milestones">
+          <!-- Habits Breakdown Table -->
+          <div class="col-12 col-xl-8">
+            <div class="hr-panel">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <h2 class="panel-title mb-0">Every habit adds up</h2>
+                <span id="weeklyCompletionPct" class="muted-label">79% completed this week</span>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-borderless align-middle habits-breakdown-table mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col">Habit</th>
+                      <th scope="col">Last 7 days</th>
+                      <th scope="col">Streak</th>
+                      <th scope="col" class="text-end">Today</th>
+                    </tr>
+                  </thead>
+                  <tbody id="habitsProgressBody">
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-3">
+                          <span class="habit-badge-icon">
+                            <ion-icon name="leaf-outline"></ion-icon>
+                          </span>
+                          <div>
+                            <div class="habit-row-title">Sugar Intake</div>
+                            <div class="habit-row-sub">Daily tracking</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="mini-ticks d-flex gap-1 mb-1">
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill is-done"></span>
+                        </div>
+                        <div class="habit-row-sub">6 / 7 goals</div>
+                      </td>
+                      <td class="streak-cell">4 days</td>
+                      <td class="text-end status-reached">
+                        <ion-icon name="checkmark-outline"></ion-icon> Goal reached
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-3">
+                          <span class="habit-badge-icon">
+                            <ion-icon name="water-outline"></ion-icon>
+                          </span>
+                          <div>
+                            <div class="habit-row-title">Hydration</div>
+                            <div class="habit-row-sub">2L Goal</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="mini-ticks d-flex gap-1 mb-1">
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill"></span>
+                        </div>
+                        <div class="habit-row-sub">5 / 7 goals</div>
+                      </td>
+                      <td class="streak-cell">3 days</td>
+                      <td class="text-end today-pending mono-text">1.5 / 2 L</td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-3">
+                          <span class="habit-badge-icon">
+                            <ion-icon name="moon-outline"></ion-icon>
+                          </span>
+                          <div>
+                            <div class="habit-row-title">Sleep</div>
+                            <div class="habit-row-sub">7h Goal</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="mini-ticks d-flex gap-1 mb-1">
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill is-done"></span>
+                        </div>
+                        <div class="habit-row-sub">6 / 7 goals</div>
+                      </td>
+                      <td class="streak-cell">2 days</td>
+                      <td class="text-end status-reached">
+                        <ion-icon name="checkmark-outline"></ion-icon> 7.5 / 7 h
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center gap-3">
+                          <span class="habit-badge-icon">
+                            <ion-icon name="book-outline"></ion-icon>
+                          </span>
+                          <div>
+                            <div class="habit-row-title">Reading</div>
+                            <div class="habit-row-sub">30m Goal</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="mini-ticks d-flex gap-1 mb-1">
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill"></span>
+                          <span class="tick-pill is-done"></span>
+                          <span class="tick-pill"></span>
+                        </div>
+                        <div class="habit-row-sub">5 / 7 goals</div>
+                      </td>
+                      <td class="streak-cell">5 days</td>
+                      <td class="text-end today-pending mono-text">10 / 30 min</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Little Milestones Card -->
+          <div class="col-12 col-xl-4">
+            <div class="hr-panel h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <h2 class="panel-title mb-0">Little milestones</h2>
+                  <ion-icon name="ribbon-outline" class="panel-icon"></ion-icon>
+                </div>
+
+                <div class="milestone-row d-flex align-items-start gap-3 pb-3 mb-3">
+                  <span class="habit-badge-icon flex-shrink-0">
+                    <ion-icon name="flag-outline"></ion-icon>
+                  </span>
+                  <div>
+                    <div class="habit-row-title">The first step</div>
+                    <div class="habit-row-sub">Your first goal · Unlocked</div>
+                  </div>
+                </div>
+
+                <div class="milestone-row d-flex align-items-start gap-3 pb-3 mb-3">
+                  <span class="habit-badge-icon flex-shrink-0">
+                    <ion-icon name="flame-outline"></ion-icon>
+                  </span>
+                  <div>
+                    <div class="habit-row-title">One week stronger</div>
+                    <div class="habit-row-sub">7-day streak · Unlocked</div>
+                  </div>
+                </div>
+
+                <div class="pt-1">
+                  <div class="d-flex align-items-start gap-3 mb-3">
+                    <span class="habit-badge-icon flex-shrink-0">
+                      <ion-icon name="trending-up-outline"></ion-icon>
+                    </span>
+                    <div>
+                      <div class="habit-row-title">Two weeks of you</div>
+                      <div class="habit-row-sub">Reach a 14-day activity streak</div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex align-items-center justify-content-between mb-2">
+                    <span id="milestoneDaysText" class="habit-row-title mono-text">12 / 14 days</span>
+                    <span id="milestoneRemText" class="accent-label">2 days to go</span>
+                  </div>
+
+                  <div
+                    class="progress milestone-track mb-3"
+                    role="progressbar"
+                    aria-valuenow="85"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div id="milestoneBar" class="progress-bar hr-progress-fill" style="width: 85%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="habit-row-sub mb-0">
+                Reach any habit goal each day. Every small win counts.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer Note -->
+        <footer class="progress-footer text-center">
+          You don't need to be perfect. Just keep showing up.
+        </footer>
+      </div>
     </main>
 
     <script
@@ -149,5 +601,6 @@
       src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"
     ></script>
     <script src="../../js/app/profile.js"></script>
+    <script src="../../js/app/progress.js"></script>
   </body>
-</html>
+</html><!--  -->

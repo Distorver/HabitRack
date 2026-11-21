@@ -1,0 +1,489 @@
+/* #region Layout & Typography */
+.progress-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2rem 2.25rem 1.5rem;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.mono-text {
+  font-family: "Geist Mono", monospace;
+}
+
+.progress-header {
+  margin-bottom: 1.5rem;
+}
+
+.progress-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text-primary, #f5f3f0);
+  margin-bottom: 0.25rem;
+}
+
+.progress-subtitle,
+.muted-label {
+  font-size: 0.85rem;
+  color: var(--text-muted, #9b958e);
+}
+
+.progress-date {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #9b958e);
+}
+/* #endregion */
+
+/* #region Panels & Shared Card Styles */
+.hr-panel {
+  background-color: var(--card-bg, #161412);
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  border-radius: 12px;
+  padding: 1.35rem 1.5rem;
+}
+
+.panel-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary, #f5f3f0);
+}
+
+.panel-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary, #f5f3f0);
+}
+
+.panel-icon {
+  font-size: 1.1rem;
+  color: var(--text-muted, #9b958e);
+}
+
+.panel-divider {
+  border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+}
+
+.accent-label {
+  font-size: 0.85rem;
+  color: var(--accent, #ff5500);
+}
+
+.big-stat {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-primary, #f5f3f0);
+}
+/* #endregion */
+
+/* #region Level Ring & Tokens */
+.level-ring {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  border: 5px solid var(--accent, #ff5500);
+  box-shadow: inset 0 0 0 4px rgba(255, 85, 0, 0.14);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.level-ring-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted, #9b958e);
+}
+
+.level-ring-num {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--text-primary, #f5f3f0);
+}
+
+.xp-fraction {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary, #f5f3f0);
+}
+
+.hr-progress-track {
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+
+.hr-progress-fill {
+  background-color: var(--accent, #ff5500);
+  border-radius: 999px;
+}
+
+.token-bonus-banner {
+  background-color: rgba(255, 85, 0, 0.12);
+  border: 1px solid rgba(255, 85, 0, 0.25);
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+}
+
+.shop-cta-link {
+  font-size: 0.85rem;
+  color: var(--text-muted, #9b958e);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.shop-cta-link:hover {
+  color: var(--accent, #ff5500);
+}
+
+.diag-arrow {
+  transform: rotate(45deg);
+  font-size: 0.9rem;
+}
+/* #endregion */
+
+/* #region Weekly Chart & Keep It Going */
+.xp-unit {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary, #f5f3f0);
+}
+
+.range-switcher {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  border-radius: 8px;
+  padding: 3px;
+}
+
+.range-btn {
+  font-size: 0.78rem;
+  color: var(--text-muted, #9b958e);
+  border: 0;
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+
+.range-btn:hover {
+  color: var(--text-primary, #f5f3f0);
+}
+
+.range-btn.is-active {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--text-primary, #f5f3f0);
+  font-weight: 600;
+}
+
+.chart-wrapper {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 12px;
+  min-height: 145px;
+}
+
+.chart-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--text-muted, #9b958e);
+  padding-bottom: 24px;
+}
+
+.chart-bars-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 12px;
+  align-items: end;
+  border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  padding-bottom: 8px;
+}
+
+.bar-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bar-stack {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 3px;
+  width: 100%;
+  max-width: 34px;
+  min-height: 98px;
+}
+
+.bar-seg {
+  display: block;
+  width: 100%;
+  border-radius: 2px;
+}
+
+.seg-sky {
+  background-color: #9dd6ea;
+}
+
+.seg-rose {
+  background-color: #f3b5be;
+}
+
+.seg-lavender {
+  background-color: #d9c3eb;
+}
+
+.seg-mint {
+  background-color: #b8e3cb;
+}
+
+.bar-day {
+  margin-top: 8px;
+  font-size: 0.74rem;
+  color: var(--text-muted, #9b958e);
+}
+
+.bar-day.is-today {
+  color: var(--accent, #ff5500);
+  font-weight: 600;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  color: var(--text-muted, #9b958e);
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.eyebrow-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #9b958e);
+}
+
+.momentum-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-primary, #f5f3f0);
+}
+
+.reward-highlight {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary, #f5f3f0);
+}
+
+.primary-orange-btn {
+  background-color: var(--accent, #ff5500);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 8px;
+  border: 0;
+  padding: 0.65rem 1rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.primary-orange-btn:hover {
+  background-color: #ff6a1f;
+  color: #ffffff;
+}
+/* #endregion */
+
+/* #region Habits Breakdown & Milestones */
+.habits-breakdown-table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--text-primary, #f5f3f0);
+}
+
+.habits-breakdown-table thead th {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted, #9b958e);
+  border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  padding-bottom: 10px;
+}
+
+.habits-breakdown-table tbody tr {
+  border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+}
+
+.habits-breakdown-table tbody tr:last-child {
+  border-bottom: 0;
+}
+
+.habit-badge-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted, #9b958e);
+  font-size: 1rem;
+}
+
+.habit-row-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary, #f5f3f0);
+}
+
+.habit-row-sub {
+  font-size: 0.76rem;
+  color: var(--text-muted, #9b958e);
+}
+
+.tick-pill {
+  width: 14px;
+  height: 6px;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+.tick-pill.is-done {
+  background-color: #9bb8d3;
+}
+
+.streak-cell {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary, #f5f3f0);
+}
+
+.status-reached {
+  font-size: 0.82rem;
+  color: #7cc4fa;
+  font-weight: 500;
+}
+
+.today-pending {
+  font-size: 0.82rem;
+  color: var(--text-muted, #9b958e);
+}
+
+.milestone-row {
+  border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+}
+
+.milestone-track {
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+
+.progress-footer {
+  margin-top: 1.75rem;
+  font-size: 0.78rem;
+  color: var(--text-muted, #9b958e);
+}
+/* #endregion */
+
+/* #region Responsive */
+@media (max-width: 767.98px) {
+  .progress-wrapper {
+    padding: 1.25rem 1rem;
+  }
+}
+/* #endregion */
+
+/* #region Light Mode Support for Progress Page */
+:root[data-theme="light"] .progress-title,
+:root[data-theme="light"] .panel-heading,
+:root[data-theme="light"] .panel-title,
+:root[data-theme="light"] .big-stat,
+:root[data-theme="light"] .level-ring-num,
+:root[data-theme="light"] .xp-fraction,
+:root[data-theme="light"] .xp-unit,
+:root[data-theme="light"] .momentum-title,
+:root[data-theme="light"] .reward-highlight,
+:root[data-theme="light"] .habit-row-title,
+:root[data-theme="light"] .streak-cell {
+  color: #141210;
+}
+
+:root[data-theme="light"] .progress-subtitle,
+:root[data-theme="light"] .progress-date,
+:root[data-theme="light"] .muted-label,
+:root[data-theme="light"] .level-ring-tag,
+:root[data-theme="light"] .panel-icon,
+:root[data-theme="light"] .shop-cta-link,
+:root[data-theme="light"] .bar-day:not(.is-today),
+:root[data-theme="light"] .legend-item,
+:root[data-theme="light"] .eyebrow-tag,
+:root[data-theme="light"] .habit-row-sub,
+:root[data-theme="light"] .today-pending,
+:root[data-theme="light"] .progress-footer {
+  color: #5c5752;
+}
+
+:root[data-theme="light"] .hr-panel {
+  background-color: #ffffff;
+  border-color: rgba(20, 18, 16, 0.12);
+  box-shadow: 0 4px 18px rgba(20, 18, 16, 0.04);
+}
+
+:root[data-theme="light"] .panel-divider,
+:root[data-theme="light"] .habits-breakdown-table thead th,
+:root[data-theme="light"] .habits-breakdown-table tbody tr,
+:root[data-theme="light"] .milestone-row,
+:root[data-theme="light"] .chart-bars-grid {
+  border-color: rgba(20, 18, 16, 0.12);
+}
+
+:root[data-theme="light"] .habits-breakdown-table {
+  --bs-table-bg: transparent;
+  --bs-table-color: #141210;
+}
+
+:root[data-theme="light"] .hr-progress-track,
+:root[data-theme="light"] .milestone-track {
+  background-color: rgba(20, 18, 16, 0.1);
+}
+
+:root[data-theme="light"] .range-switcher {
+  background-color: rgba(20, 18, 16, 0.05);
+  border-color: rgba(20, 18, 16, 0.12);
+}
+
+:root[data-theme="light"] .range-btn.is-active {
+  background-color: #ffffff;
+  color: #141210;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="light"] .habit-badge-icon {
+  background-color: rgba(20, 18, 16, 0.04);
+  border-color: rgba(20, 18, 16, 0.12);
+  color: #3f3b37;
+}
+
+:root[data-theme="light"] .tick-pill {
+  background-color: rgba(20, 18, 16, 0.14);
+}
+
+:root[data-theme="light"] .tick-pill.is-done {
+  background-color: #4f7fa8;
+}
+
+:root[data-theme="light"] .token-bonus-banner {
+  background-color: rgba(255, 85, 0, 0.09);
+  border-color: rgba(255, 85, 0, 0.25);
+}
+/* #endregion */
