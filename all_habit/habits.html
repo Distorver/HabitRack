@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HabitRack - Habits</title>
   <link rel="stylesheet" href="habits.css">
+  <link rel="icon" href="habitsimg/HabitRack.webp" type="image/x-icon">
 </head>
 <body>
   <div class="app">
@@ -12,14 +14,14 @@
     <!-- السايدبار -->
     <aside class="sidebar">
       <a href="index.html" class="logo">
-  <img src="habitsimg/HabitRack.webp" alt="HabitRack logo" class="logo-img">
-  HabitRack
-</a>
+        <img src="habitsimg/HabitRack.webp" alt="HabitRack logo" class="logo-img">
+        HabitRack
+      </a>
       <nav class="nav">
         <a class="nav-link active" href="#habits">All Habits</a>
         <a class="nav-link" href="#progress">Your Progress</a>
         <a class="nav-link" href="#achievements">Achievements</a>
-        <!-- <a class="nav-link" href="#shop">Shop</a> -->
+        <a class="nav-link" href="#shop">Shop</a>
       </nav>
 
       <div class="user">
@@ -39,79 +41,249 @@
             <p class="subtitle">Track your daily progress and build consistency.</p>
           </div>
           <div class="header-actions">
-  <div class="toggle" role="group" aria-label="Date range">
-    <button class="toggle-btn active" data-range="7">7 days</button>
-    <button class="toggle-btn" data-range="30">30 days</button>
-  </div>
-  <button class="btn-primary" id="add-habit-btn">ADD HABIT +</button>
-</div>
+            <div class="toggle" role="group" aria-label="Date range">
+              <button class="toggle-btn active" data-range="7">7 days</button>
+              <button class="toggle-btn" data-range="30">30 days</button>
+            </div>
+            <button class="btn-primary" id="add-habit-btn">ADD HABIT +</button>
+          </div>
         </header>
 
         <!-- كروت الإحصائيات -->
         <div class="stats">
           <div class="card stat">
-             <span class="stat-label">Total Habits</span>
-           <span class="stat-value" id="total-habits">4</span>
-           
-          </div></div>
-       
+            <span class="stat-label">Total Habits</span>
+            <span class="stat-value" id="total-habits">4</span>
+
+          </div>
+
           <div class="card stat">
             <span class="stat-label">Streak</span>
-            <span class="stat-value">12 Days</span>
+            <span class="stat-value" id="streak-value">12 Days</span>
           </div>
           <div class="card stat">
             <span class="stat-label">Completion</span>
-            <span class="stat-value">85%</span>
+            <span class="stat-value" id="completion-value">85%</span>
           </div>
+        </div>
         <div class="habits-grid" id="habits-grid"></div>
 
       </section>
 
       <section id="progress" class="page">
         <h1>Your Progress</h1>
-        <p class="subtitle">Small steps. Real growth.</p>
-      </section>
+        <p class="subtitle">Small steps. Real growth. Look how far you've come.</p>
+        <div class="progress-grid">
+          <div class="card level-card">
+            <div class="level-main">
+              <div class="level-ring">
+                <svg viewBox="0 0 80 80" aria-hidden="true">
+                  <circle class="ring-bg" cx="40" cy="40" r="34" pathLength="100" />
+                  <circle class="ring-fg" id="ring-fg" cx="40" cy="40" r="34" pathLength="100"
+                    stroke-dasharray="0 100" />
+                </svg>
+                <div class="level-num">
+                  <small>LEVEL</small>
+                  <strong id="level-num">01</strong>
+                </div>
+              </div>
 
+              <div class="level-info">
+                <h2>Consistency is becoming you.</h2>
+                <div class="xp-row">
+                  <span id="xp-text">0 / 600 XP</span>
+                  <span id="next-level">Level 02</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" id="xp-fill"></div>
+                </div>
+                <p class="level-sub"><span id="xp-left">600</span> XP to your next level · <span id="xp-total">0</span>
+                  lifetime XP</p>
+              </div>
+            </div>
+
+            <div class="level-steps">
+              <span>Reach a goal <b>+25 XP</b></span>
+              <span>Every 600 XP, level up</span>
+              <span><b>+100 tokens</b></span>
+            </div>
+          </div>
+          <div class="card tokens-card">
+            <span class="stat-label">Your tokens</span>
+            <div class="tokens-value"><strong id="tokens-value">0</strong> tokens</div>
+            <div class="tokens-next">+100 tokens at Level <span id="tokens-next-level">02</span></div>
+            <a href="#shop" class="tokens-link">Make them yours in the Shop ↗</a>
+          </div>
+
+          <div class="card keep-card">
+            <span class="stat-label">KEEP IT GOING</span>
+            <h3 id="keep-title"></h3>
+            <p id="keep-text"></p>
+            <p class="keep-xp" id="keep-xp"></p>
+            <a href="#habits" class="btn-primary keep-btn">CONTINUE YOUR HABITS →</a>
+          </div>
+
+          <div class="card week-card">
+            <h2>Your week, one goal at a time</h2>
+            <div class="week-summary">
+              <strong id="week-xp">0 XP</strong>
+              <span id="week-diff"></span>
+              <span id="week-goals"></span>
+            </div>
+            <div class="week-chart" id="week-chart" role="img"></div>
+            <div class="week-legend" id="week-legend"></div>
+          </div>
+          <div class="card habits-table-card">
+            <div class="table-head">
+              <h2>Every habit adds up</h2>
+              <span class="table-pct" id="table-pct"></span>
+            </div>
+            <div class="habit-rows" id="habit-rows"></div>
+          </div>
+
+          <div class="card milestones-card">
+            <h2>Little milestones</h2>
+            <ul class="milestones" id="milestones"></ul>
+          </div>
+        </div>
+
+      </section>
       <section id="achievements" class="page">
         <h1>Achievements</h1>
         <p class="subtitle">Every badge is proof you showed up.</p>
+
+        <div class="ach-top">
+          <div class="card next-card">
+            <span class="stat-label">NEXT ACHIEVEMENT</span>
+            <h2 id="next-title"></h2>
+            <p id="next-desc"></p>
+            <div class="xp-row">
+              <span id="next-count"></span>
+              <span id="next-left"></span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="next-fill"></div>
+            </div>
+            <div class="next-rewards" id="next-rewards"></div>
+            <a href="#habits" class="btn-primary next-btn">COMPLETE TODAY'S HABITS →</a>
+          </div>
+
+          <div class="card collection-card">
+            <span class="stat-label">Your collection</span>
+            <div class="collection-count">
+              <strong id="col-unlocked">0</strong> / <span id="col-total">0</span> unlocked
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="col-fill"></div>
+            </div>
+            <ul class="rarity-list" id="rarity-list"></ul>
+          </div>
+        </div>
+
+        <div class="ach-head">
+          <h2>All achievements</h2>
+          <div class="toggle" role="group" aria-label="Filter achievements" id="ach-filter">
+            <button class="toggle-btn active" data-filter="all">All</button>
+            <button class="toggle-btn" data-filter="unlocked">Unlocked</button>
+            <button class="toggle-btn" data-filter="progress">In progress</button>
+            <button class="toggle-btn" data-filter="locked">Locked</button>
+          </div>
+        </div>
+
+        <div class="ach-grid" id="ach-grid"></div>
       </section>
 
-      <!-- <section id="shop" class="page">
+      <section id="shop" class="page">
         <h1>Shop</h1>
-        <p class="subtitle">Coming soon.</p>
-      </section> -->
+        <p class="subtitle">Spend your tokens to make HabitRack yours.</p>
+
+        <div class="card shop-balance">
+          <span class="stat-label">Your tokens</span>
+          <strong id="shop-tokens">0</strong>
+        </div>
+
+        <div class="shop-grid" id="shop-grid"></div>
+      </section>
     </main>
 
   </div>
-<dialog id="habit-dialog" class="dialog">
-  <form method="dialog" class="dialog-form" id="habit-form">
-    <h2>New Habit</h2>
+  <dialog id="habit-dialog" class="dialog">
+    <form method="dialog" class="dialog-form" id="habit-form">
+      <h2>New Habit</h2>
 
-    <label class="field">
-      <span>Name</span>
-      <input type="text" name="name" required placeholder="e.g. Reading">
-    </label>
+      <article class="card habit-card preview" id="preview" aria-hidden="true">
+        <div class="habit-top">
+          <span class="habit-icon" id="pv-icon"></span>
+          <div class="habit-info">
+            <div class="habit-name" id="pv-name"></div>
+            <div class="habit-goal" id="pv-goal"></div>
+          </div>
+        </div>
+        <div class="week" id="pv-week"></div>
+      </article>
 
-    <label class="field">
-      <span>Goal</span>
-      <input type="text" name="goal" placeholder="e.g. 30m Goal">
-    </label>
+      <div>
+        <span class="mini-label">Quick start</span>
+        <div class="chips" id="suggestions"></div>
+      </div>
 
-    <fieldset class="colors">
-      <legend>Color</legend>
-      <label><input type="radio" name="color" value="sugar" checked><span style="--c:#a8d8f0"></span></label>
-      <label><input type="radio" name="color" value="hydration"><span style="--c:#f4a9b8"></span></label>
-      <label><input type="radio" name="color" value="sleep"><span style="--c:#cdb4e6"></span></label>
-      <label><input type="radio" name="color" value="reading"><span style="--c:#f8c9a3"></span></label>
-    </fieldset>
+      <label class="field">
+        <span>Name</span>
+        <input type="text" name="name" required maxlength="24" placeholder="e.g. Reading">
+      </label>
 
-    <div class="dialog-actions">
-      <button type="button" class="btn-secondary" id="cancel-habit">Cancel</button>
-      <button type="submit" class="btn-primary">Save</button>
-    </div>
-  </form>
-</dialog>
+      <label class="field">
+        <span>Goal</span>
+        <input type="text" name="goal" maxlength="24" placeholder="e.g. 30m Goal">
+      </label>
+
+      <fieldset class="picker" id="icon-picker">
+        <legend>Icon</legend>
+      </fieldset>
+      <fieldset class="picker" id="color-picker">
+        <legend>Color</legend>
+      </fieldset>
+      <fieldset class="picker" id="shape-picker">
+        <legend>Day shape</legend>
+      </fieldset>
+
+      <div class="dialog-actions">
+        <button type="button" class="btn-secondary" id="cancel-habit">Cancel</button>
+        <button type="submit" class="btn-primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+  <!-- 
+  <dialog id="habit-dialog" class="dialog">
+    <form method="dialog" class="dialog-form" id="habit-form">
+      <h2>New Habit</h2>
+
+      <label class="field">
+        <span>Name</span>
+        <input type="text" name="name" required placeholder="e.g. Reading">
+      </label>
+
+      <label class="field">
+        <span>Goal</span>
+        <input type="text" name="goal" placeholder="e.g. 30m Goal">
+      </label>
+
+      <fieldset class="colors">
+        <legend>Color</legend>
+        <label><input type="radio" name="color" value="sugar" checked><span style="--c:#a8d8f0"></span></label>
+        <label><input type="radio" name="color" value="hydration"><span style="--c:#f4a9b8"></span></label>
+        <label><input type="radio" name="color" value="sleep"><span style="--c:#cdb4e6"></span></label>
+        <label><input type="radio" name="color" value="reading"><span style="--c:#f8c9a3"></span></label>
+      </fieldset>
+
+      <div class="dialog-actions">
+        <button type="button" class="btn-secondary" id="cancel-habit">Cancel</button>
+        <button type="submit" class="btn-primary">Save</button>
+      </div>
+    </form>
+  </dialog> -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="habits.js"></script>
 </body>
+
 </html>

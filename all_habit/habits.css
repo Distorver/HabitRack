@@ -93,7 +93,7 @@ img { max-width: 100%; }
 
 .nav-link.active {
   color: var(--accent);
-  background: rgba(255, 90, 31, 0.08);
+  background: color-mix(in srgb, var(--accent) 10%,transparent);
 }
 
 .nav-link:focus-visible {
@@ -181,6 +181,7 @@ html { scroll-behavior: smooth; }
   padding: 0;                         /* الـ padding على الفورم، عشان الضغط على الـ backdrop يتعرف */
   width: min(420px, calc(100% - 32px));
   margin: auto;
+  max-width: 90vh;
 }
 
 .dialog::backdrop { background: rgba(0, 0, 0, 0.65); }
@@ -205,7 +206,7 @@ html { scroll-behavior: smooth; }
 .field input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
 /* اختيار اللون */
-.colors { border: none; display: flex; align-items: center; gap: 10px; }
+/* .colors { border: none; display: flex; align-items: center; gap: 10px; }
 .colors legend { color: var(--muted); font-size: 0.85rem; margin-bottom: 8px; }
 .colors label { position: relative; cursor: pointer; }
 .colors input { position: absolute; opacity: 0; }
@@ -218,7 +219,7 @@ html { scroll-behavior: smooth; }
 }
 
 .colors input:checked + span { outline: 2px solid var(--text); outline-offset: 2px; }
-.colors input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.colors input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; } */
 
 .dialog-actions { display: flex; justify-content: flex-end; gap: 10px; }
 
@@ -230,8 +231,365 @@ html { scroll-behavior: smooth; }
   padding: 12px 20px;
   cursor: pointer;
 }
+
+
+
+
+
+
+.habit-delete {
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.habit-delete:hover { color: var(--accent); }
+.habit-delete:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.empty {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  text-align: center;
+  padding: 40px 16px;
+  border: 1px dashed var(--border);
+}
+/* شهر كامل: 30 مربع في 3 صفوف */
+.week.month { grid-template-columns: repeat(10, 1fr); }
+/* ===== سكشن Your Progress: كارت المستوى ===== */
+.level-card { display: flex; flex-direction: column; gap: 16px;  }
+
+.level-main { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+
+.level-ring { position: relative; width: 80px; height: 80px; flex-shrink: 0; }
+.level-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }  /* البداية من فوق */
+
+.ring-bg, .ring-fg { fill: none; stroke-width: 4; }
+.ring-bg { stroke: var(--border); }
+.ring-fg { stroke: var(--accent); }
+
+.level-num { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.level-num small { font-size: 0.6rem; color: var(--muted); }
+.level-num strong { font-size: 1.4rem; }
+
+.level-info { flex: 1; min-width: 200px; }
+.level-info h2 { font-size: 1.1rem; margin-bottom: 8px; }
+
+.xp-row { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+
+/* شريط التقدم: بيتكرر في Achievements كمان */
+.progress-bar { height: 6px; background: var(--border); }
+.progress-fill { height: 100%; width: 0; background: var(--accent); }
+
+.level-sub { color: var(--muted); font-size: 0.75rem; margin-top: 8px; }
+
+.level-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.level-steps b { color: var(--accent); }
+/* ===== Progress: الـ Grid والكروت اليمين ===== */
+.progress-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+a.btn-primary { display: inline-block; text-align: center; text-decoration: none; }
+
+/* كارت Tokens */
+.tokens-card { display: flex; flex-direction: column; gap: 10px; }
+.tokens-value { color: var(--muted); }
+.tokens-value strong { font-size: 2rem; color: var(--text); }
+
+.tokens-next {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.tokens-link { color: var(--accent); font-size: 0.8rem; text-decoration: none; margin-top: auto; }
+.tokens-link:hover { text-decoration: underline; }
+
+/* كارت Keep it going */
+.keep-card {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.keep-card h3 { font-size: 1.2rem; }
+.keep-card p { color: var(--muted); font-size: 0.8rem; }
+.keep-card .keep-xp { color: var(--text); }
+.keep-btn { margin-top: 8px; }
+/* ===== الشارت الأسبوعي ===== */
+.week-card { grid-column: 1; grid-row: 2; display: flex; flex-direction: column; gap: 12px; }
+.week-card h2 { font-size: 1rem; }
+
+.week-summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; font-size: 0.8rem; color: var(--muted); }
+.week-summary strong { font-size: 1.4rem; color: var(--text); }
+
+.week-chart { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; align-items: end; }
+.week-col { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+
+/* العمود: القطع بتتراص من تحت لفوق */
+.week-bar {
+  width: 100%;
+  max-width: 40px;
+  height: 120px;
+  display: flex;
+  flex-direction: column-reverse;
+  border-bottom: 1px solid var(--border);
+}
+
+.seg { width: 100%; border-top: 1px solid var(--card); }
+.seg.sugar     { background: #a8d8f0; }
+.seg.hydration { background: #f4a9b8; }
+.seg.sleep     { background: #cdb4e6; }
+.seg.reading   { background: #f8c9a3; }
+
+.week-day { font-size: 0.7rem; color: var(--muted); }
+.week-day.today { color: var(--text); font-weight: 600; }
+
+.week-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.75rem; color: var(--muted); }
+.week-legend span::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  background: var(--c);
+}
+.week-empty { grid-column: 1 / -1; color: var(--muted); font-size: 0.8rem; text-align: center; padding: 40px 0; }
+/* ===== جدول Every habit adds up ===== */
+.habits-table-card { grid-column: 1; grid-row: 3; }
+.milestones-card { grid-column: 2; grid-row: 3; display: flex; flex-direction: column; gap: 12px; }
+
+.habits-table-card h2, .milestones-card h2 { font-size: 1rem; }
+.table-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+.table-pct { color: var(--muted); font-size: 0.75rem; }
+
+.habit-row {
+  --habit-color: #a8d8f0;
+  display: grid;
+  grid-template-columns: 1.4fr 1.2fr 0.7fr 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.habit-row.head { color: var(--muted); font-size: 0.7rem; border-top: none; padding-top: 0; }
+.habit-row.sugar     { --habit-color: #a8d8f0; }
+.habit-row.hydration { --habit-color: #f4a9b8; }
+.habit-row.sleep     { --habit-color: #cdb4e6; }
+.habit-row.reading   { --habit-color: #f8c9a3; }
+
+.row-name { overflow-wrap: anywhere; }
+.row-name small { display: block; color: var(--muted); font-size: 0.7rem; }
+
+.row-week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.mini { height: 6px; background: var(--habit-color); opacity: 0.25; }
+.mini.done { opacity: 1; }
+
+.row-today { color: var(--muted); }
+.row-today.done { color: var(--accent); }
+
+/* ===== Milestones ===== */
+.milestones { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.milestone { display: flex; flex-direction: column; gap: 6px; }
+.milestone-title { font-size: 0.9rem; font-weight: 600; }
+.milestone small { color: var(--muted); font-size: 0.75rem; }
+.milestone.unlocked .milestone-title::after { content: " ✓"; color: var(--accent); }
+.milestone-count { display: flex; justify-content: space-between; color: var(--muted); font-size: 0.75rem; }
+
+
+
+
+/* ===== صفحة Achievements ===== */
+.r-starter   { --rar: #e5e5e5; }
+.r-rare      { --rar: #a8d8f0; }
+.r-epic      { --rar: #cdb4e6; }
+.r-legendary { --rar: #ff5a1f; }
+
+.ach-top { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; margin-top: 24px; }
+
+.next-card { display: flex; flex-direction: column; gap: 10px; }
+.next-card h2 { font-size: 1.2rem; }
+.next-card p { color: var(--muted); font-size: 0.85rem; }
+.next-rewards { display: flex; flex-wrap: wrap; gap: 8px; }
+.reward { background: var(--bg); border: 1px solid var(--border); padding: 6px 10px; font-size: 0.8rem; color: var(--accent); }
+.next-btn { align-self: flex-start; margin-top: 4px; }
+
+.collection-card { display: flex; flex-direction: column; gap: 10px; }
+.collection-count { color: var(--muted); }
+.collection-count strong { font-size: 2rem; color: var(--text); }
+
+.rarity-list { list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 0.8rem; color: var(--muted); }
+.rarity-list li { display: flex; justify-content: space-between; }
+.rar-name::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  background: var(--rar);
+}
+
+.ach-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin: 32px 0 12px; }
+.ach-head h2 { font-size: 1rem; }
+
+.ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+
+.ach-card { display: flex; flex-direction: column; gap: 8px; }
+.ach-card.locked { opacity: 0.6; }
+.ach-row { display: flex; justify-content: space-between; align-items: center; }
+
+.ach-icon {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--rar);
+  color: var(--rar);
+  display: grid;
+  place-items: center;
+}
+
+.ach-badge { font-size: 0.75rem; color: var(--muted); }
+.ach-card.unlocked .ach-badge { color: var(--rar); }
+.ach-title { font-weight: 600; font-size: 0.95rem; }
+.ach-desc { color: var(--muted); font-size: 0.75rem; flex: 1; }
+.ach-card .progress-fill { background: var(--rar); }
+.ach-foot { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--muted); }
+/* ===== Toast ===== */
+.toast {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  max-width: min(360px, calc(100% - 32px));
+  background: var(--card);
+  border: 1px solid var(--accent);
+  color: var(--text);
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 20;
+}
+
+.toast.show { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .html { scroll-behavior: auto; }
+  .toast { transition: none; }
+}
+/* ===== Shop ===== */
+.shop-balance { display: flex; align-items: baseline; gap: 12px; margin-top: 24px; }
+.shop-balance strong { font-size: 2rem; }
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.shop-item { display: flex; flex-direction: column; gap: 10px; }
+.shop-item.active { border-color: var(--accent); }
+
+.swatch { height: 56px; display: block; }
+.shop-name { font-weight: 600; }
+.shop-price { color: var(--muted); font-size: 0.8rem; }
+.shop-btn { margin-top: auto; }
+
+.btn-secondary:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-secondary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* ===== نافذة Add Habit: الاختيارات ===== */
+.mini-label { display: block; color: var(--muted); font-size: 0.85rem; margin-bottom: 8px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.chip:hover { border-color: var(--accent); }
+.chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.picker { border: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.picker legend { color: var(--muted); font-size: 0.85rem; margin-bottom: 8px; }
+.picker label { position: relative; cursor: pointer; }
+.picker input[type="radio"] { position: absolute; opacity: 0; }
+
+.opt {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  font-size: 1.1rem;
+}
+
+.sw { display: block; width: 32px; height: 32px; background: var(--c); }
+.sw.custom { --c: conic-gradient(#f4a9b8, #f8c9a3, #f7e08c, #b8e0c2, #a8d8f0, #cdb4e6, #f4a9b8); }
+
+.picker input:checked + .opt,
+.picker input:checked + .sw { outline: 2px solid var(--text); outline-offset: 2px; }
+
+.picker input:focus-visible + .opt,
+.picker input:focus-visible + .sw { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* اللون الحر: الـ color input شفاف فوق المربع */
+.custom-color input[type="color"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+/* رسمة الشكل جوه الاختيار */
+.demo { display: block; width: 16px; height: 16px; background: var(--text); }
+.demo-round { border-radius: 4px; }
+.demo-circle { border-radius: 50%; }
+
+/* شكل مربعات الأيام على الكروت والجدول */
+.shape-round .day, .shape-round .mini { border-radius: 4px; }
+.shape-circle .day, .shape-circle .mini { border-radius: 50%; }
+
+.habit-icon { font-size: 1.1rem; }
 /* ===== موبايل ===== */
 @media (max-width: 768px) {
+  .ach-top { grid-template-columns: 1fr; }
+  progress-grid { grid-template-columns: 1fr; }
+  /* keep-card,week-card { grid-column: auto; grid-row: auto; } */.keep-card, .week-card, .habits-table-card, .milestones-card { grid-column: auto; grid-row: auto; }
+  .habit-row { grid-template-columns: 1.4fr 0.7fr 1fr; }
+  .row-week { display: none; }
+  .habit-row.head .row-week-label { display: none; }
+
   .app { grid-template-columns: 1fr; }
 
   .page { scroll-margin-top: 110px; }
