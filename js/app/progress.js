@@ -66,6 +66,24 @@ const Progress = (function () {
       .replaceAll("'", "&#039;");
   }
 
+  function hexToRgb(hex) {
+    const normalized = (hex || "#f4b8c3").replace("#", "");
+    const value = parseInt(
+      normalized.length === 3
+        ? normalized
+            .split("")
+            .map((char) => char + char)
+            .join("")
+        : normalized,
+      16
+    );
+    return {
+      r: (value >> 16) & 255,
+      g: (value >> 8) & 255,
+      b: value & 255,
+    };
+  }
+
   function formatDateISO(date) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -338,6 +356,16 @@ const Progress = (function () {
       els.chartDateRange.textContent = formatShortRange(rangeDays);
     }
 
+    const legendContainer = document.querySelector(".chart-legend");
+    if (legendContainer && habits.length) {
+      legendContainer.innerHTML = habits
+        .map(
+          (h) =>
+            `<span class="legend-item"><i class="legend-dot" style="background-color: ${h.color || "var(--color-orange, #fd551d)"};"></i> ${escapeHtml(h.name)}</span>`
+        )
+        .join("");
+    }
+
     if (!els.weeklyBarsContainer) return;
 
     const is30Days = rangeDays === 30;
@@ -360,11 +388,11 @@ const Progress = (function () {
             const xpVal = getHabitDayXp(habit, day.iso);
             if (xpVal <= 0) return "";
 
-            const segColor = segmentColors[idx % segmentColors.length];
+            const segColor = habit.color || "var(--color-orange, #fd551d)";
             const rawHeight = Math.round((xpVal / maxDailyXp) * 96);
             const heightPx = Math.max(is30Days ? 8 : 16, Math.min(28, rawHeight));
 
-            return `<span class="bar-seg ${segColor}" style="height: ${heightPx}px" title="${escapeHtml(habit.name)} (+${xpVal} XP)"></span>`;
+            return `<span class="bar-seg" style="height: ${heightPx}px; background-color: ${segColor};" title="${escapeHtml(habit.name)} (+${xpVal} XP)"></span>`;
           })
           .join("");
 
@@ -459,6 +487,8 @@ const Progress = (function () {
           : [];
         const isDoneToday = completedDates.includes(todayISO);
         const iconName = iconMap[habit.icon] || "ellipse-outline";
+        const color = habit.color || "#f4b8c3";
+        const rgb = hexToRgb(color);
 
         const doneIn7 = last7Days.filter((d) =>
           completedDates.includes(d.iso)
@@ -490,7 +520,7 @@ const Progress = (function () {
           : `<span class="today-pending mono-text">${escapeHtml(habit.goal || "Pending")}</span>`;
 
         return `
-          <tr>
+          <tr style="--habit-color: ${color}; --habit-rgb: ${rgb.r}, ${rgb.g}, ${rgb.b};">
             <td>
               <div class="d-flex align-items-center gap-3">
                 <span class="habit-badge-icon">

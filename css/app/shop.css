@@ -2,9 +2,9 @@
 .shop-wrapper {
   position: relative;
   z-index: 1;
-  max-width: 1240px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem 2.25rem 1.75rem;
+  padding: 0;
   font-family: "Space Grotesk", sans-serif;
 }
 
@@ -39,9 +39,9 @@
 
 /* #region Panels & Wallet Summary */
 .shop-panel {
-  background-color: var(--card-bg, #161412);
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
-  border-radius: 12px;
+  background-color: var(--color-surface, #161412);
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: 0;
   padding: 1.35rem 1.5rem;
 }
 
@@ -231,9 +231,9 @@
 
 /* #region Product Cards */
 .shop-item-card {
-  background-color: var(--card-bg, #161412);
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
-  border-radius: 12px;
+  background-color: var(--color-surface, #161412);
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: 0;
   padding: 1.2rem;
   height: 100%;
   display: flex;
@@ -291,19 +291,19 @@
 
 .shop-buy-btn {
   background-color: var(--accent, #ff5500);
-  color: #ffffff;
+  color: var(--color-surface);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   border: 0;
-  border-radius: 8px;
+  border-radius: 0;
   padding: 0.45rem 0.85rem;
   transition: background-color 0.2s ease, opacity 0.2s ease;
 }
 
 .shop-buy-btn:hover:not(:disabled) {
   background-color: #ff6a1f;
-  color: #ffffff;
+  color: var(--color-surface);
 }
 
 .shop-buy-btn:disabled {
@@ -354,8 +354,8 @@
 
 :root[data-theme="light"] .shop-panel,
 :root[data-theme="light"] .shop-item-card {
-  background-color: #ffffff;
-  border-color: rgba(20, 18, 16, 0.12);
+  background-color: var(--color-surface);
+  border-color: var(--color-border-subtle);
   box-shadow: 0 4px 18px rgba(20, 18, 16, 0.04);
 }
 
@@ -407,7 +407,7 @@
 /* #region Responsive */
 @media (max-width: 767.98px) {
   .shop-wrapper {
-    padding: 1.25rem 1rem;
+    padding: 0;
   }
 }
 /* #endregion */
