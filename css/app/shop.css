@@ -77,16 +77,16 @@
 }
 
 .shop-balance-badge {
-  background-color: rgba(255, 85, 0, 0.12);
+  /* background-color: rgba(255, 85, 0, 0.12); */
   border: 1px solid rgba(255, 85, 0, 0.25);
-  border-radius: 10px;
+  /* border-radius: 10px; */
   padding: 0.75rem 1rem;
 }
 
 .shop-coin-circle {
   width: 36px;
   height: 36px;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   background-color: rgba(255, 85, 0, 0.18);
   color: var(--accent, #ff5500);
   display: inline-flex;
@@ -166,7 +166,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.45rem 0.7rem;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   background-color: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
   font-size: 0.8rem;
@@ -187,7 +187,7 @@
 .shop-filter-group {
   background-color: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
-  border-radius: 8px;
+  /* border-radius: 8px; */
   padding: 3px;
 }
 
@@ -195,7 +195,7 @@
   font-size: 0.78rem;
   color: var(--text-muted, #9b958e);
   border: 0;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   padding: 4px 10px;
 }
 
@@ -210,7 +210,7 @@
 }
 
 .shop-status-banner {
-  border-radius: 10px;
+  /* border-radius: 10px; */
   padding: 0.7rem 1rem;
   font-size: 0.85rem;
   font-weight: 500;
@@ -239,18 +239,20 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .shop-item-card:hover {
   border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); */
 }
 
 .shop-item-icon {
   width: 40px;
   height: 40px;
-  border-radius: 9px;
+  /* border-radius: 9px; */
   background-color: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--item-accent, rgba(255, 255, 255, 0.14));
   color: var(--item-accent, #ff5500);
@@ -266,7 +268,7 @@
   text-transform: uppercase;
   color: var(--text-muted, #9b958e);
   padding: 2px 7px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   background-color: rgba(255, 255, 255, 0.04);
 }
 
@@ -298,7 +300,9 @@
   border: 0;
   border-radius: 0;
   padding: 0.45rem 0.85rem;
-  transition: background-color 0.2s ease, opacity 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .shop-buy-btn:hover:not(:disabled) {

@@ -125,7 +125,7 @@
   align-items: center;
   gap: 6px;
   padding: 0.42rem 0.75rem;
-  border-radius: 7px;
+  /* border-radius: 7px; */
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-primary, #f5f3f0);
@@ -134,6 +134,7 @@
 }
 
 .ach-cta-btn {
+  font-family: "Geist Mono";
   background-color: var(--color-orange, #fd551d);
   color: var(--color-surface);
   font-size: 0.78rem;
@@ -250,12 +251,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .badge-card:hover {
   border-color: rgba(255, 255, 255, 0.18);
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); */
 }
 
 .badge-card.is-locked {
@@ -265,7 +268,7 @@
 .badge-icon-box {
   width: 38px;
   height: 38px;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   border: 1px solid var(--badge-accent, rgba(255, 255, 255, 0.14));
   background-color: rgba(255, 255, 255, 0.03);
   color: var(--badge-accent, #9b958e);
@@ -278,7 +281,7 @@
 .badge-check-square {
   width: 18px;
   height: 18px;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   background-color: var(--badge-accent, #f4efc6);
   color: #141210;
   display: inline-flex;

@@ -165,6 +165,7 @@
 }
 
 .profile-menu {
+  font-family: "Space Grotesk";
   position: absolute;
   bottom: calc(100% + 12px);
   left: 0;
@@ -225,7 +226,7 @@
 .profile-item:hover,
 .profile-item:focus-visible {
   color: var(--color-orange);
-  background-color: var(--color-surface-raised);
+  /* background-color: var(--color-surface-raised); */
 }
 
 .profile-item:focus-visible,

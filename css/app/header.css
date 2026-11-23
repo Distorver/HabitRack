@@ -85,7 +85,7 @@
 }
 
 .btn-add-habit:hover {
-  background: var(--color-border);
+  background: var(--text-secondery);
 }
 
 .btn-add-habit ion-icon {
