@@ -7,20 +7,21 @@
   <title>HabitRack - Habits</title>
   <link rel="stylesheet" href="habits.css">
   <script>
-  try { var t = localStorage.getItem('habitrack-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
-</script>
+    try { var t = localStorage.getItem('habitrack-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) { }
+  </script>
   <link rel="icon" href="habitsimg/HabitRack.webp" type="image/x-icon">
 </head>
+
 <body>
   <div class="app">
 
     <!-- السايدبار -->
     <aside class="sidebar">
       <div class="sidebar-top">
-      <a href="../index.html" class="logo">
-        <img src="habitsimg/HabitRack.webp" alt="HabitRack logo" class="logo-img">
-        HabitRack
-      </a>
+        <a href="../index.html" class="logo">
+          <img src="habitsimg/HabitRack.webp" alt="HabitRack logo" class="logo-img">
+          HabitRack
+        </a>
         <button type="button" class="theme-toggle" aria-label="Switch to light mode" id="theme-toggle">
           <span aria-hidden="true">🌞</span>
         </button>
