@@ -1,0 +1,121 @@
+// ضيف شخص جديد = ضيف عنصر جديد في المصفوفة
+// certainty: 'documented' = موثق في مصدر، 'reported' = يُروى ومش مؤكد
+const ROLE_MODELS = [
+  {
+    id: 'franklin-virtues',
+    person: 'Benjamin Franklin',
+    category: 'history',
+    certainty: 'documented',
+    habit: 'Tracking 13 virtues every day',
+    summary: 'He kept a small chart and marked every day he slipped.',
+    how: 'He listed 13 virtues, focused on one per week, and marked a dot for each fault at the end of the day.',
+    results: 'He wrote that the practice made him a better man than he would otherwise have been, even though he never reached perfection.',
+    consistency: 'He describes keeping the chart going for years, and admits he let it lapse when travel and business got busy.',
+    source: 'The Autobiography of Benjamin Franklin',
+    draft: { name: 'Daily review', goal: 'Daily tracking', target: 0, unit: '', icon: '📝', color: '#cdb4e6' }
+  },
+  {
+    id: 'siwak',
+    person: 'Prophet Muhammad ﷺ',
+    category: 'prophetic',
+    certainty: 'documented',
+    habit: 'Using the siwak',
+    summary: 'A small act of cleanliness tied to each prayer.',
+    how: 'He stressed using the siwak at every prayer, and said he would have made it obligatory if it were not a hardship on his community.',
+    results: 'A simple daily act of cleanliness attached to a fixed cue, which is what makes a habit stick.',
+    consistency: 'Tied to the five daily prayers, so it repeats several times a day.',
+    source: 'Sahih al-Bukhari, Sahih Muslim',
+    draft: { name: 'Siwak', goal: 'Daily tracking', target: 0, unit: '', icon: '🌿', color: '#b8e0c2' }
+  },
+  {
+    id: 'mon-thu-fasting',
+    person: 'Prophet Muhammad ﷺ',
+    category: 'prophetic',
+    certainty: 'documented',
+    habit: 'Fasting Monday and Thursday',
+    summary: 'A light weekly rhythm instead of an all-or-nothing routine.',
+    how: 'He was reported to seek out fasting on these two days each week.',
+    results: 'A sustainable weekly routine that builds self-discipline.',
+    consistency: 'Weekly, so easy to keep for years.',
+    source: 'Jami` at-Tirmidhi, Sunan an-Nasa\'i',
+    draft: { name: 'Fast Mon & Thu', goal: 'Mon and Thu', target: 0, unit: '', icon: '🌙', color: '#f8c9a3' }
+  },
+  {
+    id: 'three-wills',
+    person: 'Prophet Muhammad ﷺ',
+    category: 'prophetic',
+    certainty: 'documented',
+    habit: 'Three small commitments: Duha, Witr, three fasts a month',
+    summary: 'Advice built from three light acts that fit into a busy life.',
+    how: 'Abu Hurayra reported that the Prophet ﷺ advised him to fast three days each month, pray two rakahs of Duha, and pray Witr before sleeping.',
+    results: 'Each act is small and specific, so it is easy to start and hard to find an excuse for.',
+    consistency: 'Two are daily and one is monthly. Small, fixed commitments are easier to keep than big vague ones.',
+    source: 'Sahih al-Bukhari, Sahih Muslim (Abu Hurayra)',
+    draft: { name: 'Duha prayer', goal: 'Two rakahs', target: 0, unit: '', icon: '🌞', color: '#f7e08c' }
+  },
+  {
+    id: 'sleep-after-isha',
+    person: 'Prophet Muhammad ﷺ',
+    category: 'prophetic',
+    certainty: 'documented',
+    habit: 'Not staying up after Isha',
+    summary: 'A fixed end to the evening.',
+    how: 'Abu Barza al-Aslami reported that the Prophet ﷺ disliked sleeping before Isha and talking after it.',
+    results: 'A clear end to the evening leaves room for an early start the next morning. This benefit is a general habit principle, not a claim made in the hadith itself.',
+    consistency: 'It repeats every night, tied to a fixed cue: the Isha prayer.',
+    source: 'Sahih al-Bukhari, Sahih Muslim (Abu Barza al-Aslami)',
+    draft: { name: 'Sleep early', goal: 'Sleep after Isha', target: 0, unit: '', icon: '🛌', color: '#cdb4e6' }
+  },
+  {
+    id: 'ibn-umar-night-prayer',
+    person: 'Abdullah ibn Umar رضي الله عنهما',
+    category: 'companions',
+    certainty: 'documented',
+    habit: 'Turning one remark into a night habit',
+    summary: 'One sentence of encouragement became a lasting practice.',
+    how: 'The Prophet ﷺ said Abdullah would be a good man if he prayed at night. Salim reported that after that, Abdullah slept only a little at night.',
+    results: 'He acted on the feedback immediately instead of postponing it.',
+    consistency: 'Salim describes it as his practice from then on, not a single night.',
+    source: 'Sahih al-Bukhari, Sahih Muslim (Salim from his father)',
+    draft: { name: 'Night prayer', goal: 'Even a little', target: 0, unit: '', icon: '🌙', color: '#a8d8f0' }
+  },
+  {
+    id: 'buffett-reading',
+    person: 'Warren Buffett',
+    category: 'business',
+    certainty: 'reported',
+    habit: 'Reading a large part of every day',
+    summary: 'Knowledge that builds up like compound interest.',
+    how: 'He is widely reported to spend a large part of each day reading annual reports, newspapers and books, then thinking about what he read.',
+    results: 'He has described knowledge as something that accumulates over time, much like compound interest.',
+    consistency: 'Reported across decades of his career as a daily routine, not a one-off effort.',
+    source: 'Alice Schroeder, The Snowball, and his interviews. Check the exact wording before relying on it.',
+    draft: { name: 'Reading', goal: '30m Goal', target: 30, unit: 'min', icon: '📖', color: '#f8c9a3' }
+  },
+  {
+    id: 'gates-think-week',
+    person: 'Bill Gates',
+    category: 'business',
+    certainty: 'documented',
+    habit: 'Think Week and a yearly reading list',
+    summary: 'Protected time away from meetings to read and think.',
+    how: 'He has described retreating for a week at a time to read papers and articles and think about long-term questions. He also shares a book list on his blog each year.',
+    results: 'Time without meetings gave him room for long-term thinking that daily work rarely allows.',
+    consistency: 'A recurring practice over many years, with a public yearly list as a visible commitment.',
+    source: 'GatesNotes and press coverage of Think Week. Check the exact details before relying on them.',
+    draft: { name: 'Think time', goal: '30m Goal', target: 30, unit: 'min', icon: '🧠', color: '#cdb4e6' }
+  },
+  {
+    id: 'seinfeld-chain',
+    person: 'Jerry Seinfeld',
+    category: 'business',
+    certainty: 'reported',
+    habit: 'Do not break the chain',
+    summary: 'A red X on the calendar for every day of writing.',
+    how: 'The story goes that he marks a big wall calendar with a red X for each day he writes, and the only goal is to never break the chain.',
+    results: 'It turns a huge goal into one daily question: did I do it today?',
+    consistency: 'The streak itself becomes the reward, the same idea as the Streak in this app.',
+    source: 'Brad Isaac, Lifehacker (2007). This is his account, not a direct quote from Seinfeld.',
+    draft: { name: 'Write daily', goal: 'Never break the chain', target: 0, unit: '', icon: '📝', color: '#f7e08c' }
+  }
+];

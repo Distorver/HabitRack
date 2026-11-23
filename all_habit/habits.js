@@ -1,4 +1,4 @@
-
+// grid.addEventListener('click', (e) => {
 // ===== 1. تلوين اللينك النشط وقت السكرول =====
 const links = document.querySelectorAll('.nav-link');
 const pages = document.querySelectorAll('.page');
@@ -24,6 +24,7 @@ const STORAGE_KEY = 'habitrack-habits';
 
 let habits = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 let range = 7;   // بيتغير بالـ Toggle
+let editingId = null;   // id العادة اللي بتتعدل دلوقتي
 
 function save() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(habits));
@@ -54,6 +55,7 @@ function createCard(h) {
         <div class="habit-goal"></div>
       </div>
       <button class="habit-check ${doneToday ? 'done' : ''}">✓</button>
+      <button class="habit-edit">✎</button>
       <button class="habit-delete">×</button>
     </div>
     <div>
@@ -69,14 +71,27 @@ function createCard(h) {
   check.setAttribute('aria-label', `Mark ${h.name} done today`);
   check.setAttribute('aria-pressed', doneToday);
   card.querySelector('.habit-delete').setAttribute('aria-label', `Delete ${h.name}`);
+  card.querySelector('.habit-edit').setAttribute('aria-label', `Edit ${h.name}`);
 
   const week = card.querySelector('.week');
   week.classList.toggle('month', range === 30);
   for (let i = range - 1; i >= 0; i--) {
-    const day = document.createElement('span');
-    day.className = 'day' + (h.log[dateKey(i)] ? ' done' : '');
+    const key = dateKey(i);
+    const on = !!h.log[key];
+    const day = document.createElement('button');
+    day.type = 'button';
+    day.className = 'day' + (on ? ' done' : '');
+    day.dataset.ago = i;
+    day.title = fmtDate(key);
+    day.setAttribute('aria-pressed', on);
+    day.setAttribute('aria-label', `${h.name}, ${fmtDate(key)}`);
     week.appendChild(day);
   }
+  // for (let i = range - 1; i >= 0; i--) {
+  //   const day = document.createElement('span');
+  //   day.className = 'day' + (h.log[dateKey(i)] ? ' done' : '');
+  //   week.appendChild(day);
+  // }
   return card;
 }
 // function createCard(h) {
@@ -528,11 +543,16 @@ filterBtns.forEach(btn => {
 // ===== Shop =====
 const SHOP_KEY = 'habitrack-shop';
 const SHOP_ITEMS = [
-  { id: 'ember', name: 'Ember', color: '#ff5a1f', price: 0 },
-  { id: 'ocean', name: 'Ocean', color: '#2f7de1', price: 50 },
+  { id: 'ember', name: 'Ember', color: '#cf4c1c', price: 0 },
+  { id: 'ocean', name: 'Ocean', color: '#398fff', price: 50 },
   { id: 'mint', name: 'Mint', color: '#1a9462', price: 50 },
   { id: 'violet', name: 'Violet', color: '#8b5cf6', price: 100 },
-  { id: 'rose', name: 'Rose', color: '#e0457b', price: 100 }
+  { id: 'white', name: 'White', color: '#f8f8f8', price: 100 },
+  { id: 'black', name: 'Black', color: '#000000', price: 100 },
+  { id: 'gold', name: 'Gold', color: '#daff0b', price: 100 },
+  { id: 'red', name: 'Red', color: '#ff0000', price: 500 },
+  { id: 'blue', name: 'Blue', color: '#06107a', price: 900 },
+  
 ];
 
 let shop = JSON.parse(localStorage.getItem(SHOP_KEY)) || { owned: ['ember'], active: 'ember' };
@@ -738,7 +758,12 @@ grid.addEventListener('click', (e) => {
   if (!card) return;
 
   const habit = habits.find(h => h.id === card.dataset.id);
-
+  const dayBtn = e.target.closest('.day');
+  let refocus = null;
+  if (e.target.closest('.habit-edit')) {
+  openEditor(habit);
+    return;
+  }
   if (e.target.closest('.habit-delete')) {
     if (!confirm(`Delete "${habit.name}"?`)) return;
     habits = habits.filter(h => h.id !== habit.id);
@@ -746,13 +771,43 @@ grid.addEventListener('click', (e) => {
     const key = dateKey(0);
     if (habit.log[key]) delete habit.log[key];
     else habit.log[key] = true;
+  } else if (dayBtn) {
+    const key = dateKey(Number(dayBtn.dataset.ago));
+    if (habit.log[key]) delete habit.log[key];
+    else habit.log[key] = true;
+    refocus = { id: habit.id, ago: dayBtn.dataset.ago };
   } else {
     return;
   }
 
   save();
   render();
+
+  // render بيعيد بناء الكروت، فبنرجّع الفوكس على نفس المربع للكيبورد
+  if (refocus) {
+    grid.querySelector(`[data-id="${refocus.id}"] .day[data-ago="${refocus.ago}"]`)?.focus();
+  }
 });
+// grid.addEventListener('click', (e) => {
+//   const card = e.target.closest('.habit-card');
+//   if (!card) return;
+
+//   const habit = habits.find(h => h.id === card.dataset.id);
+
+//   if (e.target.closest('.habit-delete')) {
+//     if (!confirm(`Delete "${habit.name}"?`)) return;
+//     habits = habits.filter(h => h.id !== habit.id);
+//   } else if (e.target.closest('.habit-check')) {
+//     const key = dateKey(0);
+//     if (habit.log[key]) delete habit.log[key];
+//     else habit.log[key] = true;
+//   } else {
+//     return;
+//   }
+
+//   save();
+//   render();
+// });
 
 // ===== 10. الـ Toggle (7 / 30 days) =====
 const toggleBtns = document.querySelectorAll('.header-actions .toggle-btn');
@@ -769,19 +824,22 @@ toggleBtns.forEach(btn => {
 const dialog = document.getElementById('habit-dialog');
 const habitForm = document.getElementById('habit-form');
 
-document.getElementById('add-habit-btn').addEventListener('click', () => dialog.showModal());
+document.getElementById('add-habit-btn').addEventListener('click', () => openNew());
 document.getElementById('cancel-habit').addEventListener('click', () => dialog.close());
 
 dialog.addEventListener('click', (e) => {
   if (e.target === dialog) dialog.close();
 });
 
-dialog.addEventListener('close', () => habitForm.reset());
+dialog.addEventListener('close', () => {habitForm.reset();
+  // editingld = null;
+  document.getElementById('custom-sw').style.removeProperty('--c');
+});
 // ===== اختيارات النافذة =====
 const ICONS = ['📖', '💧', '🌙', '🏃', '🍎', '🧘', '💪', '📝', '🎧', '🧹', '💊', '🎯', '🥗', '🧠', '🎸', '💻', '🙏', '🛌', '🌞', '🚭'];
 const PALETTE = ['#a8d8f0', '#f4a9b8', '#cdb4e6', '#f8c9a3', '#b8e0c2', '#f7e08c', '#ff8a65', '#90a4ae'];
 const SHAPES = [
-  { id: 'square', label: 'Square' },
+  { id: 'square', label: 'Square' }, { id: 'star', label: 'Star ' },
   { id: 'round', label: 'Rounded' },
   { id: 'circle', label: 'Circle' }
 ];
@@ -883,28 +941,233 @@ buildPickers();
 updatePreview();
 
 // ===== حفظ العادة =====
+
+// ===== فتح النافذة: جديد أو تعديل =====
+// let editingId = null;
+
+function openNew() {
+  editingId = null;
+  document.getElementById('dialog-title').textContent = 'New Habit';
+  dialog.showModal();
+}
+
+function openEditor(h) {
+  editingId = h.id;
+  document.getElementById('dialog-title').textContent = 'Edit Habit';
+
+  habitForm.elements['name'].value = h.name;
+  habitForm.elements['goal'].value = h.goal;
+
+  const pick = (field, value) => {
+    const r = habitForm.querySelector(`input[name="${field}"][value="${value}"]`);
+    if (r) r.checked = true;
+    return !!r;
+  };
+
+  if (h.icon) pick('icon', h.icon);
+  pick('shape', h.shape || 'square');
+
+  // اللون: لو مش في القايمة يبقى لون حر
+  const color = habitColor(h);
+  if (!pick('color', color)) {
+    const radio = document.getElementById('custom-radio');
+    radio.value = color;
+    radio.checked = true;
+    document.getElementById('custom-input').value = color;
+    document.getElementById('custom-sw').style.setProperty('--c', color);
+  }
+
+  updatePreview();
+  dialog.showModal();
+}
+
+// ===== حفظ العادة (جديدة أو معدّلة) =====
 habitForm.addEventListener('submit', () => {
   const data = new FormData(habitForm);
   const name = data.get('name').trim();
   if (!name) return;
 
-  habits.push({
-    id: Date.now().toString(),
+  const fields = {
     name,
     goal: data.get('goal').trim() || 'Daily tracking',
     icon: data.get('icon'),
     color: data.get('color'),
-    shape: data.get('shape'),
-    log: {}
-  });
+    shape: data.get('shape')
+  };
+
+  if (editingId) {
+    const h = habits.find(x => x.id === editingId);
+    if (h) Object.assign(h, fields);
+  } else {
+    habits.push({ id: Date.now().toString(), ...fields, log: {} });
+  }
 
   save();
   render();
 });
+// ===== Dark / Light =====
+const THEME_KEY = 'habitrack-theme';
+const themeBtn = document.getElementById('theme-toggle');
+
+function showTheme(t) {
+  document.documentElement.dataset.theme = t;
+  themeBtn.firstElementChild.textContent = t === 'dark' ? '☀' : '☾';
+  themeBtn.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+}
+
+showTheme(localStorage.getItem(THEME_KEY) === 'light' ? 'light' : 'dark');
+
+themeBtn.addEventListener('click', () => {
+  const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+  localStorage.setItem(THEME_KEY, next);
+  showTheme(next);
+});
+// ===== Role Models =====
+const ROLE_LABELS = { prophetic: 'Prophetic', companions: 'Companions', business: 'Business', history: 'History' };
+const rolesGrid = document.getElementById('roles-grid');
+let roleFilter = 'all';
+
+function renderRoles() {
+  rolesGrid.innerHTML = '';
+  const shown = ROLE_MODELS.filter(r => roleFilter === 'all' || r.category === roleFilter);
+
+  if (shown.length === 0) {
+    rolesGrid.innerHTML = '<p class="empty">Nothing here yet.</p>';
+    return;
+  }
+
+  shown.forEach(r => {
+    const card = document.createElement('article');
+    card.className = `card role-card ${r.category}`;
+    card.dataset.id = r.id;
+
+    const parts = [
+      ['span', 'role-cat', ROLE_LABELS[r.category] || r.category],
+      ['h3', 'role-person', r.person],
+      ['p', 'role-habit', r.habit],
+      ['p', 'role-summary', r.summary]
+    ];
+    parts.forEach(([tag, cls, text]) => {
+      const el = document.createElement(tag);
+      el.className = cls;
+      el.textContent = text;
+      card.appendChild(el);
+    });
+    const open = document.createElement('button');
+    open.type = 'button';
+    open.className = 'role-open';
+    open.textContent = 'Read more →';
+    open.setAttribute('aria-label', `Read more about ${r.person}: ${r.habit}`);
+    card.appendChild(open);
+    rolesGrid.appendChild(card);
+  });
+}
+
+const roleBtns = document.querySelectorAll('#roles-filter .toggle-btn');
+roleBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    roleBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    roleFilter = btn.dataset.cat;
+    renderRoles();
+  });
+});
+
+renderRoles();
+// ===== نافذة التفاصيل =====
+const roleDialog = document.getElementById('role-dialog');
+let currentRole = null;
+
+function openRole(id) {
+  const r = ROLE_MODELS.find(x => x.id === id);
+  if (!r) return;
+  currentRole = r;
+
+  const set = (el, text) => { document.getElementById(el).textContent = text; };
+  set('rd-cat', ROLE_LABELS[r.category] || r.category);
+  set('rd-person', r.person);
+  set('rd-habit', r.habit);
+  set('rd-how', r.how);
+  set('rd-results', r.results);
+  set('rd-consistency', r.consistency);
+  set('rd-source', r.source);
+
+  const cert = document.getElementById('rd-cert');
+  cert.textContent = r.certainty === 'documented' ? 'Documented' : 'Reported, not confirmed';
+  cert.className = 'cert ' + r.certainty;
+
+  const colors = { prophetic: '#b8e0c2', companions: '#a8d8f0', business: '#f8c9a3', history: '#cdb4e6' };
+  roleDialog.querySelector('.role-detail').style.setProperty('--cat', colors[r.category]);
+
+  roleDialog.showModal();
+}
+
+rolesGrid.addEventListener('click', (e) => {
+  const card = e.target.closest('.role-card');
+  if (card) openRole(card.dataset.id);
+});
+
+document.getElementById('rd-close').addEventListener('click', () => roleDialog.close());
+roleDialog.addEventListener('click', (e) => {
+  if (e.target === roleDialog) roleDialog.close();
+});
+
+// بيفتح نافذة Add Habit وفيها بيانات العادة جاهزة
+function openFromDraft(d) {
+  editingId = null;
+  document.getElementById('dialog-title').textContent = 'New Habit';
+
+  habitForm.elements['name'].value = d.name;
+  habitForm.elements['goal'].value = d.goal || '';
+  habitForm.elements['goalTarget'].value = d.target || '';
+  habitForm.elements['goalUnit'].value = d.unit || '';
+
+  const pick = (field, value) => {
+    const radio = habitForm.querySelector(`input[name="${field}"][value="${value}"]`);
+    if (radio) radio.checked = true;
+    return !!radio;
+  };
+  pick('icon', d.icon);
+  if (!pick('color', d.color)) {
+    const radio = document.getElementById('custom-radio');
+    radio.value = d.color;
+    radio.checked = true;
+    document.getElementById('custom-input').value = d.color;
+    document.getElementById('custom-sw').style.setProperty('--c', d.color);
+  }
+
+  updatePreview();
+  dialog.showModal();
+}
+
+document.getElementById('rd-add').addEventListener('click', () => {
+  if (!currentRole) return;
+  roleDialog.close();
+  openFromDraft(currentRole.draft);
+});
+applyTheme();
+// habitForm.addEventListener('submit', () => {
+//   const data = new FormData(habitForm);
+//   const name = data.get('name').trim();
+//   if (!name) return;
+
+//   habits.push({
+//     id: Date.now().toString(),
+//     name,
+//     goal: data.get('goal').trim() || 'Daily tracking',
+//     icon: data.get('icon'),
+//     color: data.get('color'),
+//     shape: data.get('shape'),
+//     log: {}
+//   });
+
+//   save();
+//   render();
+// });
 // ===== تشغيل أول مرة =====
 render();
 booting = false;
-
+//();
 // const links = document.querySelectorAll('.nav-link');
 
 // const pages = document.querySelectorAll('.page');

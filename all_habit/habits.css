@@ -7,6 +7,16 @@
   --muted: #8a8a8a;
   --accent: #ff5a1f;
   --sidebar-width: 220px;
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --bg: #f6f5f2;
+  --card: #ffffff;
+  --border: #deddd8;
+  --text: #1a1a1a;
+  --muted: #6b6b6b;
+   --accent: #ff5a1f;  /*  //tack care */
+  color-scheme: light;
 }
 .user-avatar {
   width: 28px;
@@ -21,7 +31,7 @@
 .user-avatar img {
   width: 18px;
   height: 18px;
-  background-color: #d41a1a;
+  background-color: #d41a1a00;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -150,7 +160,7 @@ html { scroll-behavior: smooth; }
 .btn-primary:hover { filter: brightness(1.1); }
 
 .btn-primary:focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid var(--text );
   outline-offset: 2px;
 }
 
@@ -231,11 +241,6 @@ html { scroll-behavior: smooth; }
   padding: 12px 20px;
   cursor: pointer;
 }
-
-
-
-
-
 
 .habit-delete {
   width: 24px;
@@ -581,6 +586,200 @@ a.btn-primary { display: inline-block; text-align: center; text-decoration: none
 .shape-circle .day, .shape-circle .mini { border-radius: 50%; }
 
 .habit-icon { font-size: 1.1rem; }
+
+button.day { border:none;padding:0;cursor:pointer; }
+button.day:hover {outline: 2px solid var(--text); outline-offset: 2px; }
+button.day:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.habit-edit {
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.habit-edit:hover { color: var(--accent); }
+.habit-edit:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* ===== نافذة Add Habit (كاملة) ===== */
+.dialog {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0;
+  margin: auto;
+  width: min(440px, calc(100% - 32px));
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.dialog::backdrop { background: rgba(0, 0, 0, 0.65); }
+
+.dialog-form { display: flex; flex-direction: column; gap: 16px; padding: 24px; }
+.dialog-form h2 { font-size: 1.1rem; }
+
+.field { display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; color: var(--muted); }
+
+.field input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font: inherit;
+  padding: 10px 12px;
+}
+
+.field input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.dialog-actions { display: flex; justify-content: flex-end; gap: 10px; }
+
+.btn-secondary {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font: inherit;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+/* المعاينة */
+.preview { pointer-events: none; }
+
+/* Quick start */
+.mini-label { display: block; color: var(--muted); font-size: 0.85rem; margin-bottom: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.chip {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.chip:hover { border-color: var(--accent); }
+.chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* الاختيارات: أيقونات وألوان وأشكال */
+.picker { border: none; padding: 0; margin: 0; min-width: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.picker legend { color: var(--muted); font-size: 0.85rem; margin-bottom: 8px; padding: 0; }
+.picker label { position: relative; cursor: pointer; }
+.picker input[type="radio"] { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; }
+
+.opt {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  font-size: 1.1rem;
+}
+
+.sw { display: block; width: 32px; height: 32px; background: var(--c); }
+.sw.custom { background: conic-gradient(#f4a9b8, #f8c9a3, #f7e08c, #b8e0c2, #a8d8f0, #cdb4e6, #f4a9b8); }
+
+.picker input:checked + .opt,
+.picker input:checked + .sw { outline: 2px solid var(--text); outline-offset: 2px; }
+
+.picker input:focus-visible + .opt,
+.picker input:focus-visible + .sw { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.custom-color input[type="color"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.demo { display: block; width: 16px; height: 16px; background: var(--text); }
+.demo-round { border-radius: 4px; }
+.demo-circle { border-radius: 50%; }
+
+/* شكل مربعات الأيام */
+.shape-round .day, .shape-round .mini { border-radius: 4px; }
+.shape-circle .day, .shape-circle .mini { border-radius: 50%; }
+
+.habit-icon { font-size: 1.1rem; }
+/* ===== زرار الثيم ===== */
+.sidebar-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+
+.theme-toggle {
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover { border-color: var(--accent); }
+.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* تظبيطات اللايت: الأيام الفاضية بلون الحدود عشان الألوان الفاتحة تبان على الأبيض */
+:root[data-theme="light"] .day:not(.done),
+:root[data-theme="light"] .mini:not(.done) { background: var(--border); opacity: 1; }
+
+/* اللوجو المفروض أبيض على الدارك، فبنقلبه على اللايت */
+:root[data-theme="light"] .logo-img { filter: invert(1); }
+/* ===== Role Models ===== */
+.roles-filter { flex-wrap: wrap; margin-top: 24px; width: fit-content; max-width: 100%; }
+
+.roles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.role-card { display: flex; flex-direction: column; gap: 8px; }
+.role-cat { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.role-cat::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 6px; background: var(--cat, var(--muted)); }
+.role-person { font-size: 1.05rem; }
+.role-habit { color: var(--accent); font-size: 0.9rem; font-weight: 600; }
+.role-summary { color: var(--muted); font-size: 0.8rem; }
+
+.role-card.prophetic  { --cat: #b8e0c2; }
+.role-card.companions { --cat: #a8d8f0; }
+.role-card.business   { --cat: #f8c9a3; }
+.role-card.history    { --cat: #cdb4e6; }
+
+/* ===== نافذة تفاصيل Role Model ===== */
+.role-card { cursor: pointer; }
+.role-card:hover { border-color: var(--accent); }
+
+.role-open {
+  align-self: flex-start;
+  margin-top: auto;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 0;
+  cursor: pointer;
+}
+.role-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.role-detail h2 { font-size: 1.3rem; }
+.role-detail h3 { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+.role-detail section p { font-size: 0.9rem; line-height: 1.6; }
+.role-detail .role-cat::before { background: var(--cat, var(--muted)); }
+
+.cert { align-self: flex-start; font-size: 0.7rem; padding: 3px 8px; border: 1px solid var(--border); color: var(--muted); }
+.cert.documented { border-color: #b8e0c2; color: #b8e0c2; }
+
+.role-source { color: var(--muted); font-size: 0.75rem; }
+
+:root[data-theme="light"] .cert.documented { border-color: #1a9462; color: #1a9462; }
 /* ===== موبايل ===== */
 @media (max-width: 768px) {
   .ach-top { grid-template-columns: 1fr; }
