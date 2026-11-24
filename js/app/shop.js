@@ -117,6 +117,18 @@ const Shop = (function () {
       price: 120,
       stackable: false,
     },
+    {
+      id: "theme_pink",
+      title: "Pink Blossom Theme",
+      desc: "A soft pink color theme for the whole app. Free for everyone.",
+      category: "themes",
+      categoryLabel: "Theme",
+      icon: "flower-outline",
+      accent: "#ff9cc1",
+      price: 0,
+      stackable: false,
+      theme: "pink",
+    },
   ];
 
   function escapeHtml(value) {
@@ -306,6 +318,7 @@ const Shop = (function () {
   function renderShopGrid(wallet, purchases) {
     if (!els.grid) return;
 
+    const activeTheme = document.documentElement.dataset.theme || "dark";
     const visibleItems =
       activeCategory === "all"
         ? SHOP_ITEMS
@@ -317,9 +330,23 @@ const Shop = (function () {
         const alreadyOwnedUnique = !item.stackable && ownedQty > 0;
         const canAfford = wallet.availableTokens >= item.price;
         const disabled = alreadyOwnedUnique || !canAfford;
+        const isTheme = Boolean(item.theme);
+        const isActiveTheme = isTheme && activeTheme === item.theme;
 
         let actionHtml = "";
-        if (alreadyOwnedUnique) {
+        if (isActiveTheme) {
+          actionHtml = `<span class="shop-owned-tag"><ion-icon name="checkmark-outline"></ion-icon> Applied</span>`;
+        } else if (isTheme) {
+          actionHtml = `
+            <button
+              type="button"
+              class="btn shop-buy-btn"
+              data-apply-theme="${escapeHtml(item.theme)}"
+            >
+              Apply
+            </button>
+          `;
+        } else if (alreadyOwnedUnique) {
           actionHtml = `<span class="shop-owned-tag"><ion-icon name="checkmark-outline"></ion-icon> Owned</span>`;
         } else {
           actionHtml = `
@@ -350,7 +377,9 @@ const Shop = (function () {
               </div>
 
               <div class="d-flex align-items-center justify-content-between pt-2 shop-divider">
-                <span class="shop-price-text mono-text">${item.price} tokens</span>
+                <span class="shop-price-text mono-text">
+                  ${item.price === 0 ? "Free" : `${item.price} tokens`}
+                </span>
                 ${actionHtml}
               </div>
             </article>
@@ -361,6 +390,10 @@ const Shop = (function () {
 
     els.grid.querySelectorAll("[data-buy-id]").forEach((btn) => {
       btn.addEventListener("click", handlePurchase);
+    });
+
+    els.grid.querySelectorAll("[data-apply-theme]").forEach((btn) => {
+      btn.addEventListener("click", handleApplyTheme);
     });
 
     if (window.ionicons) {
@@ -413,6 +446,19 @@ const Shop = (function () {
     render();
   }
 
+  function handleApplyTheme(event) {
+    const theme = event.currentTarget.dataset.applyTheme;
+    const item = SHOP_ITEMS.find((shopItem) => shopItem.theme === theme);
+    if (typeof Profile === "undefined") return;
+
+    statusMessage = {
+      type: "success",
+      text: `Applied "${item?.title || "theme"}".`,
+    };
+    Profile.applyTheme(theme, true);
+    render();
+  }
+
   function render() {
     const habits = loadHabits();
     const purchases = loadPurchases();
@@ -442,6 +488,8 @@ const Shop = (function () {
         render();
       }
     });
+
+    document.addEventListener("habitrack:themechange", render);
 
     document.addEventListener("visibilitychange", () => {
       if (!document.hidden) {

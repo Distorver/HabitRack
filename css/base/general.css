@@ -34,6 +34,27 @@
   --text-secondery: #6c6661;
 }
 
+:root[data-theme="pink"] {
+  color-scheme: dark;
+  color: #ffe9f2;
+  background: #241017;
+  --color-dark: #241017;
+  --color-surface: #341722;
+  --color-surface-raised: #43202d;
+  --color-input: #4b2534;
+  --color-border: #64394b;
+  --color-border-subtle: #4b2838;
+  --color-orange: #ff7fae;
+  --color-gray: #7c5363;
+  --text-primary: #ffe9f2;
+  --text-secondery: #c99aad;
+  /* Aliases used by the progress, achievements, and shop styles. */
+  --accent: #ff7fae;
+  --text-muted: #c99aad;
+  --border-color: #4b2838;
+  --card-bg: #341722;
+}
+
 * {
   margin: 0;
   padding: 0;

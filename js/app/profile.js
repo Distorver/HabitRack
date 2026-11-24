@@ -220,7 +220,7 @@ const Profile = (() => {
   }
 
   function applyTheme(theme, persist = false) {
-    const nextTheme = theme === "light" ? "light" : "dark";
+    const nextTheme = ["light", "pink"].includes(theme) ? theme : "dark";
     document.documentElement.dataset.theme = nextTheme;
 
     document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
@@ -243,6 +243,10 @@ const Profile = (() => {
         showToast("Theme changed, but could not be saved in browser storage.");
       }
     }
+
+    document.dispatchEvent(
+      new CustomEvent("habitrack:themechange", { detail: { theme: nextTheme } }),
+    );
   }
 
   function loadTheme() {
@@ -502,7 +506,7 @@ const Profile = (() => {
     }
   }
 
-  return { init };
+  return { init, applyTheme };
 })();
 
 Profile.init();
