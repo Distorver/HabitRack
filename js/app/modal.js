@@ -6,6 +6,8 @@ const Modal = (function() {
   const openBtn = document.getElementById('btnAddHabit');
   const closeBtn = document.getElementById('btnCloseModal');
   const form = document.getElementById('habitForm');
+  const modalTitle = document.getElementById('habitModalTitle');
+  const submitBtn = document.getElementById('habitSubmitBtn');
   const goalInput = document.getElementById('habitGoal');
   const goalTypeContainer = document.getElementById('goalTypeContainer');
   const selectedIconInput = document.getElementById('selectedIcon');
@@ -13,6 +15,7 @@ const Modal = (function() {
 
   let selectedIcon = 'leaf';
   let selectedColor = '#f4b8c3';
+  let editingHabitId = null;
 
   // Icon options
   const icons = [
@@ -188,11 +191,29 @@ const Modal = (function() {
     }
   }
 
-  function open() {
+  function setMode(isEditing) {
+    if (modalTitle) {
+      modalTitle.textContent = isEditing ? 'Edit Habit' : 'Add New Habit';
+    }
+    if (submitBtn) {
+      submitBtn.textContent = isEditing ? 'Save Changes' : 'Create Habit';
+    }
+  }
+
+  function show() {
     if (overlay) {
       overlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
+    if (modal) {
+      modal.scrollTop = 0;
+    }
+  }
+
+  function open() {
+    editingHabitId = null;
+    setMode(false);
+
     // Reset form
     if (form) form.reset();
     selectedIcon = 'leaf';
@@ -208,6 +229,52 @@ const Modal = (function() {
     if (booleanBtn) {
       booleanBtn.click();
     }
+
+    show();
+  }
+
+  function openForEdit(habit) {
+    if (!habit) return;
+
+    editingHabitId = habit.id;
+    setMode(true);
+
+    // Reset first so values from a previous session can't leak in
+    if (form) form.reset();
+
+    const nameInput = document.getElementById('habitName');
+    const descriptionInput = document.getElementById('habitDescription');
+    if (nameInput) nameInput.value = habit.name || '';
+    if (descriptionInput) descriptionInput.value = habit.description || '';
+
+    selectedIcon = habit.icon || 'leaf';
+    selectedColor = habit.color || '#f4b8c3';
+    if (selectedIconInput) selectedIconInput.value = selectedIcon;
+    if (selectedColorInput) selectedColorInput.value = selectedColor;
+    renderIconPicker();
+    renderColorPicker();
+    applySelectedColor();
+
+    // Goal type + goal value
+    const goalTypeBtns = document.querySelectorAll('.goal-type-btn');
+    const targetType = habit.goalType === 'numeric' ? 'numeric' : 'boolean';
+
+    goalTypeBtns.forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.goalType === targetType);
+    });
+
+    if (goalInput) {
+      if (targetType === 'boolean') {
+        goalInput.value = 'Daily tracking';
+        goalInput.disabled = true;
+      } else {
+        goalInput.disabled = false;
+        goalInput.value = habit.goal || '';
+        goalInput.placeholder = 'e.g., 2L, 30m, 8h';
+      }
+    }
+
+    show();
   }
 
   function close() {
@@ -215,6 +282,8 @@ const Modal = (function() {
       overlay.classList.remove('active');
       document.body.style.overflow = '';
     }
+    editingHabitId = null;
+    setMode(false);
   }
 
   function handleSubmit(e) {
@@ -237,9 +306,15 @@ const Modal = (function() {
       return;
     }
 
-    // Add habit via Data module
+    // Save via Data module
     if (typeof Data !== 'undefined') {
-      Data.addHabit({ name, icon, goal, goalType, color: selectedColor, description });
+      const habitData = { name, icon, goal, goalType, color: selectedColor, description };
+
+      if (editingHabitId !== null) {
+        Data.updateHabit(editingHabitId, habitData);
+      } else {
+        Data.addHabit(habitData);
+      }
       
       // Refresh the habits display
       if (typeof Habits !== 'undefined') {
@@ -253,6 +328,7 @@ const Modal = (function() {
   return {
     init,
     open,
+    openForEdit,
     close
   };
 })();

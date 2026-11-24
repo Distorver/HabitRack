@@ -26,23 +26,23 @@
   gap: 6px;
 }
 
+.btn-edit-habit,
 .btn-remove-habit {
   width: 44px;
   height: 44px;
   border: 0;
   background: transparent;
   color: var(--text-secondery);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
+.btn-edit-habit:hover,
 .btn-remove-habit:hover {
   color: var(--habit-color);
 }
 
+.btn-edit-habit ion-icon,
 .btn-remove-habit ion-icon {
   font-size: 1.1rem;
 }
@@ -313,13 +313,14 @@
   }
 
   .btn-checkin,
+  .btn-edit-habit,
   .btn-remove-habit {
     width: 36px;
     height: 36px;
   }
 
   .habit-card {
-    padding-right: 60px;
+    padding-right: 136px;
     position: relative;
   }
 
