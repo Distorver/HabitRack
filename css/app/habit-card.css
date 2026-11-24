@@ -26,7 +26,6 @@
   gap: 6px;
 }
 
-.btn-edit-habit,
 .btn-remove-habit {
   width: 44px;
   height: 44px;
@@ -37,12 +36,10 @@
   transition: color 0.2s ease;
 }
 
-.btn-edit-habit:hover,
 .btn-remove-habit:hover {
   color: var(--habit-color);
 }
 
-.btn-edit-habit ion-icon,
 .btn-remove-habit ion-icon {
   font-size: 1.1rem;
 }
@@ -56,11 +53,14 @@
 .habit-icon {
   width: 50px;
   height: 50px;
+  padding: 0;
   background: rgba(var(--habit-rgb, 244, 184, 195), 0.15);
+  border: 0;
   /* border-radius: 10px; */
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .habit-icon ion-icon {
@@ -134,6 +134,26 @@
   font-weight: 600;
   color: var(--text-primary);
   margin: 0 0 4px 0;
+}
+
+.habit-title-edit {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.habit-title-edit:hover {
+  color: var(--habit-color);
+}
+
+.habit-edit-trigger:focus-visible {
+  outline: 2px solid var(--habit-color);
+  outline-offset: 3px;
 }
 
 .habit-details p {
@@ -313,7 +333,6 @@
   }
 
   .btn-checkin,
-  .btn-edit-habit,
   .btn-remove-habit {
     width: 36px;
     height: 36px;

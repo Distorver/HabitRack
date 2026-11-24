@@ -122,22 +122,23 @@ const Habits = (function () {
              style="--habit-color: ${color}; --habit-rgb: ${rgb.r}, ${rgb.g}, ${rgb.b};">
           <div class="habit-card-header">
             <div class="habit-info">
-              <div class="habit-icon icon-${habit.icon}">
-                <ion-icon name="${iconMap[habit.icon] || "ellipse-outline"}"></ion-icon>
-              </div>
-              <div class="habit-details">
-                <h3>${escapeHtml(habit.name)}</h3>
-                <p>${escapeHtml(habit.description || habit.goal)}</p>
-              </div>
-            </div>
-            <div class="habit-card-actions">
-              <button class="btn-edit-habit d-flex align-items-center justify-content-center"
+              <button class="habit-icon icon-${habit.icon} habit-edit-trigger"
                       type="button"
                       data-habit-id="${habit.id}"
                       aria-label="Edit ${escapeHtml(habit.name)}"
                       title="Edit habit">
-                <ion-icon name="create-outline"></ion-icon>
+                <ion-icon name="${iconMap[habit.icon] || "ellipse-outline"}"></ion-icon>
               </button>
+              <div class="habit-details">
+                <h3><button class="habit-title-edit habit-edit-trigger"
+                            type="button"
+                            data-habit-id="${habit.id}"
+                            aria-label="Edit ${escapeHtml(habit.name)}"
+                            title="Edit habit">${escapeHtml(habit.name)}</button></h3>
+                <p>${escapeHtml(habit.description || habit.goal)}</p>
+              </div>
+            </div>
+            <div class="habit-card-actions">
               <button class="btn-remove-habit d-flex align-items-center justify-content-center"
                       type="button"
                       data-habit-id="${habit.id}"
@@ -193,7 +194,7 @@ const Habits = (function () {
       btn.addEventListener("click", handleDayToggle);
     });
 
-    container.querySelectorAll(".btn-edit-habit").forEach((btn) => {
+    container.querySelectorAll(".habit-edit-trigger").forEach((btn) => {
       btn.addEventListener("click", handleEditHabit);
     });
 
