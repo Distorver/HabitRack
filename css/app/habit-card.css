@@ -3,6 +3,7 @@
   background: var(--color-surface);
   /* border-radius: 12px; */
   padding: 20px;
+  min-width: 0;
   position: relative;
   border: 1px solid var(--color-border-subtle);
   transition: border 0.2s ease;
@@ -320,6 +321,7 @@
   gap: 4px;
   width: 100%;
   max-width: 100%;
+  min-width: 0;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none;

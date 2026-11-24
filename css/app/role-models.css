@@ -250,5 +250,4 @@
   .roles-grid { grid-template-columns: 1fr; }
   .role-detail { padding: 24px 20px; }
   .role-detail h2 { font-size: 1.6rem; }
-  .roles-wrapper { padding-top: 54px; }
 }

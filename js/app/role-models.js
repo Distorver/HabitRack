@@ -107,18 +107,6 @@ const RoleModels = (() => {
       showToast(`"${draft.name}" was added to your habits.`);
     });
 
-    const navToggle = document.getElementById("navToggle");
-    const mainNav = document.getElementById("mainNav");
-    const navOverlay = document.getElementById("navOverlay");
-    navToggle.addEventListener("click", () => {
-      mainNav.classList.toggle("active");
-      navOverlay.classList.toggle("active");
-    });
-    navOverlay.addEventListener("click", () => {
-      mainNav.classList.remove("active");
-      navOverlay.classList.remove("active");
-    });
-
     render();
   }
 

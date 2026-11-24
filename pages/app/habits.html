@@ -39,10 +39,17 @@
   </head>
   <body>
     <!-- Nav Overlay (mobile) -->
-    <div class="nav-overlay" id="navOverlay"></div>
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
     <!-- Mobile Nav Toggle -->
-    <button class="nav-toggle" id="navToggle">
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="mainNav"
+    >
       <ion-icon name="menu-outline"></ion-icon>
     </button>
 
@@ -329,33 +336,13 @@
       <script src="../../js/app/modal.js"></script>
       <script src="../../js/app/habits.js"></script>
       <script src="../../js/app/profile.js"></script>
+      <script src="../../js/app/navigation.js"></script>
 
       <!-- Initialize -->
       <script>
         document.addEventListener("DOMContentLoaded", function () {
           Modal.init();
           Habits.init();
-
-          // Mobile nav toggle
-          const navToggle = document.getElementById("navToggle");
-          const mainNav = document.getElementById("mainNav");
-          const navOverlay = document.getElementById("navOverlay");
-
-          if (navToggle && mainNav) {
-            const toggleNav = function () {
-              mainNav.classList.toggle("active");
-              if (navOverlay) {
-                navOverlay.classList.toggle("active");
-              }
-            };
-
-            navToggle.addEventListener("click", toggleNav);
-
-            // Close nav when clicking overlay
-            if (navOverlay) {
-              navOverlay.addEventListener("click", toggleNav);
-            }
-          }
         });
       </script>
     </div>

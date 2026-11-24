@@ -39,7 +39,18 @@
     <link rel="stylesheet" href="../../css/app/shop.css" />
   </head>
   <body>
-    <nav class="nav">
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="mainNav"
+    >
+      <ion-icon name="menu-outline"></ion-icon>
+    </button>
+    <nav class="nav" id="mainNav">
       <a href="../../index.html" class="nav-logo d-flex">
         <img src="../../assets/images/optimized/HabitRack.webp" alt="" />
         <h2>HabitRack</h2>
@@ -302,6 +313,7 @@
 
     <!-- App Scripts -->
     <script src="../../js/app/data.js"></script>
+    <script src="../../js/app/navigation.js"></script>
     <script src="../../js/app/profile.js"></script>
     <script src="../../js/app/shop.js"></script>
   </body>

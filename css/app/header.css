@@ -92,39 +92,6 @@
   font-size: 1.1rem;
 }
 
-/* Nav Toggle Button (mobile) */
-.nav-toggle {
-  display: none;
-  position: fixed;
-  top: 16px;
-  left: 16px;
-  z-index: 101;
-  background: var(--color-orange);
-  border: none;
-  border-radius: 8px;
-  width: 44px;
-  height: 44px;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.nav-toggle ion-icon {
-  font-size: 1.5rem;
-  color: #000;
-}
-
-/* Tablet */
-@media (max-width: 1024px) {
-  .nav-toggle {
-    display: flex;
-  }
-
-  .main-header {
-    padding-top: 50px;
-  }
-}
-
 /* Mobile */
 @media (max-width: 768px) {
   .main-header {
