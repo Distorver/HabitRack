@@ -119,6 +119,23 @@ const Data = (function() {
     return habits;
   }
 
+  // Update an existing habit (keeps its id and completion history)
+  function updateHabit(habitId, habitData) {
+    const habits = loadHabits();
+    const habit = habits.find(h => h.id === habitId);
+    if (!habit) return habits;
+
+    habit.name = habitData.name;
+    habit.icon = habitData.icon;
+    habit.goal = habitData.goal;
+    habit.goalType = habitData.goalType;
+    habit.color = habitData.color || habit.color;
+    habit.description = habitData.description || '';
+
+    saveHabits(habits);
+    return habits;
+  }
+
   // Toggle habit completion for today
   function toggleHabitCompletion(habitId) {
     const habits = loadHabits();
@@ -241,6 +258,7 @@ const Data = (function() {
   return {
     getHabits,
     addHabit,
+    updateHabit,
     toggleHabitCompletion,
     toggleHabitCompletionDate,
     removeHabit,

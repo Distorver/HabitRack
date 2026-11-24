@@ -131,13 +131,20 @@ const Habits = (function () {
               </div>
             </div>
             <div class="habit-card-actions">
-            <button class="btn-remove-habit"
-                    type="button"
-                    data-habit-id="${habit.id}"
-                    aria-label="Remove ${escapeHtml(habit.name)}"
-                    title="Remove habit">
-              <ion-icon name="trash-outline"></ion-icon>
-            </button>
+              <button class="btn-edit-habit d-flex align-items-center justify-content-center"
+                      type="button"
+                      data-habit-id="${habit.id}"
+                      aria-label="Edit ${escapeHtml(habit.name)}"
+                      title="Edit habit">
+                <ion-icon name="create-outline"></ion-icon>
+              </button>
+              <button class="btn-remove-habit d-flex align-items-center justify-content-center"
+                      type="button"
+                      data-habit-id="${habit.id}"
+                      aria-label="Remove ${escapeHtml(habit.name)}"
+                      title="Remove habit">
+                <ion-icon name="trash-outline"></ion-icon>
+              </button>
               <button class="btn-checkin ${isCompletedToday ? "completed" : ""}"
                       data-habit-id="${habit.id}"
                       aria-label="${isCompletedToday ? "Mark as incomplete" : "Mark as complete"}">
@@ -186,6 +193,10 @@ const Habits = (function () {
       btn.addEventListener("click", handleDayToggle);
     });
 
+    container.querySelectorAll(".btn-edit-habit").forEach((btn) => {
+      btn.addEventListener("click", handleEditHabit);
+    });
+
     container.querySelectorAll(".btn-remove-habit").forEach((btn) => {
       btn.addEventListener("click", handleRemoveHabit);
     });
@@ -215,6 +226,15 @@ const Habits = (function () {
     const habitId = parseInt(btn.dataset.habitId);
     Data.toggleHabitCompletionDate(habitId, btn.dataset.date);
     render();
+  }
+
+  function handleEditHabit(e) {
+    const habitId = parseInt(e.currentTarget.dataset.habitId);
+    const habit = Data.getHabits().find((h) => h.id === habitId);
+
+    if (!habit || typeof Modal === "undefined") return;
+
+    Modal.openForEdit(habit);
   }
 
   function handleRemoveHabit(e) {

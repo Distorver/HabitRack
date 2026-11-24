@@ -186,11 +186,11 @@
         </div>
       </main>
 
-      <!-- ========== ADD HABIT MODAL ========== -->
+      <!-- ========== ADD / EDIT HABIT MODAL ========== -->
       <div class="modal-overlay" id="modalOverlay">
         <div class="modal-container" id="habitModal">
           <div class="modal-header">
-            <h2>Add New Habit</h2>
+            <h2 id="habitModalTitle">Add New Habit</h2>
             <button class="btn-close-modal" id="btnCloseModal">
               <ion-icon name="close-outline"></ion-icon>
             </button>
@@ -273,7 +273,13 @@
             </div>
 
             <!-- Submit -->
-            <button type="submit" class="btn-submit-habit">Create Habit</button>
+            <button
+              type="submit"
+              class="btn-submit-habit"
+              id="habitSubmitBtn"
+            >
+              Create Habit
+            </button>
           </form>
         </div>
       </div>
