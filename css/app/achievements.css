@@ -437,24 +437,40 @@
 /* #endregion */
 
 /* #region Pink Theme Support */
-:root[data-theme="pink"] .ach-featured-panel {
+:root[data-theme^="pink"] .ach-featured-panel {
   border-color: rgba(255, 127, 174, 0.42);
 }
 
-:root[data-theme="pink"] .ach-next-ring {
+:root[data-theme^="pink"] .ach-next-ring {
   background: conic-gradient(
     #ff9cc1 var(--ring-pct, 0%),
     rgba(255, 255, 255, 0.1) 0%
   );
 }
 
-:root[data-theme="pink"] .ach-next-ring-inner,
-:root[data-theme="pink"] .ach-lavender-label {
+:root[data-theme^="pink"] .ach-next-ring-inner,
+:root[data-theme^="pink"] .ach-lavender-label {
   color: #ff9cc1;
 }
 
-:root[data-theme="pink"] .ach-lavender-fill {
+:root[data-theme^="pink"] .ach-lavender-fill {
   background-color: #ff9cc1;
+}
+
+:root[data-theme="pink-light"] .ach-next-ring {
+  background: conic-gradient(
+    var(--color-orange) var(--ring-pct, 0%),
+    rgba(56, 35, 44, 0.12) 0%
+  );
+}
+
+:root[data-theme="pink-light"] .ach-next-ring-inner,
+:root[data-theme="pink-light"] .ach-lavender-label {
+  color: var(--color-orange);
+}
+
+:root[data-theme="pink-light"] .ach-lavender-fill {
+  background-color: var(--color-orange);
 }
 /* #endregion */
 

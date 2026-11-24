@@ -29,7 +29,7 @@
   z-index: 1;
 }
 
-:root[data-theme="pink"] .glow {
+:root[data-theme^="pink"] .glow {
   box-shadow: 0 0 500px 20rem rgba(255, 127, 174, 0.3);
 }
 

@@ -85,14 +85,14 @@ const Profile = (() => {
         <div class="profile-setting-row">
           <div>
             <h3>Appearance</h3>
-            <p class="profile-help-text">Choose a light or dark app theme. Your choice is saved on this device.</p>
+            <p class="profile-help-text">Switch between dark and light mode without losing your selected color theme.</p>
           </div>
           <button class="profile-secondary-button" type="button" data-theme-toggle>Switch theme</button>
         </div>
         <p class="profile-feedback" id="settingsFeedback" role="status" aria-live="polite"></p>
         <div class="profile-future-card">
-          <h3>Theme collections</h3>
-          <p class="profile-help-text">Custom theme collections are on hold for a future update.</p>
+          <h3>Available themes</h3>
+          <p class="profile-help-text">Choose Default or Pink in Your themes.</p>
         </div>
       </section>
     </div>
@@ -105,10 +105,27 @@ const Profile = (() => {
             <ion-icon name="close-outline"></ion-icon>
           </button>
         </div>
-        <div class="profile-future-card">
-          <ion-icon name="color-palette-outline" aria-hidden="true"></ion-icon>
-          <h3>Theme collections are on hold</h3>
-          <p class="profile-help-text">This space is reserved for future themes. You can still switch between light and dark mode with the theme button.</p>
+        <div class="profile-theme-options">
+          <article class="profile-theme-card" data-profile-theme-card="default">
+            <div class="profile-theme-preview profile-theme-preview-default" aria-hidden="true">
+              <span></span>
+            </div>
+            <div>
+              <h3>Default theme</h3>
+              <p class="profile-help-text">HabitRack’s original colors, with dark and light modes.</p>
+            </div>
+            <button class="profile-theme-select" type="button" data-select-theme="default" aria-pressed="false">Use theme</button>
+          </article>
+          <article class="profile-theme-card" data-profile-theme-card="pink">
+            <div class="profile-theme-preview profile-theme-preview-pink" aria-hidden="true">
+              <span></span>
+            </div>
+            <div>
+              <h3>Pink theme</h3>
+              <p class="profile-help-text">A soft pink palette, available in dark and light modes.</p>
+            </div>
+            <button class="profile-theme-select" type="button" data-select-theme="pink" aria-pressed="false">Use theme</button>
+          </article>
         </div>
       </section>
     </div>
@@ -220,11 +237,14 @@ const Profile = (() => {
   }
 
   function applyTheme(theme, persist = false) {
-    const nextTheme = ["light", "pink"].includes(theme) ? theme : "dark";
+    const nextTheme = ["light", "pink", "pink-light"].includes(theme)
+      ? theme
+      : "dark";
     document.documentElement.dataset.theme = nextTheme;
+    const isLightMode = nextTheme === "light" || nextTheme === "pink-light";
 
     document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
-      const targetTheme = nextTheme === "dark" ? "light" : "dark";
+      const targetTheme = isLightMode ? "dark" : "light";
       button.setAttribute("aria-label", `Switch to ${targetTheme} mode`);
       button.title = `Switch to ${targetTheme} mode`;
       const icon = button.querySelector("ion-icon");
@@ -234,6 +254,8 @@ const Profile = (() => {
         button.textContent = `Switch to ${targetTheme} mode`;
       }
     });
+
+    renderThemeChoices();
 
     if (persist) {
       try {
@@ -247,6 +269,35 @@ const Profile = (() => {
     document.dispatchEvent(
       new CustomEvent("habitrack:themechange", { detail: { theme: nextTheme } }),
     );
+  }
+
+  function renderThemeChoices() {
+    const activeFamily = document.documentElement.dataset.theme?.startsWith("pink")
+      ? "pink"
+      : "default";
+
+    document.querySelectorAll("[data-profile-theme-card]").forEach((card) => {
+      const isActive = card.dataset.profileThemeCard === activeFamily;
+      card.classList.toggle("is-active", isActive);
+
+      const button = card.querySelector("[data-select-theme]");
+      if (button) {
+        button.disabled = isActive;
+        button.setAttribute("aria-pressed", String(isActive));
+        button.textContent = isActive ? "Current theme" : "Use theme";
+      }
+    });
+  }
+
+  function toggleTheme() {
+    const currentTheme = document.documentElement.dataset.theme || "dark";
+    const nextThemeByMode = {
+      dark: "light",
+      light: "dark",
+      pink: "pink-light",
+      "pink-light": "pink",
+    };
+    applyTheme(nextThemeByMode[currentTheme] || "light", true);
   }
 
   function loadTheme() {
@@ -387,10 +438,12 @@ const Profile = (() => {
       });
 
     document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      button.addEventListener("click", toggleTheme);
+    });
+
+    document.querySelectorAll("[data-select-theme]").forEach((button) => {
       button.addEventListener("click", () => {
-        const nextTheme =
-          document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-        applyTheme(nextTheme, true);
+        applyTheme(button.dataset.selectTheme === "pink" ? "pink" : "dark", true);
       });
     });
 

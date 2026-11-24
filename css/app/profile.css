@@ -89,7 +89,8 @@
 .profile-password-section h3,
 .profile-danger-zone h3,
 .profile-setting-row h3,
-.profile-future-card h3 {
+.profile-future-card h3,
+.profile-theme-card h3 {
   margin: 0;
   color: var(--text-primary);
   font-family: "Space Grotesk", sans-serif;
@@ -150,6 +151,87 @@
   font-size: 1.5rem;
 }
 
+.profile-theme-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.profile-theme-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-raised);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.profile-theme-card.is-active {
+  border-color: var(--color-orange);
+  box-shadow: 0 0 0 1px var(--color-orange);
+}
+
+.profile-theme-preview {
+  display: flex;
+  align-items: flex-start;
+  height: 58px;
+  padding: 8px;
+  border: 1px solid var(--color-border);
+}
+
+.profile-theme-preview span {
+  display: block;
+  width: 42%;
+  height: 7px;
+  background: var(--color-orange);
+}
+
+.profile-theme-preview-default {
+  background: linear-gradient(90deg, #141314 0 50%, #f3f1ef 50%);
+}
+
+.profile-theme-preview-default span {
+  background: linear-gradient(90deg, #fd551d 0 50%, #b83264 50%);
+}
+
+.profile-theme-preview-pink {
+  background: linear-gradient(90deg, #241017 0 50%, #fff5f8 50%);
+}
+
+.profile-theme-preview-pink span {
+  background: linear-gradient(90deg, #ff7fae 0 50%, #b83264 50%);
+}
+
+.profile-theme-select {
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  color: var(--text-primary);
+  background: var(--color-surface);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.profile-theme-select:hover:not(:disabled),
+.profile-theme-select:focus-visible {
+  border-color: var(--color-orange);
+  color: var(--color-orange);
+}
+
+.profile-theme-select:disabled {
+  opacity: 0.75;
+  cursor: default;
+}
+
 .profile-overlay {
   z-index: 1100;
 }
@@ -181,6 +263,10 @@
 }
 
 @media (max-width: 480px) {
+  .profile-theme-options {
+    grid-template-columns: 1fr;
+  }
+
   .profile-avatar-editor {
     align-items: flex-start;
   }

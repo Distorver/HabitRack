@@ -240,16 +240,6 @@
   color: var(--text-secondery);
 }
 
-.profile-item-themes {
-  justify-content: space-between;
-}
-
-.profile-coming-soon {
-  color: var(--text-secondery);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-}
-
 .arrow {
   width: 0.8rem;
   transition: transform 0.2s ease;

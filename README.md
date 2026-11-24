@@ -157,9 +157,6 @@ The app logic is split into small modules (`Data`, `Habits`, `Modal`, `Profile`)
 
 ## Roadmap
 
-- [ ] Progress page
-- [ ] Achievements page
-- [ ] Shop page
 - [ ] Real authentication and cloud sync
 - [ ] Reminders and notifications
 - [ ] Data export
@@ -181,14 +178,12 @@ Contributions are welcome.
 - Mail: [ali.ayman.eid@proton.me](mailto:ali.ayman.eid@proton.me)
 - LinkedIn: [linkedin.com/in/3li-ayman](https://linkedin.com/in/3li-ayman)
 
--------------------------------------------------------------------------
-
 **3laa Zedan** [@3laamostafa](https://github.com/3laamostafa)
 
 - Mail: [3laa.m.zedan@gmail.com](mailto:3laa.m.zedan@gmail.com)
 - LinkedIn: [linkedin.com/in/3laa-zedan-29b547361](https://linkedin.com/in/3laa-zedan-29b547361)
 
---------------------------------------------------------------------------------
+---
 
 ## Acknowledgments
 

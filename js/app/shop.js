@@ -331,7 +331,11 @@ const Shop = (function () {
         const canAfford = wallet.availableTokens >= item.price;
         const disabled = alreadyOwnedUnique || !canAfford;
         const isTheme = Boolean(item.theme);
-        const isActiveTheme = isTheme && activeTheme === item.theme;
+        const isActiveTheme =
+          isTheme &&
+          (item.theme === "pink"
+            ? activeTheme.startsWith("pink")
+            : activeTheme === item.theme);
 
         let actionHtml = "";
         if (isActiveTheme) {
