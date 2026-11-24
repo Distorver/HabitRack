@@ -91,6 +91,54 @@ const Data = (function() {
     return formatDate(new Date());
   }
 
+  function getNumericGoal(value) {
+    const match = String(value ?? "").trim().match(/^(\d+(?:\.\d+)?|\.\d+)\s*([a-zA-Z]*)$/);
+    if (!match) return null;
+
+    const target = Number(match[1]);
+    return Number.isFinite(target) && target > 0
+      ? { target, unit: match[2] }
+      : null;
+  }
+
+  function getHabitIncrement(habit) {
+    const increment = Number(habit?.increment);
+    return Number.isFinite(increment) && increment > 0 ? increment : 1;
+  }
+
+  function getHabitProgress(habit, date) {
+    const numericGoal = getNumericGoal(habit?.goal);
+    if (!numericGoal || !date) return 0;
+
+    if (Object.hasOwn(habit.progressByDate || {}, date)) {
+      const progress = Number(habit.progressByDate[date]);
+      return Number.isFinite(progress)
+        ? Math.min(numericGoal.target, Math.max(0, progress))
+        : 0;
+    }
+
+    return habit.completedDates.includes(date) ? numericGoal.target : 0;
+  }
+
+  function setHabitProgress(habit, date, progress, target) {
+    if (!habit.progressByDate || typeof habit.progressByDate !== "object") {
+      habit.progressByDate = {};
+    }
+    if (!Array.isArray(habit.completedDates)) {
+      habit.completedDates = [];
+    }
+
+    const boundedProgress = Math.min(target, Math.max(0, progress));
+    habit.progressByDate[date] = boundedProgress;
+
+    const dateIndex = habit.completedDates.indexOf(date);
+    if (boundedProgress >= target && dateIndex === -1) {
+      habit.completedDates.push(date);
+    } else if (boundedProgress < target && dateIndex > -1) {
+      habit.completedDates.splice(dateIndex, 1);
+    }
+  }
+
   // Save habits to localStorage
   function saveHabits(habits) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(habits));
@@ -110,9 +158,11 @@ const Data = (function() {
       icon: habitData.icon,
       goal: habitData.goal,
       goalType: habitData.goalType,
+      increment: habitData.goalType === "numeric" ? habitData.increment : null,
       color: habitData.color || '#f4b8c3',
       description: habitData.description || '',
-      completedDates: []
+      completedDates: [],
+      progressByDate: {}
     };
     habits.push(newHabit);
     saveHabits(habits);
@@ -129,6 +179,7 @@ const Data = (function() {
     habit.icon = habitData.icon;
     habit.goal = habitData.goal;
     habit.goalType = habitData.goalType;
+    habit.increment = habitData.goalType === "numeric" ? habitData.increment : null;
     habit.color = habitData.color || habit.color;
     habit.description = habitData.description || '';
 
@@ -160,6 +211,21 @@ const Data = (function() {
     const habit = habits.find(h => h.id === habitId);
     if (!habit || !date) return habits;
 
+    if (habit.goalType === "numeric") {
+      const numericGoal = getNumericGoal(habit.goal);
+      if (numericGoal) {
+        const progress = getHabitProgress(habit, date);
+        setHabitProgress(
+          habit,
+          date,
+          progress >= numericGoal.target ? 0 : numericGoal.target,
+          numericGoal.target
+        );
+        saveHabits(habits);
+        return habits;
+      }
+    }
+
     const dateIndex = habit.completedDates.indexOf(date);
     if (dateIndex > -1) {
       habit.completedDates.splice(dateIndex, 1);
@@ -167,6 +233,24 @@ const Data = (function() {
       habit.completedDates.push(date);
     }
 
+    saveHabits(habits);
+    return habits;
+  }
+
+  function incrementHabitProgress(habitId, date = getToday()) {
+    const habits = loadHabits();
+    const habit = habits.find(h => h.id === habitId);
+    const numericGoal = getNumericGoal(habit?.goal);
+    if (!habit || habit.goalType !== "numeric" || !numericGoal) return habits;
+
+    const currentProgress = getHabitProgress(habit, date);
+    if (currentProgress >= numericGoal.target) return habits;
+
+    const nextProgress = Math.min(
+      numericGoal.target,
+      Number((currentProgress + getHabitIncrement(habit)).toPrecision(12))
+    );
+    setHabitProgress(habit, date, nextProgress, numericGoal.target);
     saveHabits(habits);
     return habits;
   }
@@ -261,6 +345,10 @@ const Data = (function() {
     updateHabit,
     toggleHabitCompletion,
     toggleHabitCompletionDate,
+    incrementHabitProgress,
+    getNumericGoal,
+    getHabitIncrement,
+    getHabitProgress,
     removeHabit,
     getStats,
     getLastDays,

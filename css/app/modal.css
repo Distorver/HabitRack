@@ -88,6 +88,15 @@
   gap: 7px;
 }
 
+.form-group[hidden] {
+  display: none;
+}
+
+.form-group small {
+  color: var(--text-secondery);
+  font-size: 0.8rem;
+}
+
 .form-group label {
   font-family: "Geist Mono", monospace;
   font-size: 0.85rem;
@@ -239,6 +248,32 @@
 
 .btn-submit-habit:hover {
   filter: brightness(0.9);
+}
+
+.btn-delete-habit {
+  align-self: center;
+  padding: 2px 8px;
+  background: transparent;
+  border: 0;
+  color: #f87171;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.btn-delete-habit:hover {
+  color: #ef4444;
+  text-decoration: underline;
+}
+
+.btn-delete-habit:focus-visible {
+  outline: 2px solid #f87171;
+  outline-offset: 3px;
+}
+
+.btn-delete-habit[hidden] {
+  display: none;
 }
 
 /* Tablet */

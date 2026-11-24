@@ -116,6 +116,31 @@ const Habits = (function () {
         const isCompletedToday = habit.completedDates.includes(today);
         const color = habit.color || "#f4b8c3";
         const rgb = hexToRgb(color);
+        const numericGoal =
+          habit.goalType === "numeric" ? Data.getNumericGoal(habit.goal) : null;
+        const increment = numericGoal ? Data.getHabitIncrement(habit) : 0;
+        const progress = numericGoal ? Data.getHabitProgress(habit, today) : 0;
+        const segmentCount = numericGoal
+          ? Math.max(
+              1,
+              Math.ceil(Number((numericGoal.target / increment).toPrecision(12)))
+            )
+          : 0;
+        const isNumericComplete = numericGoal && progress >= numericGoal.target;
+        const checkinButton = numericGoal && !isNumericComplete
+          ? renderNumericCheckin(
+              habit,
+              numericGoal,
+              increment,
+              progress,
+              segmentCount
+            )
+          : `<button class="btn-checkin ${isNumericComplete || isCompletedToday ? "completed" : ""}"
+                     type="button"
+                     data-habit-id="${habit.id}"
+                     aria-label="${isNumericComplete ? `Mark ${escapeHtml(habit.name)} incomplete` : isCompletedToday ? "Mark as incomplete" : "Mark as complete"}">
+                <ion-icon name="checkmark-outline"></ion-icon>
+              </button>`;
 
         return `
         <div class="habit-card" data-habit-id="${habit.id}"
@@ -139,18 +164,7 @@ const Habits = (function () {
               </div>
             </div>
             <div class="habit-card-actions">
-              <button class="btn-remove-habit d-flex align-items-center justify-content-center"
-                      type="button"
-                      data-habit-id="${habit.id}"
-                      aria-label="Remove ${escapeHtml(habit.name)}"
-                      title="Remove habit">
-                <ion-icon name="trash-outline"></ion-icon>
-              </button>
-              <button class="btn-checkin ${isCompletedToday ? "completed" : ""}"
-                      data-habit-id="${habit.id}"
-                      aria-label="${isCompletedToday ? "Mark as incomplete" : "Mark as complete"}">
-                <ion-icon name="checkmark-outline"></ion-icon>
-              </button>
+              ${checkinButton}
             </div>
           </div>
           <div class="habit-log">
@@ -159,14 +173,21 @@ const Habits = (function () {
               ${lastDays
                 .map((day) => {
                   const completed = habit.completedDates.includes(day.date);
+                  const dayProgress = numericGoal
+                    ? Data.getHabitProgress(habit, day.date)
+                    : 0;
+                  const dayOpacity = numericGoal
+                    ? 0.12 + 0.88 * Math.min(1, dayProgress / numericGoal.target)
+                    : 0;
                   return `
                   <div class="day-item">
                     ${!isAllDays ? `<span class="day-label">${day.dayName}</span>` : ""}
                     <button type="button"
-                            class="day-box ${completed ? "completed" : ""} ${day.isToday ? "today" : ""}"
+                            class="day-box ${completed ? "completed" : ""} ${numericGoal ? "numeric-progress" : ""} ${day.isToday ? "today" : ""}"
                             data-habit-id="${habit.id}"
                             data-date="${day.date}"
-                            aria-label="${completed ? "Mark" : "Mark"} ${day.date} ${completed ? "incomplete" : "complete"}"
+                            aria-label="${numericGoal ? `${dayProgress} of ${numericGoal.target}${numericGoal.unit ? ` ${escapeHtml(numericGoal.unit)}` : ""} on ${day.date}; toggle completion` : `${completed ? "Mark" : "Mark"} ${day.date} ${completed ? "incomplete" : "complete"}`}"
+                            ${numericGoal ? `style="--day-opacity: ${dayOpacity}"` : ""}
                             title="${day.date}">
                     </button>
                   </div>
@@ -198,10 +219,6 @@ const Habits = (function () {
       btn.addEventListener("click", handleEditHabit);
     });
 
-    container.querySelectorAll(".btn-remove-habit").forEach((btn) => {
-      btn.addEventListener("click", handleRemoveHabit);
-    });
-
     if (currentFilter === "all") {
       requestAnimationFrame(() => {
         container.querySelectorAll(".habit-days.days-30").forEach((grid) => {
@@ -214,12 +231,75 @@ const Habits = (function () {
   function handleCheckin(e) {
     const btn = e.currentTarget;
     const habitId = parseInt(btn.dataset.habitId);
+    const habit = Data.getHabits().find((item) => item.id === habitId);
+    if (!habit) return;
 
-    // Toggle completion
-    Data.toggleHabitCompletion(habitId);
+    if (habit.goalType === "numeric") {
+      const numericGoal = Data.getNumericGoal(habit.goal);
+      const progress = Data.getHabitProgress(habit, Data.getToday());
+      if (numericGoal && progress >= numericGoal.target) {
+        Data.toggleHabitCompletionDate(habitId, Data.getToday());
+      } else {
+        Data.incrementHabitProgress(habitId);
+      }
+    } else {
+      Data.toggleHabitCompletion(habitId);
+    }
 
     // Re-render to show updated state
     render();
+  }
+
+  function renderNumericCheckin(habit, numericGoal, increment, progress, segmentCount) {
+    const period = 100 / segmentCount;
+    const gap = Math.min(1.5, period * 0.25);
+    const segmentLength = period - gap;
+    const progressSegments = Math.min(
+      segmentCount,
+      Math.ceil(progress / increment)
+    );
+    const trackDash = Array(segmentCount)
+      .fill(`${segmentLength} ${gap}`)
+      .join(" ");
+    const progressDash = [
+      ...Array(progressSegments).fill(`${segmentLength} ${gap}`),
+      `0 ${Math.max(0, 100 - progressSegments * period)}`,
+    ].join(" ");
+    const unit = numericGoal.unit ? ` ${escapeHtml(numericGoal.unit)}` : "";
+    const displayValue = String(progress);
+    const displayWidth = Math.min(35, displayValue.length * 5.2);
+
+    return `
+      <button class="btn-checkin numeric-checkin"
+              type="button"
+              data-habit-id="${habit.id}"
+              aria-label="Add ${increment}${unit} to ${escapeHtml(habit.name)} (${progress} of ${numericGoal.target}${unit} completed)"
+              title="${progress} of ${numericGoal.target}${unit}">
+        <svg class="checkin-border" viewBox="0 0 44 44" aria-hidden="true">
+          <path class="checkin-border-track"
+                d="M 3 3 H 41 V 41 H 3 Z"
+                pathLength="100"
+                stroke-dasharray="${trackDash}" />
+          ${progressSegments ? `
+          <path class="checkin-border-progress"
+                d="M 3 3 H 41 V 41 H 3 Z"
+                pathLength="100"
+                stroke-dasharray="${progressDash}" />` : ""}
+          <path class="checkin-border-hover"
+                d="M 3 3 H 41 V 41 H 3 Z"
+                pathLength="100"
+                stroke-dasharray="${segmentLength} ${100 - segmentLength}"
+                stroke-dashoffset="${-progressSegments * period}" />
+          <text class="numeric-checkin-value"
+                x="22"
+                y="22"
+                text-anchor="middle"
+                dominant-baseline="central"
+                textLength="${displayWidth}"
+                lengthAdjust="spacingAndGlyphs">${escapeHtml(displayValue)}</text>
+        </svg>
+      </button>
+    `;
   }
 
   function handleDayToggle(e) {
@@ -236,12 +316,6 @@ const Habits = (function () {
     if (!habit || typeof Modal === "undefined") return;
 
     Modal.openForEdit(habit);
-  }
-
-  function handleRemoveHabit(e) {
-    const habitId = parseInt(e.currentTarget.dataset.habitId);
-    Data.removeHabit(habitId);
-    render();
   }
 
   return {
