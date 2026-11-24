@@ -29,6 +29,10 @@
   z-index: 1;
 }
 
+:root[data-theme="pink"] .glow {
+  box-shadow: 0 0 500px 20rem rgba(255, 127, 174, 0.3);
+}
+
 /* Tablet (768px - 1024px) */
 @media (max-width: 1024px) {
   .main {

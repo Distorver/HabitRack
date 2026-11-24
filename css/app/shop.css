@@ -408,6 +408,26 @@
 }
 /* #endregion */
 
+/* #region Pink Theme Support */
+:root[data-theme="pink"] .shop-wallet-panel,
+:root[data-theme="pink"] .shop-balance-badge {
+  border-color: rgba(255, 127, 174, 0.35);
+}
+
+:root[data-theme="pink"] .shop-coin-circle {
+  background-color: rgba(255, 127, 174, 0.18);
+}
+
+:root[data-theme="pink"] .shop-buy-btn:hover:not(:disabled) {
+  background-color: #ff9cc1;
+  color: var(--color-surface);
+}
+
+:root[data-theme="pink"] .shop-owned-tag {
+  color: #ff9cc1;
+}
+/* #endregion */
+
 /* #region Responsive */
 @media (max-width: 767.98px) {
   .shop-wrapper {
