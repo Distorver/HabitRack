@@ -1,3 +1,5 @@
+const PROFILE_STORAGE_KEY = "habitrack_profile";
+
 const validationRules = {
   name: {
     regex: /^[\p{L}\p{M}]+(?:[ '-][\p{L}\p{M}]+)*$/u,
@@ -74,6 +76,20 @@ document.querySelectorAll("[data-auth-form]").forEach((form) => {
 
   terms?.addEventListener("change", validateTerms);
 
+  function saveFullName(fullName) {
+    try {
+      const profile = JSON.parse(
+        localStorage.getItem(PROFILE_STORAGE_KEY) || "{}",
+      );
+      localStorage.setItem(
+        PROFILE_STORAGE_KEY,
+        JSON.stringify({ ...profile, name: fullName }),
+      );
+    } catch (error) {
+      console.error("Could not save the full name in browser storage:", error);
+    }
+  }
+
   form.addEventListener("submit", (event) => {
     const fieldsAreValid = fields.map(validateField).every(Boolean);
     const termsAreValid = validateTerms();
@@ -81,6 +97,11 @@ document.querySelectorAll("[data-auth-form]").forEach((form) => {
     event.preventDefault();
 
     if (fieldsAreValid && termsAreValid) {
+      const fullName = form.querySelector("#fullName")?.value.trim();
+      if (fullName) {
+        saveFullName(fullName);
+      }
+
       window.location.assign("../app/habits.html");
     }
   });
