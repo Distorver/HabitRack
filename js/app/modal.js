@@ -8,8 +8,11 @@ const Modal = (function() {
   const form = document.getElementById('habitForm');
   const modalTitle = document.getElementById('habitModalTitle');
   const submitBtn = document.getElementById('habitSubmitBtn');
+  const deleteBtn = document.getElementById('btnDeleteHabit');
   const goalInput = document.getElementById('habitGoal');
   const goalTypeContainer = document.getElementById('goalTypeContainer');
+  const incrementInput = document.getElementById('habitIncrement');
+  const incrementContainer = document.getElementById('goalIncrementContainer');
   const selectedIconInput = document.getElementById('selectedIcon');
   const selectedColorInput = document.getElementById('selectedColor');
 
@@ -118,6 +121,10 @@ const Modal = (function() {
       closeBtn.addEventListener('click', close);
     }
 
+    if (deleteBtn) {
+      deleteBtn.addEventListener('click', handleDelete);
+    }
+
     // Close on overlay click
     if (overlay) {
       overlay.addEventListener('click', (e) => {
@@ -182,6 +189,12 @@ const Modal = (function() {
             goalInput.placeholder = 'e.g., 2L, 30m, 8h';
           }
         }
+        if (incrementContainer) {
+          incrementContainer.hidden = type !== 'numeric';
+        }
+        if (incrementInput) {
+          incrementInput.disabled = type !== 'numeric';
+        }
       });
     });
 
@@ -197,6 +210,9 @@ const Modal = (function() {
     }
     if (submitBtn) {
       submitBtn.textContent = isEditing ? 'Save Changes' : 'Create Habit';
+    }
+    if (deleteBtn) {
+      deleteBtn.hidden = !isEditing;
     }
   }
 
@@ -262,6 +278,12 @@ const Modal = (function() {
     goalTypeBtns.forEach((btn) => {
       btn.classList.toggle('active', btn.dataset.goalType === targetType);
     });
+    if (incrementContainer) {
+      incrementContainer.hidden = targetType !== 'numeric';
+    }
+    if (incrementInput) {
+      incrementInput.disabled = targetType !== 'numeric';
+    }
 
     if (goalInput) {
       if (targetType === 'boolean') {
@@ -272,6 +294,9 @@ const Modal = (function() {
         goalInput.value = habit.goal || '';
         goalInput.placeholder = 'e.g., 2L, 30m, 8h';
       }
+    }
+    if (incrementInput) {
+      incrementInput.value = String(Data.getHabitIncrement(habit));
     }
 
     show();
@@ -286,6 +311,16 @@ const Modal = (function() {
     setMode(false);
   }
 
+  function handleDelete() {
+    if (editingHabitId === null) return;
+
+    Data.removeHabit(editingHabitId);
+    if (typeof Habits !== 'undefined') {
+      Habits.render();
+    }
+    close();
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     
@@ -294,6 +329,7 @@ const Modal = (function() {
     const activeBtn = document.querySelector('.goal-type-btn.active');
     const goalType = activeBtn?.dataset.goalType || 'boolean';
     const goal = goalType === 'boolean' ? 'Daily tracking' : goalInput?.value.trim();
+    const increment = Number(incrementInput?.value);
     const description = document.getElementById('habitDescription')?.value.trim();
 
     if (!name) {
@@ -306,9 +342,27 @@ const Modal = (function() {
       return;
     }
 
+    if (goalType === 'numeric' && !Data.getNumericGoal(goal)) {
+      alert('Please enter a numeric goal, such as 2L, 30m, or 8h');
+      return;
+    }
+
+    if (goalType === 'numeric' && (!Number.isFinite(increment) || increment <= 0)) {
+      alert('Please enter an amount per check-in greater than zero');
+      return;
+    }
+
     // Save via Data module
     if (typeof Data !== 'undefined') {
-      const habitData = { name, icon, goal, goalType, color: selectedColor, description };
+      const habitData = {
+        name,
+        icon,
+        goal,
+        goalType,
+        increment: goalType === 'numeric' ? increment : null,
+        color: selectedColor,
+        description
+      };
 
       if (editingHabitId !== null) {
         Data.updateHabit(editingHabitId, habitData);

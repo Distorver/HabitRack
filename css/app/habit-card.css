@@ -26,24 +26,6 @@
   gap: 6px;
 }
 
-.btn-remove-habit {
-  width: 44px;
-  height: 44px;
-  border: 0;
-  background: transparent;
-  color: var(--text-secondery);
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.btn-remove-habit:hover {
-  color: var(--habit-color);
-}
-
-.btn-remove-habit ion-icon {
-  font-size: 1.1rem;
-}
-
 .habit-info {
   display: flex;
   gap: 12px;
@@ -187,6 +169,67 @@
   border-color: var(--habit-color);
 }
 
+.btn-checkin.numeric-checkin {
+  position: relative;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.checkin-border {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.checkin-border path {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: butt;
+}
+
+.checkin-border-track {
+  stroke: var(--color-border);
+}
+
+.checkin-border-progress {
+  stroke: var(--habit-color);
+}
+
+.checkin-border-hover {
+  stroke: var(--habit-color);
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.numeric-checkin-value {
+  fill: var(--text-primary);
+  font-family: "Geist Mono", monospace;
+  font-size: 9px;
+  font-weight: 600;
+  pointer-events: none;
+  transition: fill 0.18s ease;
+}
+
+.btn-checkin.numeric-checkin:hover .checkin-border-hover,
+.btn-checkin.numeric-checkin:focus-visible .checkin-border-hover {
+  opacity: 1;
+}
+
+.btn-checkin.numeric-checkin:hover .numeric-checkin-value,
+.btn-checkin.numeric-checkin:focus-visible .numeric-checkin-value {
+  fill: var(--habit-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .checkin-border-hover {
+    transition: none;
+  }
+}
+
 .btn-checkin ion-icon {
   font-size: 1.1rem;
   color: var(--color-gray);
@@ -250,6 +293,14 @@
 
 .day-box:hover {
   background: rgba(var(--habit-rgb, 244, 184, 195), 0.35);
+}
+
+.day-box.numeric-progress {
+  background: rgba(var(--habit-rgb, 244, 184, 195), var(--day-opacity));
+}
+
+.day-box.numeric-progress:hover {
+  filter: brightness(1.05);
 }
 
 .day-box.completed {
@@ -332,14 +383,13 @@
     right: 16px;
   }
 
-  .btn-checkin,
-  .btn-remove-habit {
+  .btn-checkin {
     width: 36px;
     height: 36px;
   }
 
   .habit-card {
-    padding-right: 136px;
+    padding-right: 72px;
     position: relative;
   }
 

@@ -272,6 +272,20 @@
               />
             </div>
 
+            <div class="form-group" id="goalIncrementContainer" hidden>
+              <label for="habitIncrement">Amount per check-in</label>
+              <input
+                type="number"
+                id="habitIncrement"
+                class="form-control"
+                min="0.01"
+                step="any"
+                value="1"
+                placeholder="e.g., 0.5"
+              />
+              <small>Each click adds this amount in the goal’s unit.</small>
+            </div>
+
             <!-- Submit -->
             <button
               type="submit"
@@ -279,6 +293,14 @@
               id="habitSubmitBtn"
             >
               Create Habit
+            </button>
+            <button
+              type="button"
+              class="btn-delete-habit"
+              id="btnDeleteHabit"
+              hidden
+            >
+              Delete habit
             </button>
           </form>
         </div>
