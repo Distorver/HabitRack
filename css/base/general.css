@@ -55,6 +55,26 @@
   --card-bg: #341722;
 }
 
+:root[data-theme="pink-light"] {
+  color-scheme: light;
+  color: #38232c;
+  background: #fff5f8;
+  --color-dark: #fff5f8;
+  --color-surface: #fff;
+  --color-surface-raised: #f8eaf0;
+  --color-input: #fff;
+  --color-border: #e9cbd7;
+  --color-border-subtle: #f0dfe5;
+  --color-orange: #b83264;
+  --color-gray: #986d7d;
+  --text-primary: #38232c;
+  --text-secondery: #795b67;
+  --accent: #b83264;
+  --text-muted: #795b67;
+  --border-color: #f0dfe5;
+  --card-bg: #fff;
+}
+
 * {
   margin: 0;
   padding: 0;

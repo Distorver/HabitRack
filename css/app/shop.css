@@ -409,22 +409,31 @@
 /* #endregion */
 
 /* #region Pink Theme Support */
-:root[data-theme="pink"] .shop-wallet-panel,
-:root[data-theme="pink"] .shop-balance-badge {
+:root[data-theme^="pink"] .shop-wallet-panel,
+:root[data-theme^="pink"] .shop-balance-badge {
   border-color: rgba(255, 127, 174, 0.35);
 }
 
-:root[data-theme="pink"] .shop-coin-circle {
+:root[data-theme^="pink"] .shop-coin-circle {
   background-color: rgba(255, 127, 174, 0.18);
 }
 
-:root[data-theme="pink"] .shop-buy-btn:hover:not(:disabled) {
+:root[data-theme^="pink"] .shop-buy-btn:hover:not(:disabled) {
   background-color: #ff9cc1;
   color: var(--color-surface);
 }
 
-:root[data-theme="pink"] .shop-owned-tag {
+:root[data-theme^="pink"] .shop-owned-tag {
   color: #ff9cc1;
+}
+
+:root[data-theme="pink-light"] .shop-buy-btn:hover:not(:disabled) {
+  background-color: var(--color-orange);
+  color: #fff;
+}
+
+:root[data-theme="pink-light"] .shop-owned-tag {
+  color: var(--color-orange);
 }
 /* #endregion */
 
